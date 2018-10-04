@@ -1,0 +1,24 @@
+doctype html
+html(lang='en')
+	head
+		title= title
+		link(href='/stylesheets/bootstrap.css', rel='stylesheet')
+		link(href='/stylesheets/style.css', rel='stylesheet')
+	body
+		nav.navbar.navbar-expand-sm.navbar-light.bg-light(role='navigation')
+			.container
+				button.navbar-toggler(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+					span.navbar-toggler-icon
+				a.navbar-brand(href='#') ScrumBag
+					.navbar-collapse.collapse
+						.navbar-nav.mr-auto
+								a.nav-item.nav-link(href='/') Members
+								a.nav-item.nav-link(href='/users/register') Register
+								a.nav-item.nav-link(href='/users/login') Login
+						ul.navbar-nav.navbar-right
+								a.nav-item.nav-link(href='/users/logout') Logout
+		.container
+			!=messages()
+			block content
+			script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+			script(src='javascripts/bootstrap.js')
