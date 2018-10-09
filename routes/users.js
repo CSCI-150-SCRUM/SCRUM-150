@@ -21,10 +21,10 @@ router.get('/login', function(req, res, next) {
 });
 
 router.post('/login',
-  passport.authenticate('local', {failureRedirect:'/users/login', failureFlash:'Invalid Username or Password'}),
-  function(req, res) {
-		  req.flash('success', 'You are now logged in!');
-      res.redirect('/');
+  passport.authenticate('local', {failureRedirect:'/users/login', failureFlash:'Invalid Username or Password'}), 
+	function(req, res) {
+		req.flash('success', 'You are now logged in!');
+		res.redirect('/');
 });
 
 //serialize
@@ -47,7 +47,7 @@ passport.use(new LocalStrategy(function(username, password, done){
 		   if(!user){
 				   return done(null, false, {message: 'Unknown User'});
    }
-   User.comparePassword(password, user.password, function(err, ismatch){
+   User.comparePassword(password, user.password, function(err, isMatch){
 		   if(err) return done(err);
 		   if(isMatch){
 				   return done(null, user);
