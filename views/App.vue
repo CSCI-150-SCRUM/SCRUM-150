@@ -121,7 +121,13 @@ export default {
           title: "Users",
           href: "/#/users",
           router: true
+        }, 
+        {
+          title: "Boards",
+          href: "/#/boards",
+          router: true
         }
+
       ],
       miniVariant: false,
       right: true,

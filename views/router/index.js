@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 import usersPage from '../pages/users.vue'
 import homePage from '../pages/home.vue'
+import boardsPage from '../pages/boards.vue'
 
 Vue.use(Router)
 
@@ -23,6 +24,11 @@ const router = new Router ({
     {
       path: '/',
       redirect: '/home'
+    },
+    {
+      path: '/boards',
+      name: 'boards',
+     component: boardsPage
     }
   ]
 })
