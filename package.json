@@ -43,9 +43,10 @@
     "style-loader": "^0.13.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
-    "vue-loader": "^13.7.3",
+    "vue-loader": "^14.2.3",
     "vue-template-compiler": "^2.5.17",
     "webpack": "^4.25.1",
+    "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10"
   },
   "eslintConfig": {
