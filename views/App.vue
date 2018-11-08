@@ -126,6 +126,16 @@ export default {
           title: "Boards",
           href: "/#/boards",
           router: true
+        }, 
+        {
+          title: "New Task",
+          href: "/#/newTask",
+          router: true
+        }, 
+        {
+          title: "New Project",
+          href: "/#/newProject",
+          router: true
         }
 
       ],

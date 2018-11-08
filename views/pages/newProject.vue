@@ -6,11 +6,11 @@
           <v-flex>
             <v-card>
               <v-toolbar class="primary primaryText--text">
-              <v-toolbar-title> SCRUM Board </v-toolbar-title>
+              <v-toolbar-title> Welcome to ScrumBag </v-toolbar-title>
               </v-toolbar>
               <v-container fluid>
                 <v-card-text>
-                  The Board will be displayed here!
+                  This is where we will have our main module.
                 </v-card-text>
               </v-container>
             </v-card>
@@ -22,7 +22,14 @@
 </template>
 
 <script>
+export default {
+  data: () => ({
+    value: "",
+    num1: 0,
+    num2: 0
+  })
 
+}
 </script>
 
 <style>
