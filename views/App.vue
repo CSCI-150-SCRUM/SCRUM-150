@@ -128,6 +128,12 @@ export default {
           router: true
         }, 
         {
+          icon: "vertical_split",
+          title: "Backlog",
+          href: "/#/backlog",
+          router: true
+        },
+        {
           icon: "add_comment",
           title: "New Task",
           href: "/#/newTask",

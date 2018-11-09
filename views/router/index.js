@@ -7,6 +7,7 @@ import boardsPage from '../pages/boards.vue'
 import newTaskPage from '../pages/newTask.vue'
 import newProjectPage from '../pages/newProject.vue'
 import existingProjectPage from '../pages/existingProject.vue'
+import backlogPage from '../components/backlog.vue'
 
 Vue.use(Router)
 
@@ -32,6 +33,10 @@ const router = new Router ({
       path: '/boards',
       name: 'boards',
      component: boardsPage
+    },
+    {//this is the backlog for all the tasks.
+      path: '/backlog',
+      component: backlogPage,
     },
     {
       path: '/newTask',
