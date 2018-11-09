@@ -136,6 +136,11 @@ export default {
           title: "New Project",
           href: "/#/newProject",
           router: true
+        }, 
+        {
+          title: "Existing Project",
+          href: "/#/existingProject",
+          router: true
         }
 
       ],
