@@ -69,7 +69,7 @@
       flat
       tile
     >
-      <v-card-title class="blue">
+      <!-- <v-card-title class="blue">
         <strong class="subheading">Get connected with us on social networks!</strong>
 
         <v-spacer></v-spacer>
@@ -83,7 +83,7 @@
         >
           <v-icon size="24px">{{ icon }}</v-icon>
         </v-btn>
-      </v-card-title>
+      </v-card-title> -->
 
       <v-card-actions class="grey darken-3 justify-center">
       </v-card-actions>
