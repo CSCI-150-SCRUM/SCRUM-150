@@ -9,7 +9,7 @@
         <!-- Begin Input Row -->
         <v-form ref="form">
           <v-text-field label="Name" v-model="changedUser.name"> </v-text-field>
-          <v-slider label="Age" v-model="changedUser.age" thumb-label step="1"></v-slider>
+          <v-text-field label="Age" v-model="changedUser.age" thumb-label step="1"></v-text-field>
           <v-text-field label="Email" v-model="changedUser.email" :rules="[rules.email]"> </v-text-field>
         </v-form>
 

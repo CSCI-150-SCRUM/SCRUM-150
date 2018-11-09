@@ -11,7 +11,7 @@
           <!-- Begin Input Row -->
           <v-form ref="form">
           <v-text-field label="Name" v-model="user.name" required> </v-text-field>
-          <v-slider label="Age" v-model="user.age" thumb-label step="1" required></v-slider>
+          <v-text-field label="Age" v-model="user.age" thumb-label step="1" required></v-text-field>
           <v-text-field label="Email" v-model="user.email" :rules="[rules.email]" required> </v-text-field>
           </v-form>
 
