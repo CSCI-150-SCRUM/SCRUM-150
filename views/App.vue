@@ -122,22 +122,26 @@ export default {
           router: true
         }, 
         {
+          icon: "table_chart",
           title: "Boards",
           href: "/#/boards",
           router: true
         }, 
         {
+          icon: "add_comment",
           title: "New Task",
           href: "/#/newTask",
           router: true
         }, 
         {
+          icon: "create_new_folder",
           title: "New Project",
           href: "/#/newProject",
           router: true
         }, 
         {
-          title: "Existing Project",
+          icon: "view_module",
+          title: "Existing Projects",
           href: "/#/existingProject",
           router: true
         }
