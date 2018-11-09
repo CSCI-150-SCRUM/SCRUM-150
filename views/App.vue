@@ -151,7 +151,7 @@ export default {
       alertOpen: false,
       alertString: '',
       alertSuccess: false,
-      isDarkMode: false,
+      isDarkMode: true,
     };
 
     icons: [
