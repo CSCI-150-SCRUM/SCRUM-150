@@ -86,7 +86,6 @@
       </v-card-title>
 
       <v-card-actions class="grey darken-3 justify-center">
-        &copy;2018 — <strong>Vuetify</strong>
       </v-card-actions>
     </v-card>
   </v-footer>
@@ -174,7 +173,7 @@ export default {
         }
       } else { //Dark mode
         this.$vuetify.theme = {
-          primary: '#424242', //Main color
+          primary: '#0D47A1', //Main color
           primaryText: '#FFFFFF', //Color for text on primary
           secondary: '#90CAF9', //Color for active nav
           lightText: '#FFFFFF'
