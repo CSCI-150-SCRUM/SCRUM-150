@@ -1,16 +1,17 @@
 <template>
   <v-card>
     <v-toolbar class="primary primaryText--text">
-      <v-toolbar-title> Edit project: {{editName}} </v-toolbar-title>
+      <v-toolbar-title> Edit task: {{editName}} </v-toolbar-title>
     </v-toolbar>
     <v-container fluid>
       <v-card-text>
 
         <!-- Begin Input Row -->
         <v-form ref="form">
-          <v-text-field label="Name" v-model="changedproject.name"> </v-text-field>
-          <v-text-field label="points" v-model="changedproject.points" thumb-label step="1"></v-text-field>
-          <v-text-field label="topic" v-model="changedproject.topic"> </v-text-field>
+          <v-text-field label="Name" v-model="changedtask.name"> </v-text-field>
+          <v-text-field label="points" v-model="changedtask.points" thumb-label step="1"></v-text-field>
+          <v-text-field label="topic" v-model="changedtask.topic"> </v-text-field>
+          <v-text-field label="project" v-model="changedtask.project"> </v-text-field>
         </v-form>
 
         <v-card-actions>
@@ -28,16 +29,17 @@ import { http } from '../config/http'
 
 export default {
   data: () => ({
-    changedproject: {
+    changedtask: {
       name: '',
       topic: '',
-      points: 0
+      points: 0,
+      project: '', //eventually dropdown
     },
     editDone: true
   }),
 
   props: {
-    project: {
+    task: {
       type: Object
     },
     rules: {
@@ -53,13 +55,13 @@ export default {
     edit() {
       this.editDone = false
       http
-        .put("/projects/" + this.project._id, this.changedproject)
+        .put("/task/" + this.task._id, this.changedtask)
         .then(response => {
-          this.alert(true, 'Edit', 'project')
+          this.alert(true, 'Edit', 'task')
           this.editDone = true
         })
         .catch(e => {
-          this.alert(false, 'Edit', 'project')
+          this.alert(false, 'Edit', 'task')
           this.editDone = true
         });
         
@@ -75,7 +77,7 @@ export default {
     },
 
     checkForm() {
-      if (this.changedproject.points <= 0 || this.changedproject.name == '' || this.changedproject.topic == '') {
+      if (this.changedtask.points <= 0 || this.changedtask.name == '' || this.changedtask.topic == '') {
         return true
       } else {
         return false
@@ -84,7 +86,7 @@ export default {
   },
 
   mounted() {
-    this.changedproject = this.project
+    this.changedtask = this.task
   }
 
 }

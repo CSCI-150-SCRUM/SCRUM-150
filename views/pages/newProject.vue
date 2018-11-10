@@ -19,7 +19,7 @@
                   <!-- Add Dialog -->
                   <projectAddDialog :rules="rules" @closeAdd="addDialog = false" @alert="alert">
                   </projectAddDialog>
-                </v-dialog>
+                </v-dialog> 
               </v-toolbar>
 
               <!-- Begin Edit Form -->
