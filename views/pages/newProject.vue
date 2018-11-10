@@ -7,7 +7,7 @@
             <v-card>              
               <!-- Begin Toolbar -->
               <v-toolbar class="primary primaryText--text">
-                <v-toolbar-title> Users </v-toolbar-title>
+                <v-toolbar-title> New Project </v-toolbar-title>
                 <v-spacer></v-spacer>
 
                   <!-- Add Dialog Button -->
@@ -17,34 +17,16 @@
                   </v-btn>
 
                   <!-- Add Dialog -->
-                  <userAddDialog :rules="rules" @closeAdd="addDialog = false" @alert="alert">
-                  </userAddDialog>
+                  <projectAddDialog :rules="rules" @closeAdd="addDialog = false" @alert="alert">
+                  </projectAddDialog>
                 </v-dialog>
               </v-toolbar>
 
-                <!-- List of Users -->
-              <span  v-if="users.length">
-                <userItem v-for="user in users" :key="user._id"
-                 :user="user" @setUpEdit="setupEdit(user)"
-                 @setUpDelete="setupDelete(user)">
-                 </userItem>
-              </span>
-              <v-card v-else class="headline text-xs-center">No Users to show</v-card>
-
-              <!-- Begin Delete Dialog -->
-              <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
-                <userDeleteDialog :user="userToDelete" @closeDelete="deleteDialog = false"
-                @alert="alert">
-
-                </userDeleteDialog>
-              </v-dialog>
-              <!-- End Delete Dialog -->
-
               <!-- Begin Edit Form -->
               <v-dialog v-model="editDialog" lazy absolute max-width="50%">
-                <userEditDialog :rules="rules" :user="userToEdit" :editName="editName"
-                @closeEdit="editDialog = false; userToEdit = {}" @alert="alert">
-                </userEditDialog>
+                <projectEditDialog :rules="rules" :project="projectToEdit" :editName="editName"
+                @closeEdit="editDialog = false; projectToEdit = {}" @alert="alert">
+                </projectEditDialog>
               </v-dialog>
               <!-- End Edit Form -->
               
@@ -58,20 +40,20 @@
 
 <script>
 import { http } from "../config/http.js"
-import userItem from "../components/user.vue"
-import userAddDialog from "../components/userAddDialog.vue"
-import userEditDialog from "../components/userEditDialog.vue"
-import userDeleteDialog from "../components/userDeleteDialog.vue"
+import projectItem from "../components/project.vue"
+import projectAddDialog from "../components/projectAddDialog.vue"
+import projectEditDialog from "../components/projectEditDialog.vue"
+import projectDeleteDialog from "../components/projectDeleteDialog.vue"
 
 export default {
   //Variables
   data: () => ({
     errors: [],
-    users: [],
-    userToDelete: {},
+    rpojects: [],
+    projectToDelete: {},
     alertSettings: {}, //this is to abstract our our alerts to make them easier and stop repeating code
-    userToEdit: {},
-    newUser: {},
+    projectToEdit: {},
+    newProject: {},
     addDialog: false,
     deleteDialog: false,
     editDialog: false,
@@ -86,20 +68,20 @@ export default {
 
   //Components this page will need
   components: {
-    userItem: userItem,
-    userAddDialog: userAddDialog,
-    userEditDialog: userEditDialog,
-    userDeleteDialog: userDeleteDialog
+    projectItem: projectItem,
+    projectAddDialog: projectAddDialog,
+    projectEditDialog: projectEditDialog,
+    projectDeleteDialog: projectDeleteDialog
   },
 
   //The methods we will need
   methods: {
-    //load all users from DB, we call this often to make sure the data is up to date
+    //load all projects from DB, we call this often to make sure the data is up to date
     load() {
       http
-        .get("users")
+        .get("projects")
         .then(response => {
-          this.users = response.data.users;
+          this.projects = response.data.projects;
         })
         .catch(e => {
           this.errors.push(e);
@@ -107,17 +89,17 @@ export default {
     },
 
     //opens delete dialog
-    setupDelete(user) {
-      this.userToDelete = user;
+    setupDelete(projects) {
+      this.projectsToDelete = project;
       this.deleteDialog = true;
     },
 
     //opens edit dialog
-    setupEdit(user) {
-      Object.keys(user).forEach(key => {
-        this.userToEdit[key] = user[key];
+    setupEdit(projects) {
+      Object.keys(project).forEach(key => {
+        this.projectsToEdit[key] = project[key];
       });
-      this.editName = user.name;
+      this.editName = project.name;
       this.editDialog = true;
     },
 
@@ -131,7 +113,7 @@ export default {
     }
   },
 
-  //get those users
+  //get those projects
   mounted() {
     this.load();
   }
