@@ -35,7 +35,7 @@ export default {
     confirmDelete() {
       this.deleteDone = false
       http
-        .delete("/projects/" + this.project._id)
+        .delete("/project/" + this.project._id)
         .then(response => {
           this.deleteDone = true
           this.alert(true, 'Delete', 'project')

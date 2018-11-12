@@ -10,10 +10,10 @@
 
           <!-- Begin Input Row -->
           <v-form ref="form">
-          <v-text-field label="Name" v-model="task.name" required> </v-text-field>
-          <v-text-field label="Topic" v-model="task.topic" required></v-text-field>
-          <v-text-field label="Points" v-model="task.points" thumb-label step="1" required> </v-text-field>
-          <v-text-field label="Project" v-model="task.project" thumb-label step="1" required> </v-text-field>
+          <v-text-field label="Name" v-model="tasks.task_name" required> </v-text-field>
+          <v-text-field label="Topic" v-model="tasks.details" required></v-text-field>
+          <v-text-field label="Points" v-model="tasks.points" thumb-label step="1" required> </v-text-field>
+          <v-text-field label="Project" v-model="tasks.assigned_to" thumb-label step="1" required> </v-text-field>
           </v-form>
 
           <v-card-actions>

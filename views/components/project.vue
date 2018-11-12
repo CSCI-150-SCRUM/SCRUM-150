@@ -7,9 +7,7 @@
       <v-layout row wrap>
         <v-flex xs-6 class="text-xs-left">
       <v-card class="title">
-          Topic: {{ project.topic }}
-          <br>
-          Points: {{ project.points }}
+          Details: {{ project.details }}
       </v-card>
       </v-flex>
       <v-flex xs-4 class="text-xs-right">

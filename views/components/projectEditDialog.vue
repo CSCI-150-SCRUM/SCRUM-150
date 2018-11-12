@@ -53,7 +53,7 @@ export default {
     edit() {
       this.editDone = false
       http
-        .put("/projects/" + this.project._id, this.changedproject)
+        .put("/project/" + this.project._id, this.changedproject)
         .then(response => {
           this.alert(true, 'Edit', 'project')
           this.editDone = true

@@ -21,6 +21,23 @@
                   </projectAddDialog>
                 </v-dialog> 
               </v-toolbar>
+                <!-- List of project -->
+              <span  v-if="project.length">
+                <projectItem v-for="project in project" :key="project._id"
+                 :project="project" @setUpEdit="setupEdit(project)"
+                 @setUpDelete="setupDelete(project)">
+                 </projectItem>
+              </span>
+              <v-card v-else class="headline text-xs-center">No project to show</v-card>
+
+              <!-- Begin Delete Dialog -->
+              <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
+                <projectDeleteDialog :project="projectToDelete" @closeDelete="deleteDialog = false"
+                @alert="alert">
+
+                </projectDeleteDialog>
+              </v-dialog>
+              <!-- End Delete Dialog -->
 
               <!-- Begin Edit Form -->
               <v-dialog v-model="editDialog" lazy absolute max-width="50%">
@@ -76,12 +93,12 @@ export default {
 
   //The methods we will need
   methods: {
-    //load all projects from DB, we call this often to make sure the data is up to date
+    //load all project from DB, we call this often to make sure the data is up to date
     load() {
       http
-        .get("projects")
+        .get("project")
         .then(response => {
-          this.projects = response.data.projects;
+          this.project = response.data.project;
         })
         .catch(e => {
           this.errors.push(e);
@@ -89,27 +106,27 @@ export default {
     },
 
     //opens delete dialog
-    setupDelete(projects) {
-      this.projectsToDelete = project;
+    setupDelete(project) {
+      this.projectToDelete = project;
       this.deleteDialog = true;
     },
 
     //opens edit dialog
-    setupEdit(projects) {
+    setupEdit(project) {
       Object.keys(project).forEach(key => {
-        this.projectsToEdit[key] = project[key];
+        this.projectToEdit[key] = project[key];
       });
       this.editName = project.name;
       this.editDialog = true;
     },
   
-    //get those users
+    //get those project
     mounted() {
       this.load();
     }
   },
 
-  //get those projects
+  //get those project
   mounted() {
     this.load();
   }
