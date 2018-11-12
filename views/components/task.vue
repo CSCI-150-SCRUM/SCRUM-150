@@ -10,6 +10,7 @@
           Topic: {{ task.topic }}
           <br>
           Points: {{ task.points }}
+          <br>
           Assign to project: {{task.project}}
       </v-card>
       </v-flex>

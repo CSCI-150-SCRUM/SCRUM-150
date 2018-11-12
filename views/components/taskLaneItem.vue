@@ -1,6 +1,6 @@
 <!-- src/components/TaskLaneItem.vue -->
 <template>
-  <div class="card task-lane-item">
+  <div class="card tasklane-item">
     <div class="card-block">
       <h5 class="card-title">
         <span class="text-muted">#{{item.id}}</span>
@@ -18,7 +18,7 @@ export default {
 </script>
 
 <style>
-  .card.task-lane-item {
+  .card.tasklane-item {
     background: #627180;
   }
 </style>
