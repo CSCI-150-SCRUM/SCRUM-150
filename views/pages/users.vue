@@ -57,9 +57,7 @@
 </template>
 
 <script>
-  import {
-    http
-  } from "../config/http.js"
+  import {http} from "../config/http.js"
   import userItem from "../components/user.vue"
   import userAddDialog from "../components/userAddDialog.vue"
   import userEditDialog from "../components/userEditDialog.vue"

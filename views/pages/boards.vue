@@ -19,8 +19,8 @@
                   // Add Dialog
                   <tasksAddDialog :rules="rules" @closeAdd="addDialog = false" @alert="alert">
                   </tasksAddDialog>
-                </v-dialog>
-              </v-toolbar> -->
+                </v-dialog>-->
+              </v-toolbar> 
 
                 <!-- List of tasks -->
               <span  v-if="tasks">
@@ -70,7 +70,7 @@
       <task-lane id="done" title="Done" :items="doneItems"></task-lane>
     </div>
   </div>
-</template>
+</template>-->
 
 <script>
   import {
