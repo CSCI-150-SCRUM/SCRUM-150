@@ -102,14 +102,10 @@ export default {
       this.editName = project.name;
       this.editDialog = true;
     },
-
-    //build the alert info for us
-    //Will emit an alert, followed by a boolean for success, the type of call made, and the name of the 
-    //resource we are working on
-    alert(success, callName, resource) {
-      console.log('Page Alerting')
-      this.$emit('alert', success, callName, resource)
-      this.load()
+  
+    //get those users
+    mounted() {
+      this.load();
     }
   },
 
