@@ -7,7 +7,7 @@
             <v-card>              
               <!-- Begin Toolbar -->
               <v-toolbar class="primary primaryText--text">
-                <v-toolbar-title> New Project </v-toolbar-title>
+                <v-toolbar-title> Project </v-toolbar-title>
                 <v-spacer></v-spacer>
 
                   <!-- Add Dialog Button -->
@@ -66,11 +66,11 @@ export default {
   //Variables
   data: () => ({
     errors: [],
-    rpojects: [],
+    projects: [],
     projectToDelete: {},
     alertSettings: {}, //this is to abstract our our alerts to make them easier and stop repeating code
     projectToEdit: {},
-    newProject: {},
+    Project: {},
     addDialog: false,
     deleteDialog: false,
     editDialog: false,

@@ -93,8 +93,8 @@
           },
           {
             icon: "create_new_folder",
-            title: "New Project",
-            href: "/#/newProject",
+            title: "Project",
+            href: "/#/project",
             router: true
           },
           {
