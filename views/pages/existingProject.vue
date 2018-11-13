@@ -5,14 +5,38 @@
           <v-layout row>
             <v-flex>
               <v-card>
+
                 <v-toolbar class="primary primaryText--text">
-                <v-toolbar-title> Welcome to ScrumBag </v-toolbar-title>
+                <v-toolbar-title> Existing Projects </v-toolbar-title>
                 </v-toolbar>
-                <v-container fluid>
-                  <v-card-text>
-                    This is where we will have our main module.
-                  </v-card-text>
-                </v-container>
+
+                <!-- List of Projects -->
+		          <span v-if="projects">
+                <projectItem v-for="project in projects" :key="project._id"
+                 :project="project" @setUpEdit="setupEdit(project)"
+                 @setUpDelete="setupDelete(project)">
+                 </projectItem>
+              </span>
+              <v-card v-else class="headline text-xs-center">No Projects to show</v-card> 
+
+              <!-- Begin Delete Dialog -->
+              <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
+                <projectDeleteDialog :user="projectToDelete" @closeDelete="deleteDialog = false"
+                @alert="alert">
+
+                </projectDeleteDialog>
+              </v-dialog>
+              <!-- End Delete Dialog -->
+
+              <!-- Begin Edit Form -->
+              <v-dialog v-model="editDialog" lazy absolute max-width="50%">
+                <projectEditDialog :rules="rules" :project="projectToEdit" :editName="editName"
+                @closeEdit="editDialog = false; projectToEdit = {}" @alert="alert">
+                </projectEditDialog>
+              </v-dialog>
+              <!-- End Edit Form -->
+
+                
               </v-card>
             </v-flex>
           </v-layout>
@@ -22,14 +46,81 @@
 </template>
 
 <script>
-  export default {
-    data: () => ({
-      value: "",
-      num1: 0,
-      num2: 0
-    })
+ import { http } from "../config/http.js"
+import projectItem from "../components/project.vue"
+import projectAddDialog from "../components/projectAddDialog.vue"
+import projectEditDialog from "../components/projectEditDialog.vue"
+import projectDeleteDialog from "../components/projectDeleteDialog.vue"
+
+export default {
+  //Variables
+  data: () => ({
+    errors: [],
+    rpojects: [],
+    projectToDelete: {},
+    alertSettings: {}, //this is to abstract our our alerts to make them easier and stop repeating code
+    projectToEdit: {},
+    newProject: {},
+    addDialog: false,
+    deleteDialog: false,
+    editDialog: false,
+    editName: "",
+    rules: {
+      email: value => {
+        const pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return pattern.test(value) || "Invalid e-mail.";
+      }
+    }
+  }),
+
+  //Components this page will need
+  components: {
+    projectItem: projectItem,
+    projectAddDialog: projectAddDialog,
+    projectEditDialog: projectEditDialog,
+    projectDeleteDialog: projectDeleteDialog
+  },
+
+  //The methods we will need
+  methods: {
+    //load all project from DB, we call this often to make sure the data is up to date
+    load() {
+      http
+        .get("project")
+        .then(response => {
+          this.project = response.data.project;
+        })
+        .catch(e => {
+          this.errors.push(e);
+        });
+    },
+
+    //opens delete dialog
+    setupDelete(project) {
+      this.projectToDelete = project;
+      this.deleteDialog = true;
+    },
+
+    //opens edit dialog
+    setupEdit(project) {
+      Object.keys(project).forEach(key => {
+        this.projectToEdit[key] = project[key];
+      });
+      this.editName = project.name;
+      this.editDialog = true;
+    },
   
+    //get those project
+    mounted() {
+      this.load();
+    }
+  },
+
+  //get those project
+  mounted() {
+    this.load();
   }
+}; 
 </script>
 
 <style>
