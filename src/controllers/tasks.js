@@ -1,7 +1,7 @@
 //import the tasks constant explicitly
 const { tasks } = require('../database/models')
 const trunks = require('trunks-log')
-const log = new trunks('tasks')
+const log = new trunks('TASKS')
 
 //show all users
 exports.index = async(req, res) => {

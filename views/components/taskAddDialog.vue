@@ -12,10 +12,15 @@
           <!-- Begin Input Row  -->
           <v-form ref="form">
             <v-text-field label="Name" v-model="tasks.task_name"> </v-text-field>
+            <br>
             <v-text-field label="Points" v-model="tasks.task_points" thumb-label step="1"></v-text-field>
+            <br>
             <v-text-field label="Details" v-model="tasks.details"> </v-text-field>
+            <br>
             <v-text-field label="Assigned to" v-model="tasks.assigned_to"> </v-text-field>
+            <br>
             <v-text-field label="Status" v-model="tasks.status"> </v-text-field>
+            <br>
             <v-text-field label="Date Created" v-model="tasks.date_created"> </v-text-field>
           </v-form> 
 
@@ -59,20 +64,20 @@ export default {
     submit() {
       this.submitDone = false
       http
-        .post("/newtask", this.task)
+        .post("/tasks", this.tasks)
         .then(response => {
           this.submit = true
-          this.alert(true, 'Create', 'task')
+          this.alert(true, 'Create', 'tasks')
           this.close()
         })
         .catch(e => {
           this.submit = true
-          this.alert(false, 'Create', 'task')
+          this.alert(false, 'Create', 'tasks')
         });
     },
 
     load() {
-      this.task = {
+      this.tasks = {
         points: 0,
         task_name: '',
         date_created: '',

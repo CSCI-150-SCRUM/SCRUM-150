@@ -24,9 +24,7 @@
 </template>
 
 <script>
-  import {
-    http
-  } from '../config/http'
+  import {http} from '../config/http'
   
   export default {
     data: () => ({
