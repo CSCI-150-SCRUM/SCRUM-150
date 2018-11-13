@@ -1,5 +1,5 @@
 //import the Tasks constant explicitly
-const { tasks } = require('../database/models')
+const { Tasks } = require('../database/models')
 const trunks = require('trunks-log')
 const log = new trunks('TASKS')
 
@@ -7,7 +7,7 @@ const log = new trunks('TASKS')
 exports.index = async(req, res) => {
 
     //query the DB of all users
-    await tasks.find().exec()
+    await Tasks.find().exec()
         .then(tasks => {
             log.success('Retrieved all {} tasks', tasks.length)
             res.json({ tasks: tasks })
@@ -56,7 +56,7 @@ exports.show = async(req, res) => {
 exports.delete = async(req, res) => {
 
     //find the sneaky boye and make him go away
-    await tasks.findByIdAndRemove(req.params.id).exec()
+    await Tasks.findByIdAndRemove(req.params.id).exec()
         .then(() => {
             log.success('Deleted tasks: {}', req.params.id)
                 //let em know there aint no content no mo

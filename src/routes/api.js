@@ -11,8 +11,9 @@ const tasksRoutes = require('./tasks') //use the tasks route
 
 const router = express.Router() //make a new router
 
-router.use('/users', userRoutes) //tell it to use the userRoutes
+router.use('/users/', userRoutes) //tell it to use the userRoutes
 
-router.use('./tasks', tasksRoutes) //tell it to use the tasksRouter
+router.use('/tasks/', tasksRoutes) //tell it to use the tasksRouter
 
 module.exports = router
+
