@@ -9,18 +9,18 @@ const { catchErrors } = require('../middleware/error-handler')
 const router = express.Router()
 
 //get all users
-router.get('/', catchErrors(usersController.index))
+router.get('/users', catchErrors(usersController.index))
 
 //make a new boy
-router.post('/', catchErrors(usersController.store))
+router.post('/users', catchErrors(usersController.store))
 
 //see one boy
-router.get('/:id', catchErrors(usersController.show))
+router.get('/users:id', catchErrors(usersController.show))
 
 //get rid of a boy
-router.delete('/:id', catchErrors(usersController.delete))
+router.delete('/users:id', catchErrors(usersController.delete))
 
 //update a boy
-router.put('/:id', catchErrors(usersController.update))
+router.put('/users:id', catchErrors(usersController.update))
 
 module.exports = router
