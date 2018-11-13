@@ -117,7 +117,7 @@ export default {
       Object.keys(task).forEach(key => {
         this.taskToEdit[key] = task[key];
       });
-      this.editName = task.name;
+      this.editName = tasks.task_name;
       this.editDialog = true;
     },
 

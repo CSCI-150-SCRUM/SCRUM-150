@@ -22,6 +22,10 @@ const definition = {
     assigned_to: {
         type: String,
         required: true
+    },
+    task_points: {
+        type: Number,
+        required: true
     }
 }
 

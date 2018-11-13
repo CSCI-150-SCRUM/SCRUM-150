@@ -9,9 +9,14 @@
       <v-card class="title">
           Details: {{ tasks.details }}
           <br>
-          Points: {{ tasks.points }}
+          Points: {{ tasks.task_points }}
           <br>
-          Assign to project: {{tasks.assigned_to}}
+          Assign to project: {{ tasks.assigned_to }}
+          <br>
+          Date: {{ tasks.date_created }}
+          <br>
+          Status: {{ tasks.status }}
+          
       </v-card>
       </v-flex>
       <v-flex xs-4 class="text-xs-right">
