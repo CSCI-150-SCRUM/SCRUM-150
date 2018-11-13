@@ -24,4 +24,4 @@ const options = {
 const projectSchema = new mongoose.Schema(definition, options)
 
 //export that boye
-module.exports = mongoose.model('project', projectSchema)
+module.exports = mongoose.model('Project', projectSchema)

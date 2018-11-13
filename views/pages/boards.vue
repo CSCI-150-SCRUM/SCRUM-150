@@ -1,9 +1,19 @@
 <template>
   <v-container fluid grid-list-xl>
-            <v-card >              
+
+
+    <v-layout row justify-space-between>
+      <v-flex xs2>
+        <v-card dark color="primary">
+          <v-card-text>Novel/Story</v-card-text>
+        </v-card>
+      </v-flex>
+      <v-flex xs2>
+        <v-card dark color="secondary">
+                                  
               <!-- Begin Toolbar -->
-              <v-toolbar class="primary primaryText--text">
-                <v-toolbar-title> Tasks </v-toolbar-title>
+              <v-toolbar class="secondary primaryText--text">
+                <v-card-text> Tasks </v-card-text>
                 <v-spacer></v-spacer>
 
                  <!-- Add Dialog Button -->
@@ -25,7 +35,7 @@
                  @setUpDelete="setupDelete(tasks)">
                  </taskItem>
               </span>
-              <v-card v-else class="headline text-xs-center">No tasks to show</v-card>
+              <v-card-text v-else class="dark grey">No Tasks</v-card-text>
 
               <!-- Begin Delete Dialog -->
               <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
@@ -44,18 +54,12 @@
               </v-dialog>
               <!-- End Edit Form -->
               
-            </v-card>
+          
 
 
-    <v-layout row justify-space-between>
-      <v-flex xs2>
-        <v-card dark color="primary">
-          <v-card-text>Novel/Story</v-card-text>
-        </v-card>
-      </v-flex>
-      <v-flex xs2>
-        <v-card dark color="secondary">
-          <v-card-text>Back-Log</v-card-text>
+
+
+
         </v-card>
       </v-flex>
       <v-flex xs2>
@@ -81,7 +85,6 @@
 
 <script>
   import {mapState} from 'vuex';
-  //import taskLane from '../components/taskLane';
   import {http} from "../config/http.js"
   import taskItem from "../components/task.vue"
   import taskAddDialog from "../components/taskAddDialog.vue"
@@ -104,17 +107,11 @@
     }),
 
     components: {
-      //'task-lane': taskLane,
       taskItem: taskItem,
       taskAddDialog: taskAddDialog,
       taskEditDialog: taskEditDialog,
       taskDeleteDialog: taskDeleteDialog
     },
-   // computed: mapState({
-   //    todoItems: s => s.items.todo,
-   //   inProgressItems: s => s.items.inProgress,
-   //   doneItems: s => s.items.done,
-   // }),
    
       //The methods we will need
     methods: {

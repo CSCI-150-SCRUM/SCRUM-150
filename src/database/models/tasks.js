@@ -22,6 +22,10 @@ const definition = {
     assigned_to: {
         type: String,
         required: true
+    },
+    task_points: {
+        type: Number,
+        required: true
     }
 }
 
@@ -31,7 +35,7 @@ const options = {
 }
 
 //make the schema as a new instance of a mongoose schema, using our definition and options
-const userSchema = new mongoose.Schema(definition, options)
+const tasksSchema = new mongoose.Schema(definition, options)
 
 //export that boye
-module.exports = mongoose.model('tasks', userSchema)
+module.exports = mongoose.model('tasks', tasksSchema)

@@ -39,7 +39,7 @@ mongoose.connect(process.env.MONGO_URI, { useMongoClient: true })
 //mongoose.connect('mongodb://localhost:27017/mydb', { useMongoClient: true });
 
 // Fail on connection error.
-//mongoose.connection.on('error', error => { throw error })
+mongoose.connection.on('error', error => { throw error })
 
 
 // uncomment after placing your favicon in /public

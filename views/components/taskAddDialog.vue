@@ -6,15 +6,22 @@
         <v-toolbar-title > Add A task </v-toolbar-title>
       </v-toolbar>
 
-     <!-- <v-container fluid>
+     <v-container fluid>
         <v-card-text>
 
-          <!-- Begin Input Row  
+          <!-- Begin Input Row  -->
           <v-form ref="form">
-          <v-text-field label="Name" v-model="tasks.task_name" required> </v-text-field>
-          <v-text-field label="Topic" v-model="tasks.details" required></v-text-field>
-          <v-text-field label="Points" v-model="tasks.points" thumb-label step="1" required> </v-text-field>
-          <v-text-field label="Project" v-model="tasks.assigned_to" thumb-label step="1" required> </v-text-field>
+            <v-text-field label="Name" v-model="tasks.task_name"> </v-text-field>
+            <br>
+            <v-text-field label="Points" v-model="tasks.task_points" thumb-label step="1"></v-text-field>
+            <br>
+            <v-text-field label="Details" v-model="tasks.details"> </v-text-field>
+            <br>
+            <v-text-field label="Assigned to" v-model="tasks.assigned_to"> </v-text-field>
+            <br>
+            <v-text-field label="Status" v-model="tasks.status"> </v-text-field>
+            <br>
+            <v-text-field label="Date Created" v-model="tasks.date_created"> </v-text-field>
           </v-form> 
 
           <v-card-actions>
@@ -31,16 +38,18 @@
 </template> 
 
 
-<!-- <script>
+<script>
 import { http } from '../config/http'
 
 export default {
   data: () => ({
-    task: {
-      points: 0,
-      name: '',
-      topic: '',
-      project: '', //eventually a drop down
+    tasks: {
+      task_points: 0,
+      task_name: '',
+      date_created: '',
+      details: '',
+      assigned_to: '', //eventually a drop down
+      status: ''
     },
     submitDone: true,
   }),
@@ -55,24 +64,26 @@ export default {
     submit() {
       this.submitDone = false
       http
-        .post("/newtask", this.task)
+        .post("/tasks", this.tasks)
         .then(response => {
           this.submit = true
-          this.alert(true, 'Create', 'task')
+          this.alert(true, 'Create', 'tasks')
           this.close()
         })
         .catch(e => {
           this.submit = true
-          this.alert(false, 'Create', 'task')
+          this.alert(false, 'Create', 'tasks')
         });
     },
 
     load() {
-      this.task = {
+      this.tasks = {
         points: 0,
-        topic: '',
-        name: '', 
-        project: '', //eventually dropdown
+        task_name: '',
+        date_created: '',
+        details: '',
+        assigned_to: '', //eventually a drop down
+        status: ''
       }
       this.submitDone = true
     },
@@ -83,7 +94,7 @@ export default {
     },
 
     checkForm() {
-      if (this.task.points <= 0 || this.task.name == '' || this.task.email == '') {
+      if (this.tasks.task_points <= 0 || this.tasks.task_name == '' || this.tasks.details == '') {
         return true
       } else {
         return false
@@ -96,4 +107,4 @@ export default {
     }
   }
 }
-</script> -->
+</script>

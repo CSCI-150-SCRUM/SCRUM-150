@@ -1,5 +1,5 @@
-//import the Tasks constant explicitly
-const { Tasks } = require('../database/models')
+//import the tasks constant explicitly
+const { tasks } = require('../database/models')
 const trunks = require('trunks-log')
 const log = new trunks('TASKS')
 
@@ -7,7 +7,7 @@ const log = new trunks('TASKS')
 exports.index = async(req, res) => {
 
     //query the DB of all users
-    await Tasks.find().exec()
+    await tasks.find().exec()
         .then(tasks => {
             log.success('Retrieved all {} tasks', tasks.length)
             res.json({ tasks: tasks })
@@ -21,7 +21,7 @@ exports.index = async(req, res) => {
 //Store a new tasks
 exports.store = async(req, res) => {
 
-    let tasks = new Tasks(req.body)
+    let tasks = new tasks(req.body)
 
     //save it in the DB
     await tasks.save()
@@ -41,9 +41,9 @@ exports.store = async(req, res) => {
 exports.show = async(req, res) => {
 
     //find this sneaky boye
-    await Tasks.findById(req.params.id).exec()
+    await tasks.findById(req.params.id).exec()
         .then(tasks => {
-            log.success('Found Tasks: {}', user.name)
+            log.success('Found tasks: {}', tasks.name)
             res.json({ tasks: tasks })
         })
         .catch(err => {
@@ -56,7 +56,7 @@ exports.show = async(req, res) => {
 exports.delete = async(req, res) => {
 
     //find the sneaky boye and make him go away
-    await Tasks.findByIdAndRemove(req.params.id).exec()
+    await tasks.findByIdAndRemove(req.params.id).exec()
         .then(() => {
             log.success('Deleted tasks: {}', req.params.id)
                 //let em know there aint no content no mo
@@ -71,7 +71,7 @@ exports.delete = async(req, res) => {
 
 //edit a user based on ID
 exports.update = async(req, res) => {
-    await Tasks
+    await tasks
         .findByIdAndUpdate(req.params.id, req.body, { new: true })
         .exec()
         .then(tasks => {

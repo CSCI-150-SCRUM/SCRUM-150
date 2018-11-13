@@ -8,10 +8,12 @@
 
         <!-- Begin Input Row -->
         <v-form ref="form">
-          <v-text-field label="Name" v-model="changedtask.name"> </v-text-field>
-          <v-text-field label="points" v-model="changedtask.points" thumb-label step="1"></v-text-field>
-          <v-text-field label="topic" v-model="changedtask.topic"> </v-text-field>
-          <v-text-field label="project" v-model="changedtask.project"> </v-text-field>
+          <v-text-field label="Name" v-model="changedtask.task_name"> </v-text-field>
+          <v-text-field label="points" v-model="changedtask.task_points" thumb-label step="1"></v-text-field>
+          <v-text-field label="topic" v-model="changedtask.details"> </v-text-field>
+          <v-text-field label="project" v-model="changedtask.assigned_to"> </v-text-field>
+          <v-text-field label="project" v-model="changedtask.status"> </v-text-field>
+          <v-text-field label="project" v-model="changedtask.date_created"> </v-text-field>
         </v-form>
 
         <v-card-actions>
@@ -30,10 +32,12 @@ import { http } from '../config/http'
 export default {
   data: () => ({
     changedtask: {
-      name: '',
-      topic: '',
-      points: 0,
-      project: '', //eventually dropdown
+      task_points: 0,
+      task_name: '',
+      date_created: '',
+      details: '',
+      assigned_to: '', //eventually a drop down
+      status: ''
     },
     editDone: true
   }),
@@ -77,7 +81,7 @@ export default {
     },
 
     checkForm() {
-      if (this.changedtask.points <= 0 || this.changedtask.name == '' || this.changedtask.topic == '') {
+      if (this.changedtask.task_points <= 0 || this.changedtask.task_name == '' || this.changedtask.details == '') {
         return true
       } else {
         return false
