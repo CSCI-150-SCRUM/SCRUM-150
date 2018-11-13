@@ -54,7 +54,10 @@
   </v-app>
 </template>
 
+
+
 <script>
+
   export default {
     data: () => {
       return {
@@ -71,6 +74,12 @@
             icon: "account_circle",
             title: "Users",
             href: "/#/users",
+            router: true
+          },
+          {
+            icon: "account_circle",
+            title: "Login",
+            href: "/#/login",
             router: true
           },
           {
@@ -135,8 +144,10 @@
             lightText: '#FFFFFF'
           }
         }
-      }
+      },
+
     },
+
   
     methods: {
       alert(success, callName, resource) {
@@ -158,7 +169,9 @@
         } else {
           return 'primary primaryText--text'
         }
-      }
+      },
+
+
     }
   
   

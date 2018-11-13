@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-toolbar class="primary primaryText--text">
-      <v-toolbar-title> Add A User </v-toolbar-title>
+      <v-toolbar-title> Register </v-toolbar-title>
     </v-toolbar>
     <v-container fluid>
       <v-card-text>
@@ -9,6 +9,8 @@
         <!-- Begin Input Row -->
         <v-form ref="form">
           <v-text-field label="Name" v-model="user.name" required> </v-text-field>
+          <v-text-field label="User Name" v-model="user.username" required> </v-text-field>
+          <v-text-field label="Password" :type="'password'" v-model="user.password" required> </v-text-field>
           <v-text-field label="Age" v-model="user.age" thumb-label step="1" required></v-text-field>
           <v-text-field label="Email" v-model="user.email" :rules="[rules.email]" required> </v-text-field>
         </v-form>
@@ -32,6 +34,8 @@
     data: () => ({
       user: {
         age: 0,
+        username: '',
+        password: '',
         name: '',
         email: ''
       },
@@ -64,7 +68,9 @@
         this.user = {
           age: 0,
           email: '',
-          name: ''
+          name: '',
+          username: '',
+          password: ''
         }
         this.submitDone = true
       },
@@ -75,7 +81,7 @@
       },
   
       checkForm() {
-        if (this.user.age <= 0 || this.user.name == '' || this.user.email == '') {
+        if (this.user.age <= 0 || this.user.name == '' || this.user.username == '' || this.user.password == ''|| this.user.email == '') {
           return true
         } else {
           return false

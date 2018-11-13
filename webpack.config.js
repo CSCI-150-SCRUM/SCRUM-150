@@ -41,7 +41,15 @@ module.exports = {
       {
         test: /\.styl$/,
         loader: ['style-loader', 'css-loader', 'stylus-loader']
+      },
+      {
+        test: /\.css$/,
+        loader: [
+          'style-loader',
+          'css-loader'
+        ]
       }
+
     ]
   },
   devServer: {
@@ -51,7 +59,8 @@ module.exports = {
   performance: {
     hints: false
   },
-  devtool: '#eval-source-map'
+  devtool: '#eval-source-map',
+  mode: 'none'
 }
 
 if (process.env.NODE_ENV === 'production') {

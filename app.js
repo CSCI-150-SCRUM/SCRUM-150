@@ -7,6 +7,13 @@ const mongoose = require('mongoose');
 const cors = require('cors')
 const trunks = require('trunks-log')
 
+
+
+var logger = require('morgan');
+//var book = require('./routes/book');
+var auth = require('./src/routes/auth');
+
+
 const app = express();
 
 app.use(cors())
@@ -17,10 +24,17 @@ const { apiRoutes } = require('./src/routes/index')
 const { webRoutes } = require('./src/routes/index')
 
 // Use native ES6 Promises since mongoose's are deprecated.
+
+
 mongoose.Promise = global.Promise
+//mongoose.Promise = require('bluebird')
 
 // Connect to the database
 mongoose.connect(process.env.MONGO_URI, { useMongoClient: true })
+
+//mongoose.connect(process.env.MONGO_URI, { useMongoClient: true }, { promiseLibrary: require('bluebird') })
+//  .then(() =>  console.log('connection succesful'))
+// .catch((err) => console.error(err));
 
 //mongoose.connect('mongodb://localhost:27017/mydb', { useMongoClient: true });
 
@@ -30,6 +44,13 @@ mongoose.connect(process.env.MONGO_URI, { useMongoClient: true })
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+
+//user auth
+app.use(logger('dev'));
+//app.use('/books', express.static(path.join(__dirname, 'dist')));
+//app.use('/book', book);
+app.use('/api/auth', auth);
+//
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());

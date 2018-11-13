@@ -1,8 +1,16 @@
 import Vue from 'vue'
+import BootstrapVue from 'bootstrap-vue'
 import App from './App.vue'
 import Vuetify from 'vuetify'
 import router from './router'
 import './stylus/main.styl'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+
+
+Vue.use(BootstrapVue)
+
 
 Vue.use(Vuetify, {
   theme: {
@@ -12,6 +20,8 @@ Vue.use(Vuetify, {
     lightText: '#000000' //Dark Text for light Backgrounds
   }
 })
+
+
 
 //Create the App with the router
 new Vue({

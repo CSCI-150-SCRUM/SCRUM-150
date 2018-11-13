@@ -7,6 +7,7 @@ import boardsPage from '../pages/boards.vue'
 import newTaskPage from '../pages/newTask.vue'
 import newProjectPage from '../pages/project.vue'
 import existingProjectPage from '../pages/existingProject.vue'
+import loginPage from '../pages/login.vue'
 
 Vue.use(Router)
 
@@ -18,6 +19,11 @@ const router = new Router ({
       path: '/users',
       name: 'users',
       component: usersPage
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: loginPage
     },
     {
       path: '/home',
@@ -36,17 +42,17 @@ const router = new Router ({
     {
       path: '/newTask',
       name: 'newTask',
-     component: newTaskPage
+      component: newTaskPage
     },
     {
       path: '/project',
       name: 'project',
-     component: newProjectPage
+      component: newProjectPage
     },
     {
       path: '/existingProject',
       name: 'existingProject',
-     component: existingProjectPage
+      component: existingProjectPage
     }
   ]
 })

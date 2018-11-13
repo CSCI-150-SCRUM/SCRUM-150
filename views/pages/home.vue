@@ -16,7 +16,7 @@
               </v-card>
             </v-flex>
           </v-layout>
-</template>
+      </template>
     </v-container>
   </v-container>
 </template>
