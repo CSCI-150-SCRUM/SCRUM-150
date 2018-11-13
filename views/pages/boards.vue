@@ -1,39 +1,61 @@
 <template>
-  <v-container grid-list-md text-xs-center>
-    <v-layout row wrap>
-      <v-flex xs12>
-        <v-card dark color="primary">
-          <v-card-text class="px-0">12</v-card-text>
-        </v-card>
-      </v-flex>
-      <v-flex v-for="i in 2" :key="`6${i}`" xs6>
-        <v-card dark color="secondary">
-          <v-card-text class="px-0">6</v-card-text>
-        </v-card>
-      </v-flex>
-      <v-flex v-for="i in 3" :key="`4${i}`" xs4>
-        <v-card dark color="primary">
-          <v-card-text class="px-0">4</v-card-text>
-        </v-card>
-      </v-flex>
-      <v-flex v-for="i in 4" :key="`3${i}`" xs3>
-        <v-card dark color="secondary">
-          <v-card-text class="px-0">3</v-card-text>
-        </v-card>
-      </v-flex>
-      <v-flex v-for="i in 6" :key="`2${i}`" xs2>
-        <v-card dark color="primary">
-          <v-card-text class="px-0">2</v-card-text>
-        </v-card>
-      </v-flex>
-      <v-flex v-for="i in 12" :key="`1${i}`" xs1>
-        <v-card dark color="secondary">
-          <v-card-text class="px-0">1</v-card-text>
-        </v-card>
-      </v-flex>
-    </v-layout>
+  <v-container >
+    <v-container >
+      <template>
+        <v-layout column=”sm-4” >
+          <v-flex >
+            <v-card >              
+              <!-- Begin Toolbar -->
+              <v-toolbar class="primary primaryText--text">
+                <v-toolbar-title> Tasks </v-toolbar-title>
+                <v-spacer></v-spacer>
+
+                 <!-- Add Dialog Button -->
+                <v-dialog v-model="addDialog" lazy absolute max-width="50%">
+                  <v-btn class="primaryText--text" icon slot="activator">
+                    <v-icon> control_point </v-icon>
+                  </v-btn>
+
+                  <!-- Add Dialog -->
+                  <tasksAddDialog :rules="rules" @closeAdd="addDialog = false" @alert="alert">
+                  </tasksAddDialog>
+                </v-dialog>
+              </v-toolbar> 
+
+                <!-- List of tasks -->
+              <span  v-if="tasks.length">
+                <taskItem v-for="tasks in tasks" :key="tasks._id"
+                 :tasks="tasks" @setUpEdit="setupEdit(tasks)"
+                 @setUpDelete="setupDelete(tasks)">
+                 </taskItem>
+              </span>
+              <v-card v-else class="headline text-xs-center">No tasks to show</v-card>
+
+              <!-- Begin Delete Dialog -->
+              <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
+                <tasksDeleteDialog :tasks="tasksToDelete" @closeDelete="deleteDialog = false"
+                @alert="alert">
+
+                </tasksDeleteDialog>
+              </v-dialog>
+              <!-- End Delete Dialog -->
+
+              <!-- Begin Edit Form -->
+              <v-dialog v-model="editDialog" lazy absolute max-width="50%">
+                <tasksEditDialog :rules="rules" :tasks="tasksToEdit" :editName="editName"
+                @closeEdit="editDialog = false; tasksToEdit = {}" @alert="alert">
+                </tasksEditDialog>
+              </v-dialog>
+              <!-- End Edit Form -->
+              
+            </v-card>
+          </v-flex>
+        </v-layout>
+      </template>
+    </v-container>
   </v-container>
 </template>
+
 <script>
   import {mapState} from 'vuex';
   //import taskLane from '../components/taskLane';
