@@ -11,7 +11,7 @@
                 </v-toolbar>
 
                 <!-- List of Projects -->
-		          <span v-if="projects">
+		          <span v-if="project">
                 <projectItem v-for="project in projects" :key="project._id"
                  :project="project" @setUpEdit="setupEdit(project)"
                  @setUpDelete="setupDelete(project)">
