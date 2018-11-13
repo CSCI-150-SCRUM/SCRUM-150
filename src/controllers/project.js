@@ -1,7 +1,7 @@
 //import the project constant explicitly
 const { project } = require('../database/models')
 const trunks = require('trunks-log')
-const log = new trunks('project')
+const log = new trunks('PROJECT')
 
 //show all project
 exports.index = async(req, res) => {
