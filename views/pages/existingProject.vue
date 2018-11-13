@@ -12,7 +12,7 @@
 
                 <!-- List of Projects -->
 		          <span v-if="project">
-                <projectItem v-for="project in projects" :key="project._id"
+                <projectItem v-for="project in project" :key="project._id"
                  :project="project" @setUpEdit="setupEdit(project)"
                  @setUpDelete="setupDelete(project)">
                  </projectItem>
@@ -56,7 +56,7 @@ export default {
   //Variables
   data: () => ({
     errors: [],
-    rpojects: [],
+    pojects: [],
     projectToDelete: {},
     alertSettings: {}, //this is to abstract our our alerts to make them easier and stop repeating code
     projectToEdit: {},
