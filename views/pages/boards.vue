@@ -85,7 +85,6 @@
 
 <script>
   import {mapState} from 'vuex';
-  //import taskLane from '../components/taskLane';
   import {http} from "../config/http.js"
   import taskItem from "../components/task.vue"
   import taskAddDialog from "../components/taskAddDialog.vue"
@@ -108,17 +107,11 @@
     }),
 
     components: {
-      //'task-lane': taskLane,
       taskItem: taskItem,
       taskAddDialog: taskAddDialog,
       taskEditDialog: taskEditDialog,
       taskDeleteDialog: taskDeleteDialog
     },
-   // computed: mapState({
-   //    todoItems: s => s.items.todo,
-   //   inProgressItems: s => s.items.inProgress,
-   //   doneItems: s => s.items.done,
-   // }),
    
       //The methods we will need
     methods: {
