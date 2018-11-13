@@ -11,12 +11,11 @@
           <br>
           Points: {{ tasks.task_points }}
           <br>
-          Assign to project: {{ tasks.assigned_to }}
+          Assign To: {{ tasks.assigned_to }}
           <br>
           Date: {{ tasks.date_created }}
           <br>
-          Status: {{ tasks.status }}
-          
+          Status: {{tasks.status}}
       </v-card>
       </v-flex>
       <v-flex xs-4 class="text-xs-right">
@@ -44,7 +43,7 @@
 export default {
 
   props: {
-    task: {
+    tasks: {
       type: Object
     }
   }

@@ -38,4 +38,4 @@ const options = {
 const userSchema = new mongoose.Schema(definition, options)
 
 //export that boye
-module.exports = mongoose.model('tasks', userSchema)
+module.exports = mongoose.model('Tasks', userSchema)
