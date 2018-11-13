@@ -17,7 +17,7 @@ router.use('/users/', userRoutes) //tell it to use the userRoutes
 
 router.use('/tasks/', tasksRoutes) //tell it to use the tasksRouter
 
-router.use('/project/', projectRoutes) //tell it to use the projectRouter
+router.use('/project/', projectRoutes) //tell it to use the tasksRouter
 
 module.exports = router
 

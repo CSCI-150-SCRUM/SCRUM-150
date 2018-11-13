@@ -60,7 +60,7 @@ export default {
     projectToDelete: {},
     alertSettings: {}, //this is to abstract our our alerts to make them easier and stop repeating code
     projectToEdit: {},
-    newProject: {},
+    Project: {},
     addDialog: false,
     deleteDialog: false,
     editDialog: false,

@@ -5,7 +5,7 @@ import usersPage from '../pages/users.vue'
 import homePage from '../pages/home.vue'
 import boardsPage from '../pages/boards.vue'
 import newTaskPage from '../pages/newTask.vue'
-import newProjectPage from '../pages/newProject.vue'
+import newProjectPage from '../pages/project.vue'
 import existingProjectPage from '../pages/existingProject.vue'
 import backlogPage from '../components/backlog.vue'
 
@@ -44,8 +44,8 @@ const router = new Router ({
      component: newTaskPage
     },
     {
-      path: '/newProject',
-      name: 'newProject',
+      path: '/project',
+      name: 'project',
      component: newProjectPage
     },
     {
