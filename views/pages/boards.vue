@@ -1,9 +1,5 @@
 <template>
-  <v-container >
-    <v-container >
-      <template>
-        <v-layout column=”sm-4” >
-          <v-flex >
+  <v-container fluid grid-list-xl>
             <v-card >              
               <!-- Begin Toolbar -->
               <v-toolbar class="primary primaryText--text">
@@ -17,10 +13,10 @@
                   </v-btn>
 
                   <!-- Add Dialog -->
-                  <tasksAddDialog :rules="rules" @closeAdd="addDialog = false" @alert="alert">
-                  </tasksAddDialog>
-                </v-dialog>
-              </v-toolbar> 
+                    <taskAddDialog :rules="rules" @closeAdd="addDialog = false" @alert="alert">
+                    </taskAddDialog>
+                  </v-dialog>
+                </v-toolbar>
 
                 <!-- List of tasks -->
               <span  v-if="tasks.length">
@@ -49,12 +45,39 @@
               <!-- End Edit Form -->
               
             </v-card>
-          </v-flex>
-        </v-layout>
-      </template>
-    </v-container>
+
+
+    <v-layout row justify-space-between>
+      <v-flex xs2>
+        <v-card dark color="primary">
+          <v-card-text>Novel/Story</v-card-text>
+        </v-card>
+      </v-flex>
+      <v-flex xs2>
+        <v-card dark color="secondary">
+          <v-card-text>Back-Log</v-card-text>
+        </v-card>
+      </v-flex>
+      <v-flex xs2>
+        <v-card dark color="accent">
+          <v-card-text>To-Do</v-card-text>
+        </v-card>
+      </v-flex>
+      <v-flex xs2>
+        <v-card dark color="primary">
+          <v-card-text>Doing</v-card-text>
+        </v-card>
+      </v-flex>
+      <v-flex xs2>
+        <v-card dark color="secondary">
+          <v-card-text>Done</v-card-text>
+        </v-card>
+      </v-flex>
+    </v-layout>
   </v-container>
 </template>
+
+
 
 <script>
   import {mapState} from 'vuex';

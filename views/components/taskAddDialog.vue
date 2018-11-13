@@ -1,33 +1,37 @@
 <template>
 
-
     <v-card>
+
       <v-toolbar class="primary primaryText--text">
         <v-toolbar-title > Add A task </v-toolbar-title>
       </v-toolbar>
-      <v-container fluid>
+
+     <!-- <v-container fluid>
         <v-card-text>
 
-          <!-- Begin Input Row -->
+          <!-- Begin Input Row  
           <v-form ref="form">
           <v-text-field label="Name" v-model="tasks.task_name" required> </v-text-field>
           <v-text-field label="Topic" v-model="tasks.details" required></v-text-field>
           <v-text-field label="Points" v-model="tasks.points" thumb-label step="1" required> </v-text-field>
           <v-text-field label="Project" v-model="tasks.assigned_to" thumb-label step="1" required> </v-text-field>
-          </v-form>
+          </v-form> 
 
           <v-card-actions>
             <v-btn @click="submit()" class="green lighten-1 white--text" :disabled="checkForm()" :loading="!submitDone">Submit</v-btn>
             <v-spacer></v-spacer>
             <v-btn @click="close()" class="red white--text">Close</v-btn>
-          </v-card-actions>
+          </v-card-actions> 
+
         </v-card-text>
-      </v-container>
-    </v-card>
+      </v-container> -->
 
-</template>
+    </v-card> 
 
-<script>
+</template> 
+
+
+<!-- <script>
 import { http } from '../config/http'
 
 export default {
@@ -92,4 +96,4 @@ export default {
     }
   }
 }
-</script>
+</script> -->
