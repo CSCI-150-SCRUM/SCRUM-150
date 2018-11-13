@@ -22,6 +22,24 @@
                 </v-dialog> 
               </v-toolbar>
 
+               <!-- List of task -->
+              <span  v-if="task">
+                <taskItem v-for="task in task" :key="task._id"
+                 :task="task" @setUpEdit="setupEdit(task)"
+                 @setUpDelete="setupDelete(task)">
+                 </taskItem>
+              </span>
+              <v-card v-else class="headline text-xs-center">No tasks to show</v-card>
+
+              <!-- Begin Delete Dialog -->
+              <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
+                <taskDeleteDialog :task="taskToDelete" @closeDelete="deleteDialog = false"
+                @alert="alert">
+
+                </taskDeleteDialog>
+              </v-dialog>
+              <!-- End Delete Dialog -->
+
               <!-- Begin Edit Form -->
               <v-dialog v-model="editDialog" lazy absolute max-width="50%">
                 <taskEditDialog :rules="rules" :task="taskToEdit" :editName="editName"
@@ -29,7 +47,7 @@
                 </taskEditDialog>
               </v-dialog>
               <!-- End Edit Form -->
-              
+               
             </v-card>
           </v-flex>
         </v-layout>

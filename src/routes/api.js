@@ -9,6 +9,8 @@ const userRoutes = require('./users') //use the user route shit
 
 const tasksRoutes = require('./tasks') //use the tasks route 
 
+const projectRoutes = require('./project') //use the project route 
+
 const router = express.Router() //make a new router
 
 router.use('/users/', userRoutes) //tell it to use the userRoutes
