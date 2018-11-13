@@ -1,11 +1,11 @@
 <template>
   <v-card>
      <v-toolbar class="primary primaryText--text" >
-      <v-toolbar-title> Delete project Record {{project.name}} </v-toolbar-title>
+      <v-toolbar-title> Delete project Record {{project.project_name}} </v-toolbar-title>
     </v-toolbar>
 
     <v-card-text>
-      <p>This action will remove {{project.name}} from the application. This is
+      <p>This action will remove {{project.project_name}} from the application. This is
       <strong>irreversible.</strong>
       </p>
     </v-card-text>

@@ -10,9 +10,9 @@
 
           <!-- Begin Input Row -->
           <v-form ref="form">
-          <v-text-field label="Name" v-model="project.name" required> </v-text-field>
-          <v-text-field label="Topic" v-model="project.topic" required></v-text-field>
-          <v-text-field label="Points" v-model="project.points" thumb-label step="1" required> </v-text-field>
+          <v-text-field label="Name" v-model="project.project_name" required> </v-text-field>
+          <v-text-field label="Topic" v-model="project.details" required></v-text-field>
+          
           </v-form>
 
           <v-card-actions>
@@ -32,9 +32,8 @@ import { http } from '../config/http'
 export default {
   data: () => ({
     project: {
-      points: 0,
-      name: '',
-      topic: ''
+      project_name: '',
+      details: ''
     },
     submitDone: true,
   }),
@@ -49,7 +48,7 @@ export default {
     submit() {
       this.submitDone = false
       http
-        .post("/newProject", this.project)
+        .post("/project", this.project)
         .then(response => {
           this.submit = true
           this.alert(true, 'Create', 'Project')
@@ -76,7 +75,7 @@ export default {
     },
 
     checkForm() {
-      if (this.project.points <= 0 || this.project.name == '' || this.project.email == '') {
+      if (this.project.project_name == '' || this.project.details == '') {
         return true
       } else {
         return false
