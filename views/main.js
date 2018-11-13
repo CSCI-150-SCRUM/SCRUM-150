@@ -3,7 +3,6 @@ import App from './App.vue'
 import Vuetify from 'vuetify'
 import router from './router'
 import './stylus/main.styl'
-import store from '../src/controllers/store'
 
 Vue.use(Vuetify, {
   theme: {
@@ -18,6 +17,5 @@ Vue.use(Vuetify, {
 new Vue({
   el: '#app',
   router,
-  store,
   render: h => h(App)
 })
