@@ -8,9 +8,8 @@
 
         <!-- Begin Input Row -->
         <v-form ref="form">
-          <v-text-field label="Name" v-model="changedproject.name"> </v-text-field>
-          <v-text-field label="points" v-model="changedproject.points" thumb-label step="1"></v-text-field>
-          <v-text-field label="topic" v-model="changedproject.topic"> </v-text-field>
+          <v-text-field label="Name" v-model="changedproject.project_name"> </v-text-field>
+          <v-text-field label="topic" v-model="changedproject.details"> </v-text-field>
         </v-form>
 
         <v-card-actions>
@@ -29,9 +28,8 @@ import { http } from '../config/http'
 export default {
   data: () => ({
     changedproject: {
-      name: '',
-      topic: '',
-      points: 0
+      project_name: '',
+      details: '',
     },
     editDone: true
   }),
@@ -75,7 +73,7 @@ export default {
     },
 
     checkForm() {
-      if (this.changedproject.points <= 0 || this.changedproject.name == '' || this.changedproject.topic == '') {
+      if (this.changedproject.project_name == '' || this.changedproject.details == '') {
         return true
       } else {
         return false

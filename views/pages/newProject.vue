@@ -22,13 +22,13 @@
                 </v-dialog> 
               </v-toolbar>
                 <!-- List of project -->
-              <span  v-if="project.length">
+              <span  v-if="project">
                 <projectItem v-for="project in project" :key="project._id"
                  :project="project" @setUpEdit="setupEdit(project)"
                  @setUpDelete="setupDelete(project)">
                  </projectItem>
               </span>
-              <v-card v-else class="headline text-xs-center">No project to show</v-card>
+              <v-card v-else class="headline text-xs-center">No projects to show</v-card>
 
               <!-- Begin Delete Dialog -->
               <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
@@ -116,7 +116,7 @@ export default {
       Object.keys(project).forEach(key => {
         this.projectToEdit[key] = project[key];
       });
-      this.editName = project.name;
+      this.editName = project.project_name;
       this.editDialog = true;
     },
   

@@ -1,17 +1,17 @@
 <template>
 <v-expansion-panel>
   <v-expansion-panel-content class="elevation-24">
-    <div slot="header">{{ task.task_name }}</div>
+    <div slot="header">{{ tasks.task_name }}</div>
     <hr>
     <v-container grid-list-md text-xs-center>
       <v-layout row wrap>
         <v-flex xs-6 class="text-xs-left">
       <v-card class="title">
-          Details: {{ task.details }}
+          Details: {{ tasks.details }}
           <br>
-          Points: {{ task.points }}
+          Points: {{ tasks.points }}
           <br>
-          Assign to project: {{task.assigned_to}}
+          Assign to project: {{tasks.assigned_to}}
       </v-card>
       </v-flex>
       <v-flex xs-4 class="text-xs-right">

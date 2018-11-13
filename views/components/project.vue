@@ -1,7 +1,7 @@
 <template>
 <v-expansion-panel>
   <v-expansion-panel-content class="elevation-24">
-    <div slot="header">{{ project.name }}</div>
+    <div slot="header">{{ project.project_name }}</div>
     <hr>
     <v-container grid-list-md text-xs-center>
       <v-layout row wrap>
