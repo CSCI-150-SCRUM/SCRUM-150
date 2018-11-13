@@ -43,7 +43,7 @@ export default {
   }),
 
   props: {
-    task: {
+    tasks: {
       type: Object
     },
     rules: {
@@ -59,13 +59,13 @@ export default {
     edit() {
       this.editDone = false
       http
-        .put("/task/" + this.task._id, this.changedtask)
+        .put("/tasks/" + this.tasks._id, this.changedtask)
         .then(response => {
-          this.alert(true, 'Edit', 'task')
+          this.alert(true, 'Edit', 'tasks')
           this.editDone = true
         })
         .catch(e => {
-          this.alert(false, 'Edit', 'task')
+          this.alert(false, 'Edit', 'tasks')
           this.editDone = true
         });
         
@@ -90,7 +90,7 @@ export default {
   },
 
   mounted() {
-    this.changedtask = this.task
+    this.changedtask = this.tasks
   }
 
 }

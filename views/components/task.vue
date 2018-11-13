@@ -20,11 +20,11 @@
       </v-flex>
       <v-flex xs-4 class="text-xs-right">
         <v-card>
-        <v-btn class="red darken-2" @click="$emit('setUpDelete', task)">
+        <v-btn class="red darken-2" @click="$emit('setUpDelete', tasks)">
           <v-icon dark>remove_circle_outline</v-icon>
         </v-btn>
 
-        <v-btn class="blue darken-2" @click="$emit('setUpEdit', task)">
+        <v-btn class="blue darken-2" @click="$emit('setUpEdit', tasks)">
           <v-icon dark>mode_edit</v-icon>
         </v-btn>
         </v-card>
