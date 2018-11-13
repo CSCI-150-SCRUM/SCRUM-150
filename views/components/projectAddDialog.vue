@@ -11,7 +11,7 @@
           <!-- Begin Input Row -->
           <v-form ref="form">
           <v-text-field label="Name" v-model="project.project_name" required> </v-text-field>
-          <v-text-field label="Topic" v-model="project.details" required></v-text-field>
+          <v-text-field label="Details" v-model="project.details" required></v-text-field>
           
           </v-form>
 
@@ -62,9 +62,8 @@ export default {
 
     load() {
       this.project = {
-        points: 0,
-        topic: '',
-        name: ''
+        details: '',
+        project_name: ''
       }
       this.submitDone = true
     },
