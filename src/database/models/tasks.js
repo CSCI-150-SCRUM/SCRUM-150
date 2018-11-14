@@ -3,30 +3,30 @@ const mongoose = require('mongoose')
 
 //Define all of its fields, like columns of a SQL table
 const definition = {
-    task_name: {
+       name: {
         type: String,
         required: true
-    },
-    date_created: {
-        type: Date,
-        required: true
-    },
-    details: {
-        type: String,
-        required: true
-    },
-    status: {
-        type: String,
-        required: true
-    },
-    assigned_to: {
-        type: String,
-        required: true
-    },
-    task_points: {
-        type: Number,
-        required: true
-    }
+    }//,
+    // date_created: {
+    //     type: Date,
+    //     required: true
+    // },
+    // details: {
+    //     type: String,
+    //     required: true
+    // },
+    // status: {
+    //     type: String,
+    //     required: true
+    // },
+    // assigned_to: {
+    //     type: String,
+    //     required: true
+    // },
+    // task_points: {
+    //     type: Number,
+    //     required: true
+    // }
 }
 
 //Set any options for the schema

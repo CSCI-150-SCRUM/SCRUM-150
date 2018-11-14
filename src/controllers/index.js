@@ -5,7 +5,7 @@ const tasksController = require('./tasks')
 const projectController = require ('./project')
 
 module.exports = {
-    usersController,
     tasksController,
+    usersController,
     projectController
 }

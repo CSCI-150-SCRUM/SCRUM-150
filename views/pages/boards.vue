@@ -84,7 +84,7 @@
 
 
 <script>
-  import {mapState} from 'vuex';
+  //import {mapState} from 'vuex';
   import {http} from "../config/http.js"
   import taskItem from "../components/task.vue"
   import taskAddDialog from "../components/taskAddDialog.vue"
@@ -92,7 +92,7 @@
   import taskDeleteDialog from "../components/taskDeleteDialog.vue"
   
   export default {
-    name: 'board',
+    //name: 'board',
   data: () => ({
       errors: [],
       tasks: [],
@@ -152,12 +152,11 @@
       }
     },
   
-    //get those taskss
+    //get those tasks
     mounted() {
       this.load();
-    },
+    }
 
-  
   };
 </script>
 
