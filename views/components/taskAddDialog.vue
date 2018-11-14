@@ -81,7 +81,7 @@ export default {
     },
 
     checkForm() {
-      if (this.tasks.task_points <= 0 || this.tasks.name == '' || this.tasks.details == '') {
+      if (this.tasks.name == '') {
         return true
       } else {
         return false
