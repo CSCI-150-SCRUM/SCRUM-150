@@ -8,7 +8,8 @@
           <v-flex xs-6 class="text-xs-left">
             <v-card class="title">
               Email: {{ user.email }}
-              <br> Age: {{ user.age }}
+              <br> 
+              Age: {{ user.age }}
             </v-card>
           </v-flex>
           <v-flex xs-4 class="text-xs-right">
