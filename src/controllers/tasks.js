@@ -1,16 +1,16 @@
-//import the tasks constant explicitly
-const { Tasks } = require('../database/models')
+//import the User constant explicitly
+const { Task } = require('../database/models')
 const trunks = require('trunks-log')
 const log = new trunks('TASKS')
 
-//show all users
+//show all tasks
 exports.index = async(req, res) => {
 
-    //query the DB of all users
-    await Tasks.find().exec()
+    //query the DB of all tasks
+    await Task.find().exec()
         .then(tasks => {
             log.success('Retrieved all {} tasks', tasks.length)
-            res.json({ tasks: tasks })
+            res.json({ users: users })
         })
         .catch(err => {
             log.error(err, 'Could not retrieve tasks: {}', err.message)
@@ -18,37 +18,37 @@ exports.index = async(req, res) => {
         })
 }
 
-//Store a new tasks
+//Store a new task
 exports.store = async(req, res) => {
 
-    let tasks = new Tasks(req.body)
+    let task = new Task(req.body)
 
     //save it in the DB
-    await tasks.save()
-        .then(tasks => {
-            log.success('Created tasks: {}', tasks.name)
+    await task.save()
+        .then(task => {
+            log.success('Created User: {}', task.email)
                 //send a 201 and the new resource
-            res.status(201).json({ data: tasks })
+            res.status(201).json({ data: task })
         })
         .catch(err => {
-            log.error(err, 'Error creating tasks: {}', tasks.name)
+            log.error(err, 'Error creating task: {}', task.email)
             let errStatus = err.name === 'ValidationError' ? 400 : 500
             res.status(errStatus).json({ err: err })
         })
 }
 
-//this function is for looking at one tasks by their mongo id
+//this function is for looking at one user by their mongo id
 exports.show = async(req, res) => {
 
     //find this sneaky boye
-    await Tasks.findById(req.params.id).exec()
-        .then(tasks => {
-            log.success('Found tasks: {}', tasks.name)
-            res.json({ tasks: tasks })
+    await Task.findById(req.params.id).exec()
+        .then(task => {
+            log.success('Found task: {}', task.name)
+            res.json({ task: task })
         })
         .catch(err => {
-            log.error(err, 'Error finding tasks: {}', req.params.id)
-            res.json({ error: err, message: 'Could not retrieve tasks' }).status(500)
+            log.error(err, 'Error finding task: {}', req.params.id)
+            res.json({ error: err, message: 'Could not retrieve task' }).status(500)
         })
 }
 
@@ -56,14 +56,14 @@ exports.show = async(req, res) => {
 exports.delete = async(req, res) => {
 
     //find the sneaky boye and make him go away
-    await Tasks.findByIdAndRemove(req.params.id).exec()
+    await Task.findByIdAndRemove(req.params.id).exec()
         .then(() => {
-            log.success('Deleted Tasks: {}', req.params.id)
+            log.success('Deleted Task: {}', req.params.id)
                 //let em know there aint no content no mo
             res.status(204).json()
         })
         .catch(err => {
-            log.error(err, 'Error finding tasks: {}', req.params.id)
+            log.error(err, 'Error finding task: {}', req.params.id)
             res.status(500).json({ err: err })
         })
 
@@ -71,15 +71,15 @@ exports.delete = async(req, res) => {
 
 //edit a user based on ID
 exports.update = async(req, res) => {
-    await Tasks
+    await Task
         .findByIdAndUpdate(req.params.id, req.body, { new: true })
         .exec()
-        .then(tasks => {
-            log.success('Updated Tasks: {}', req.params.id)
-            res.status(200).json({ tasks: tasks })
+        .then(task => {
+            log.success('Updated task: {}', req.params.id)
+            res.status(200).json({ task: task })
         })
         .catch(err => {
-            log.error(err, "Could not update tasks: {}", req.params.id)
+            log.error(err, "Could not update task: {}", req.params.id)
             res.status(500).json({ err: err })
         })
 }

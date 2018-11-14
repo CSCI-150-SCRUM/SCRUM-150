@@ -3,10 +3,10 @@ const mongoose = require('mongoose')
 
 //Define all of its fields, like columns of a SQL table
 const definition = {
-       name: {
+    name: {
         type: String,
         required: true
-    }//,
+    } //,
     // date_created: {
     //     type: Date,
     //     required: true

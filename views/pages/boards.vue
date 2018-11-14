@@ -7,8 +7,6 @@
         <v-card dark color="primary">
           <v-card-text>Novel/Story</v-card-text>
         </v-card>
-<<<<<<< HEAD
-=======
         <draggable>
         <!-- List of tasks -->
               <span  v-if="tasks.length">
@@ -19,7 +17,6 @@
               </span>
               <v-card-text v-else class="grey">No Tasks</v-card-text>
         </draggable>  
->>>>>>> 0cb8c106285ea0eaaadcafbb73f97cf055b17647
       </v-flex>
       <v-flex xs2>
         <v-card dark color="secondary">
@@ -40,11 +37,7 @@
                     </taskAddDialog>
                   </v-dialog>
                 </v-toolbar>
-<<<<<<< HEAD
-
-=======
               <draggable>
->>>>>>> 0cb8c106285ea0eaaadcafbb73f97cf055b17647
                 <!-- List of tasks -->
               <span  v-if="tasks.length">
                 <taskItem v-for="tasks in tasks" :key="tasks._id"
@@ -53,11 +46,7 @@
                  </taskItem>
               </span>
               <v-card-text v-else class="grey">No Tasks</v-card-text>
-<<<<<<< HEAD
-
-=======
               </draggable>
->>>>>>> 0cb8c106285ea0eaaadcafbb73f97cf055b17647
               <!-- Begin Delete Dialog -->
               <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
                 <tasksDeleteDialog :tasks="tasksToDelete" @closeDelete="deleteDialog = false"
@@ -74,25 +63,13 @@
                 </tasksEditDialog>
               </v-dialog>
               <!-- End Edit Form -->
-<<<<<<< HEAD
-              
-          
-
-
-
-
-
-=======
            
->>>>>>> 0cb8c106285ea0eaaadcafbb73f97cf055b17647
         </v-card>
       </v-flex>
       <v-flex xs2>
         <v-card dark color="accent">
           <v-card-text>To-Do</v-card-text>
         </v-card>
-<<<<<<< HEAD
-=======
         <!-- List of tasks -->
               <span  v-if="tasks.length">
                 <taskItem v-for="tasks in tasks" :key="tasks._id"
@@ -102,14 +79,11 @@
               </span>
               <v-card-text v-else class="grey">No Tasks</v-card-text>
 
->>>>>>> 0cb8c106285ea0eaaadcafbb73f97cf055b17647
       </v-flex>
       <v-flex xs2>
         <v-card dark color="primary">
           <v-card-text>Doing</v-card-text>
         </v-card>
-<<<<<<< HEAD
-=======
         <!-- List of tasks -->
               <span  v-if="tasks.length">
                 <taskItem v-for="tasks in tasks" :key="tasks._id"
@@ -119,14 +93,11 @@
               </span>
               <v-card-text v-else class="grey">No Tasks</v-card-text>
 
->>>>>>> 0cb8c106285ea0eaaadcafbb73f97cf055b17647
       </v-flex>
       <v-flex xs2>
         <v-card dark color="secondary">
           <v-card-text>Done</v-card-text>
         </v-card>
-<<<<<<< HEAD
-=======
         <!-- List of tasks -->
               <span  v-if="tasks.length">
                 <taskItem v-for="tasks in tasks" :key="tasks._id"
@@ -136,7 +107,6 @@
               </span>
               <v-card-text v-else class="grey">No Tasks</v-card-text>
 
->>>>>>> 0cb8c106285ea0eaaadcafbb73f97cf055b17647
       </v-flex>
     </v-layout>
   </v-container>
@@ -145,49 +115,50 @@
 
 
 <script>
-  //import {mapState} from 'vuex';
   import {http} from "../config/http.js"
   import taskItem from "../components/task.vue"
   import taskAddDialog from "../components/taskAddDialog.vue"
   import taskEditDialog from "../components/taskEditDialog.vue"
   import taskDeleteDialog from "../components/taskDeleteDialog.vue"
-<<<<<<< HEAD
-=======
-  import draggable from "vuedraggable"
->>>>>>> 0cb8c106285ea0eaaadcafbb73f97cf055b17647
+import Axios from 'axios';
   
   export default {
-    //name: 'board',
-  data: () => ({
+    //Variables
+    data: () => ({
       errors: [],
       tasks: [],
-      tasksToDelete: {},
+      taskToDelete: {},
       alertSettings: {}, //this is to abstract our our alerts to make them easier and stop repeating code
-      tasksToEdit: {},
-      newTasks: {},
+      taskToEdit: {},
+      newtask: {},
       addDialog: false,
       deleteDialog: false,
       editDialog: false,
-      editName: ""
+      editName: "",
+      rules: {
+        email: value => {
+          const pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          return pattern.test(value) || "Invalid e-mail.";
+        }
+      }
     }),
-<<<<<<< HEAD
-=======
-
+  
+    //Components this page will need
     components: {
       taskItem: taskItem,
       taskAddDialog: taskAddDialog,
       taskEditDialog: taskEditDialog,
       taskDeleteDialog: taskDeleteDialog
     },
-   
-      //The methods we will need
+  
+    //The methods we will need
     methods: {
       //load all tasks from DB, we call this often to make sure the data is up to date
       load() {
         http
           .get("tasks")
           .then(response => {
-            this.tasks = response.data.tasks;
+            this.tasks = response.data.tasks
           })
           .catch(e => {
             this.errors.push(e);
@@ -196,14 +167,14 @@
   
       //opens delete dialog
       setupDelete(tasks) {
-        this.tasksToDelete = tasks;
+        this.taskToDelete = tasks;
         this.deleteDialog = true;
       },
   
       //opens edit dialog
       setupEdit(tasks) {
         Object.keys(tasks).forEach(key => {
-          this.tasksToEdit[key] = tasks[key];
+          this.taskToEdit[key] = tasks[key];
         });
         this.editName = tasks.name;
         this.editDialog = true;
@@ -223,65 +194,5 @@
     mounted() {
       this.load();
     }
-
-  };
-
->>>>>>> 0cb8c106285ea0eaaadcafbb73f97cf055b17647
-
-    components: {
-      taskItem: taskItem,
-      taskAddDialog: taskAddDialog,
-      taskEditDialog: taskEditDialog,
-      taskDeleteDialog: taskDeleteDialog
-    },
-   
-      //The methods we will need
-    methods: {
-      //load all tasks from DB, we call this often to make sure the data is up to date
-      load() {
-        http
-          .get("tasks")
-          .then(response => {
-            this.tasks = response.data.tasks;
-          })
-          .catch(e => {
-            this.errors.push(e);
-          });
-      },
-  
-      //opens delete dialog
-      setupDelete(tasks) {
-        this.tasksToDelete = tasks;
-        this.deleteDialog = true;
-      },
-  
-      //opens edit dialog
-      setupEdit(tasks) {
-        Object.keys(tasks).forEach(key => {
-          this.tasksToEdit[key] = tasks[key];
-        });
-        this.editName = tasks.name;
-        this.editDialog = true;
-      },
-  
-      //build the alert info for us
-      //Will emit an alert, followed by a boolean for success, the type of call made, and the name of the 
-      //resource we are working on
-      alert(success, callName, resource) {
-        console.log('Page Alerting')
-        this.$emit('alert', success, callName, resource)
-        this.load()
-      }
-    },
-  
-    //get those tasks
-    mounted() {
-      this.load();
-    }
-
   };
 </script>
-
-<style>
-  
-</style>
