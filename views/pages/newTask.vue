@@ -67,7 +67,7 @@ export default {
   //Variables
   data: () => ({
     errors: [],
-    tasks: [],
+    task: [],
     taskToDelete: {},
     alertSettings: {}, //this is to abstract our our alerts to make them easier and stop repeating code
     taskToEdit: {},

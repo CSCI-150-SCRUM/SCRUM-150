@@ -7,15 +7,9 @@
       <v-layout row wrap>
         <v-flex xs-6 class="text-xs-left">
       <v-card class="title">
-          Details: {{ tasks.details }}
+          Details: {{ tasks.name }}
           <br>
-          Points: {{ tasks.task_points }}
-          <br>
-          Assign To: {{ tasks.assigned_to }}
-          <br>
-          Date: {{ tasks.date_created }}
-          <br>
-          Status: {{tasks.status}}
+         
       </v-card>
       </v-flex>
       <v-flex xs-4 class="text-xs-right">

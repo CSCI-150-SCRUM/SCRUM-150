@@ -13,15 +13,7 @@
           <v-form ref="form">
             <v-text-field label="Name" v-model="tasks.name"> </v-text-field>
             <br>
-            <v-text-field label="Points" v-model="tasks.task_points" thumb-label step="1"></v-text-field>
-            <br>
-            <v-text-field label="Details" v-model="tasks.details"> </v-text-field>
-            <br>
-            <v-text-field label="Assigned to" v-model="tasks.assigned_to"> </v-text-field>
-            <br>
-            <v-text-field label="Status" v-model="tasks.status"> </v-text-field>
-            <br>
-            <v-text-field label="Date Created" v-model="tasks.date_created"> </v-text-field>
+            
           </v-form> 
 
           <v-card-actions>
@@ -78,12 +70,7 @@ export default {
 
     load() {
       this.tasks = {
-        task_points: 0,
-        name: '',
-        date_created: '',
-        details: '',
-        assigned_to: '', //eventually a drop down
-        status: ''
+        name: ''
       }
       this.submitDone = true
     },
