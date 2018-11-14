@@ -7,6 +7,16 @@
         <v-card dark color="primary">
           <v-card-text>Novel/Story</v-card-text>
         </v-card>
+        <draggable>
+        <!-- List of tasks -->
+              <span  v-if="tasks.length">
+                <taskItem v-for="tasks in tasks" :key="tasks._id"
+                 :tasks="tasks" @setUpEdit="setupEdit(tasks)"
+                 @setUpDelete="setupDelete(tasks)">
+                 </taskItem>
+              </span>
+              <v-card-text v-else class="grey">No Tasks</v-card-text>
+        </draggable>  
       </v-flex>
       <v-flex xs2>
         <v-card dark color="secondary">
@@ -27,7 +37,7 @@
                     </taskAddDialog>
                   </v-dialog>
                 </v-toolbar>
-
+              <draggable>
                 <!-- List of tasks -->
               <span  v-if="tasks.length">
                 <taskItem v-for="tasks in tasks" :key="tasks._id"
@@ -36,7 +46,7 @@
                  </taskItem>
               </span>
               <v-card-text v-else class="grey">No Tasks</v-card-text>
-
+              </draggable>
               <!-- Begin Delete Dialog -->
               <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
                 <tasksDeleteDialog :tasks="tasksToDelete" @closeDelete="deleteDialog = false"
@@ -53,29 +63,50 @@
                 </tasksEditDialog>
               </v-dialog>
               <!-- End Edit Form -->
-              
-          
-
-
-
-
-
+           
         </v-card>
       </v-flex>
       <v-flex xs2>
         <v-card dark color="accent">
           <v-card-text>To-Do</v-card-text>
         </v-card>
+        <!-- List of tasks -->
+              <span  v-if="tasks.length">
+                <taskItem v-for="tasks in tasks" :key="tasks._id"
+                 :tasks="tasks" @setUpEdit="setupEdit(tasks)"
+                 @setUpDelete="setupDelete(tasks)">
+                 </taskItem>
+              </span>
+              <v-card-text v-else class="grey">No Tasks</v-card-text>
+
       </v-flex>
       <v-flex xs2>
         <v-card dark color="primary">
           <v-card-text>Doing</v-card-text>
         </v-card>
+        <!-- List of tasks -->
+              <span  v-if="tasks.length">
+                <taskItem v-for="tasks in tasks" :key="tasks._id"
+                 :tasks="tasks" @setUpEdit="setupEdit(tasks)"
+                 @setUpDelete="setupDelete(tasks)">
+                 </taskItem>
+              </span>
+              <v-card-text v-else class="grey">No Tasks</v-card-text>
+
       </v-flex>
       <v-flex xs2>
         <v-card dark color="secondary">
           <v-card-text>Done</v-card-text>
         </v-card>
+        <!-- List of tasks -->
+              <span  v-if="tasks.length">
+                <taskItem v-for="tasks in tasks" :key="tasks._id"
+                 :tasks="tasks" @setUpEdit="setupEdit(tasks)"
+                 @setUpDelete="setupDelete(tasks)">
+                 </taskItem>
+              </span>
+              <v-card-text v-else class="grey">No Tasks</v-card-text>
+
       </v-flex>
     </v-layout>
   </v-container>
@@ -90,6 +121,7 @@
   import taskAddDialog from "../components/taskAddDialog.vue"
   import taskEditDialog from "../components/taskEditDialog.vue"
   import taskDeleteDialog from "../components/taskDeleteDialog.vue"
+  import draggable from "vuedraggable"
   
   export default {
     //name: 'board',
@@ -158,6 +190,8 @@
     }
 
   };
+
+
 </script>
 
 <style>
