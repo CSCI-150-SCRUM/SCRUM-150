@@ -35,7 +35,7 @@
                  @setUpDelete="setupDelete(tasks)">
                  </taskItem>
               </span>
-              <v-card-text v-else class="dark grey">No Tasks</v-card-text>
+              <v-card-text v-else class="grey">No Tasks</v-card-text>
 
               <!-- Begin Delete Dialog -->
               <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
