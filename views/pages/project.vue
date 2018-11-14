@@ -2,26 +2,37 @@
   <v-container class="pa-0">
     <v-container>
       <template>
-          <v-layout row>
-            <v-flex>
-              <v-card>
+        <v-layout row>
+          <v-flex>
+            <v-card>              
+              <!-- Begin Toolbar -->
+              <v-toolbar class="primary primaryText--text">
+                <v-toolbar-title> Project </v-toolbar-title>
+                <v-spacer></v-spacer>
 
-                <v-toolbar class="primary primaryText--text">
-                <v-toolbar-title> Existing Projects </v-toolbar-title>
-                </v-toolbar>
+                  <!-- Add Dialog Button -->
+                <v-dialog v-model="addDialog" lazy absolute max-width="50%">
+                  <v-btn class="primaryText--text" icon slot="activator">
+                    <v-icon> control_point </v-icon>
+                  </v-btn>
 
-                <!-- List of Projects -->
-		          <span v-if="project">
+                  <!-- Add Dialog -->
+                  <projectAddDialog :rules="rules" @closeAdd="addDialog = false" @alert="alert">
+                  </projectAddDialog>
+                </v-dialog> 
+              </v-toolbar>
+                <!-- List of project -->
+              <span  v-if="project">
                 <projectItem v-for="project in project" :key="project._id"
                  :project="project" @setUpEdit="setupEdit(project)"
                  @setUpDelete="setupDelete(project)">
                  </projectItem>
               </span>
-              <v-card v-else class="headline text-xs-center">No Projects to show</v-card> 
+              <v-card v-else class="headline text-xs-center">No projects to show</v-card>
 
               <!-- Begin Delete Dialog -->
               <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
-                <projectDeleteDialog :user="projectToDelete" @closeDelete="deleteDialog = false"
+                <projectDeleteDialog :project="projectToDelete" @closeDelete="deleteDialog = false"
                 @alert="alert">
 
                 </projectDeleteDialog>
@@ -35,18 +46,17 @@
                 </projectEditDialog>
               </v-dialog>
               <!-- End Edit Form -->
-
-                
-              </v-card>
-            </v-flex>
-          </v-layout>
-</template>
+              
+            </v-card>
+          </v-flex>
+        </v-layout>
+      </template>
     </v-container>
   </v-container>
 </template>
 
 <script>
- import { http } from "../config/http.js"
+import { http } from "../config/http.js"
 import projectItem from "../components/project.vue"
 import projectAddDialog from "../components/projectAddDialog.vue"
 import projectEditDialog from "../components/projectEditDialog.vue"
@@ -56,7 +66,7 @@ export default {
   //Variables
   data: () => ({
     errors: [],
-    pojects: [],
+    projects: [],
     projectToDelete: {},
     alertSettings: {}, //this is to abstract our our alerts to make them easier and stop repeating code
     projectToEdit: {},
@@ -65,12 +75,6 @@ export default {
     deleteDialog: false,
     editDialog: false,
     editName: "",
-    rules: {
-      email: value => {
-        const pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return pattern.test(value) || "Invalid e-mail.";
-      }
-    }
   }),
 
   //Components this page will need
@@ -106,7 +110,7 @@ export default {
       Object.keys(project).forEach(key => {
         this.projectToEdit[key] = project[key];
       });
-      this.editName = project.name;
+      this.editName = project.project_name;
       this.editDialog = true;
     },
   
@@ -120,9 +124,5 @@ export default {
   mounted() {
     this.load();
   }
-}; 
+};
 </script>
-
-<style>
-  
-</style>
