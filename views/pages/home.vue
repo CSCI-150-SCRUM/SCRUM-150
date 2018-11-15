@@ -12,7 +12,7 @@ Vue.component('b-jumbotron', bJumbotron);
     <v-flex>
     <v-container>
       <template>
-            <v-jumbotron>
+            <v-responsive>
               <header>
                    <h1 style="font-size:64px">WELCOME TO SCRUMBAG</h1>
               </header>
@@ -25,7 +25,7 @@ Vue.component('b-jumbotron', bJumbotron);
            </p>
                  <v-btn variant="primary" href="http://localhost:3000/#/existingProject">Go to existing projects</v-btn>
                  <v-btn variant="success" href="http://localhost:3000/#/boards">Go to project boards</v-btn>
-              </v-jumbotron>
+              </v-responsive>
         </template>
     </v-container>
               </v-flex>
