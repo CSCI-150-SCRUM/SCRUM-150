@@ -70,12 +70,12 @@
             href: "/#/home",
             router: true
           },
-          /* {
+          {
             icon: "account_circle",
             title: "Users",
             href: "/#/users",
             router: true
-          }, */
+          },
           {
             icon: "account_circle",
             title: "Login",
