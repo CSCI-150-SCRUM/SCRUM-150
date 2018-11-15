@@ -8,7 +8,7 @@ const definition = {
         required: true
     },
     date_created: {
-         type: Date,
+         type: String,
          required: true
      },
      details: {
@@ -35,7 +35,7 @@ const options = {
 }
 
 //make the schema as a new instance of a mongoose schema, using our definition and options
-const tasksSchema = new mongoose.Schema(definition, options)
+const TaskSchema = new mongoose.Schema(definition, options)
 
 //export that boye
-module.exports = mongoose.model('tasks', tasksSchema)
+module.exports = mongoose.model('Task', TaskSchema)

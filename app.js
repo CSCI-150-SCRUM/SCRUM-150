@@ -1,9 +1,5 @@
 const express = require('express');
 const path = require('path');
-<<<<<<< HEAD
-
-=======
->>>>>>> 2f58d62308108ab88360f019c12e0353f1ece887
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -28,21 +24,12 @@ const logs = new trunks('', 'yellow', '')
 const { apiRoutes } = require('./src/routes/index')
 const { webRoutes } = require('./src/routes/index')
 
-//var indexRouter = require('./src/routes/index');
-var usersRouter = require('./src/controllers/login');
 
 // Use native ES6 Promises since mongoose's are deprecated.
 // Connect to the database
-<<<<<<< HEAD
 
 mongoose.Promise = global.Promise
 mongoose.connect(process.env.MONGO_URI, { useMongoClient: true })
-=======
-mongoose.connect(process.env.MONGO_URI, { useMongoClient: true }).catch(function(reason) {
-    console.log('Unable to connect to the mongodb instance. Error: ', reason);
-});
-
->>>>>>> 2f58d62308108ab88360f019c12e0353f1ece887
 
 
 //engine
@@ -65,10 +52,6 @@ app.use('/api', apiRoutes);
 // Passport (authentication system)
 app.use(passport.initialize());
 app.use(passport.session());
-
-
-//
-//app.use('/users', usersRouter);
 
 
 //Handle Sessions
@@ -112,7 +95,6 @@ app.use(function(req, res, next) {
 
 // error handler
 app.use(function(err, req, res, next) {
-<<<<<<< HEAD
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -120,11 +102,6 @@ app.use(function(err, req, res, next) {
     // render the error page
     res.status(err.status || 500);
     res.render('error');
-=======
-    // set locals, only providing error in development
-    res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'development' ? err : {};
->>>>>>> 2f58d62308108ab88360f019c12e0353f1ece887
 });
 
 

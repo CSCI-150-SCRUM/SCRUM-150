@@ -11,8 +11,13 @@
 
           <!-- Begin Input Row  -->
           <v-form ref="form">
-            <v-text-field label="Name" v-model="tasks.name"> </v-text-field>
-            <br>
+
+            <v-text-field label="Name" v-model="task.name"> </v-text-field>
+            <v-text-field label="Task Points" v-model="task.task_points"> </v-text-field>
+            <v-text-field label="Date Created" v-model="task.date_created"> </v-text-field>
+            <v-text-field label="Details" v-model="task.details"> </v-text-field>
+            <v-text-field label="Assigned To" v-model="task.assigned_to"> </v-text-field>
+            <v-text-field label="Status" v-model="task.status"> </v-text-field>
             
           </v-form> 
 
@@ -35,7 +40,7 @@ import { http } from '../config/http'
 
 export default {
   data: () => ({
-    tasks: {
+    task: {
       task_points: 0,
       name: '',
       date_created: '',
@@ -56,20 +61,20 @@ export default {
     submit() {
       this.submitDone = false
       http
-        .post("/tasks", this.tasks)
+        .post("/tasks", this.task)
         .then(response => {
           this.submit = true
-          this.alert(true, 'Create', 'Tasks')
+          this.alert(true, 'Create', 'Task')
           this.close()
         })
         .catch(e => {
           this.submit = true
-          this.alert(false, 'Create', 'Tasks')
+          this.alert(false, 'Create', 'Task')
         });
     },
 
     load() {
-      this.tasks = {
+      this.task = {
         name: ''
       }
       this.submitDone = true
@@ -81,7 +86,7 @@ export default {
     },
 
     checkForm() {
-      if (this.tasks.name == '') {
+      if (this.task.name == '') {
         return true
       } else {
         return false

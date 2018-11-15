@@ -10,7 +10,7 @@ exports.index = async(req, res) => {
     await Task.find().exec()
         .then(tasks => {
             log.success('Retrieved all {} tasks', tasks.length)
-            res.json({ users: users })
+            res.json({ tasks: tasks })
         })
         .catch(err => {
             log.error(err, 'Could not retrieve tasks: {}', err.message)
@@ -26,12 +26,12 @@ exports.store = async(req, res) => {
     //save it in the DB
     await task.save()
         .then(task => {
-            log.success('Created User: {}', tasks.name)
+            log.success('Created User: {}', task.name)
                 //send a 201 and the new resource
             res.status(201).json({ data: task })
         })
         .catch(err => {
-            log.error(err, 'Error creating task: {}', tasks.name)
+            log.error(err, 'Error creating task: {}', task.name)
             let errStatus = err.name === 'ValidationError' ? 400 : 500
             res.status(errStatus).json({ err: err })
         })
@@ -43,7 +43,7 @@ exports.show = async(req, res) => {
     //find this sneaky boye
     await Task.findById(req.params.id).exec()
         .then(task => {
-            log.success('Found task: {}', tasks.name)
+            log.success('Found task: {}', task.name)
             res.json({ task: task })
         })
         .catch(err => {

@@ -12,23 +12,6 @@ Vue.component('b-jumbotron', bJumbotron);
     <v-flex>
     <v-container>
       <template>
-<<<<<<< HEAD
-          <v-layout row>
-            <v-flex>
-              <v-card>
-                <v-toolbar class="primary primaryText--text">
-                <v-toolbar-title> Welcome to ScrumBag </v-toolbar-title>
-                </v-toolbar>
-                <v-container fluid>
-                  <v-card-text>
-                    This is where we will have our main module.
-                  </v-card-text>
-                </v-container>
-              </v-card>
-            </v-flex>
-          </v-layout>
-      </template>
-=======
             <v-jumbotron>
               <header>
                    <h1 style="font-size:64px">WELCOME TO SCRUMBAG</h1>
@@ -42,7 +25,6 @@ Vue.component('b-jumbotron', bJumbotron);
                  <v-btn variant="success" href="http://localhost:3000/#/boards">Go to project boards</v-btn>
               </v-jumbotron>
         </template>
->>>>>>> 2f58d62308108ab88360f019c12e0353f1ece887
     </v-container>
               </v-flex>
 </template>

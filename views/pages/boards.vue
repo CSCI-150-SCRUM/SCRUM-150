@@ -10,9 +10,9 @@
         <draggable>
         <!-- List of tasks -->
               <span  v-if="tasks.length">
-                <taskItem v-for="tasks in tasks" :key="tasks._id"
-                 :tasks="tasks" @setUpEdit="setupEdit(tasks)"
-                 @setUpDelete="setupDelete(tasks)">
+                <taskItem v-for="task in tasks" :key="task._id"
+                 :task="task" @setUpEdit="setupEdit(task)"
+                 @setUpDelete="setupDelete(task)">
                  </taskItem>
               </span>
               <v-card-text v-else class="grey">No Tasks</v-card-text>
@@ -40,16 +40,16 @@
               <draggable>
                 <!-- List of tasks -->
               <span  v-if="tasks.length">
-                <taskItem v-for="tasks in tasks" :key="tasks._id"
-                 :tasks="tasks" @setUpEdit="setupEdit(tasks)"
-                 @setUpDelete="setupDelete(tasks)">
+                <taskItem v-for="task in tasks" :key="task._id"
+                 :task="task" @setUpEdit="setupEdit(task)"
+                 @setUpDelete="setupDelete(task)">
                  </taskItem>
               </span>
               <v-card-text v-else class="grey">No Tasks</v-card-text>
               </draggable>
               <!-- Begin Delete Dialog -->
               <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
-                <tasksDeleteDialog :tasks="tasksToDelete" @closeDelete="deleteDialog = false"
+                <tasksDeleteDialog :task="taskToDelete" @closeDelete="deleteDialog = false"
                 @alert="alert">
 
                 </tasksDeleteDialog>
@@ -58,9 +58,9 @@
 
               <!-- Begin Edit Form -->
               <v-dialog v-model="editDialog" lazy absolute max-width="50%">
-                <tasksEditDialog :rules="rules" :tasks="tasksToEdit" :editName="editName"
-                @closeEdit="editDialog = false; tasksToEdit = {}" @alert="alert">
-                </tasksEditDialog>
+                <taskEditDialog :rules="rules" :task="taskToEdit" :editName="editName"
+                @closeEdit="editDialog = false; taskToEdit = {}" @alert="alert">
+                </taskEditDialog>
               </v-dialog>
               <!-- End Edit Form -->
            
@@ -72,9 +72,9 @@
         </v-card>
         <!-- List of tasks -->
               <span  v-if="tasks.length">
-                <taskItem v-for="tasks in tasks" :key="tasks._id"
-                 :tasks="tasks" @setUpEdit="setupEdit(tasks)"
-                 @setUpDelete="setupDelete(tasks)">
+                <taskItem v-for="task in tasks" :key="task._id"
+                 :task="task" @setUpEdit="setupEdit(task)"
+                 @setUpDelete="setupDelete(task)">
                  </taskItem>
               </span>
               <v-card-text v-else class="grey">No Tasks</v-card-text>
@@ -86,9 +86,9 @@
         </v-card>
         <!-- List of tasks -->
               <span  v-if="tasks.length">
-                <taskItem v-for="tasks in tasks" :key="tasks._id"
-                 :tasks="tasks" @setUpEdit="setupEdit(tasks)"
-                 @setUpDelete="setupDelete(tasks)">
+                <taskItem v-for="task in tasks" :key="task._id"
+                 :task="task" @setUpEdit="setupEdit(task)"
+                 @setUpDelete="setupDelete(task)">
                  </taskItem>
               </span>
               <v-card-text v-else class="grey">No Tasks</v-card-text>
@@ -100,9 +100,9 @@
         </v-card>
         <!-- List of tasks -->
               <span  v-if="tasks.length">
-                <taskItem v-for="tasks in tasks" :key="tasks._id"
-                 :tasks="tasks" @setUpEdit="setupEdit(tasks)"
-                 @setUpDelete="setupDelete(tasks)">
+                <taskItem v-for="task in tasks" :key="task._id"
+                 :task="task" @setUpEdit="setupEdit(task)"
+                 @setUpDelete="setupDelete(task)">
                  </taskItem>
               </span>
               <v-card-text v-else class="grey">No Tasks</v-card-text>
@@ -120,7 +120,7 @@
   import taskAddDialog from "../components/taskAddDialog.vue"
   import taskEditDialog from "../components/taskEditDialog.vue"
   import taskDeleteDialog from "../components/taskDeleteDialog.vue"
-import Axios from 'axios';
+//import Axios from 'axios';
   
   export default {
     //Variables
@@ -166,17 +166,17 @@ import Axios from 'axios';
       },
   
       //opens delete dialog
-      setupDelete(tasks) {
-        this.taskToDelete = tasks;
+      setupDelete(task) {
+        this.taskToDelete = task;
         this.deleteDialog = true;
       },
   
       //opens edit dialog
-      setupEdit(tasks) {
-        Object.keys(tasks).forEach(key => {
-          this.taskToEdit[key] = tasks[key];
+      setupEdit(task) {
+        Object.keys(task).forEach(key => {
+          this.taskToEdit[key] = task[key];
         });
-        this.editName = tasks.name;
+        this.editName = task.name;
         this.editDialog = true;
       },
   

@@ -24,7 +24,7 @@ exports.store = async(req, res) => {
     let user = new User(req.body)
 
     //save it in the DB
-    await user.save()
+    await User.save()
         .then(user => {
             log.success('Created User: {}', user.email)
                 //send a 201 and the new resource
