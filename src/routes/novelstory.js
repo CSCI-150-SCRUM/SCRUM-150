@@ -2,25 +2,29 @@
 const express = require('express')
 
 //import the controllers and middleware
-const { novelstorytasksController } = require('../controllers/index')
-const { catchErrors } = require('../middleware/error-handler')
+const {
+    novelstoryController
+} = require('../controllers/index')
+const {
+    catchErrors
+} = require('../middleware/error-handler')
 
 //set up the router
 const router = express.Router()
 
 //get all tasks
-router.get('/', catchErrors(novelstorytasksController.index))
+router.get('/', catchErrors(novelstoryController.index))
 
 //make a new boy
-router.post('/', catchErrors(novelstorytasksController.store))
+router.post('/', catchErrors(novelstoryController.store))
 
 //see one boy
-router.get('/:id', catchErrors(novelstorytasksController.show))
+router.get('/:id', catchErrors(novelstoryController.show))
 
 //get rid of a boy
-router.delete('/:id', catchErrors(novelstorytasksController.delete))
+router.delete('/:id', catchErrors(novelstoryController.delete))
 
 //update a boy
-router.put('/:id', catchErrors(novelstorytasksController.update))
+router.put('/:id', catchErrors(novelstoryController.update))
 
 module.exports = router
