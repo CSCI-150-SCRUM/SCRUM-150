@@ -17,12 +17,12 @@
                   </v-btn>
 
                   <!-- Add Dialog -->
-                  <projectAddDialog :rules="rules" @closeAdd="addDialog = false" @alert="alert">
-                  </projectAddDialog>
+                  <!--<projectAddDialog :rules="rules" @closeAdd="addDialog = false" @alert="alert">
+                  </projectAddDialog>-->
                 </v-dialog> 
               </v-toolbar>
                 <!-- List of project -->
-              <span  v-if="project">
+              <span  v-if="project.length">
                 <projectItem v-for="project in project" :key="project._id"
                  :project="project" @setUpEdit="setupEdit(project)"
                  @setUpDelete="setupDelete(project)">
@@ -41,9 +41,9 @@
 
               <!-- Begin Edit Form -->
               <v-dialog v-model="editDialog" lazy absolute max-width="50%">
-                <projectEditDialog :rules="rules" :project="projectToEdit" :editName="editName"
+                <!--<projectEditDialog :rules="rules" :project="projectToEdit" :editName="editName"
                 @closeEdit="editDialog = false; projectToEdit = {}" @alert="alert">
-                </projectEditDialog>
+                </projectEditDialog>-->
               </v-dialog>
               <!-- End Edit Form -->
               
@@ -70,7 +70,7 @@ export default {
     projectToDelete: {},
     alertSettings: {}, //this is to abstract our our alerts to make them easier and stop repeating code
     projectToEdit: {},
-    Project: {},
+    project: {},
     addDialog: false,
     deleteDialog: false,
     editDialog: false,

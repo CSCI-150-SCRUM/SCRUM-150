@@ -59,7 +59,7 @@ router.post('/register', function(req, res, next) {
   var errors = req.validationErrors();
   
   if(errors){
-    res.render('register', {
+    res.json('register', {
         errors: errors
      });
    } else { 
