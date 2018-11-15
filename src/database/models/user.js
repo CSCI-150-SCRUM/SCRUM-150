@@ -7,6 +7,7 @@ const bcrypt = require('bcryptjs');
 
 //Define all of its fields, like columns of a SQL table
 const definition = {
+<<<<<<< HEAD
   name: {
     type: String,
     required: true
@@ -33,6 +34,25 @@ const definition = {
 //Set any options for the schema
 /*const options = {
   timestamps: true
+=======
+    name: {
+        type: String,
+        required: true
+    },
+    age: {
+        type: Number,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true
+    }
+}
+
+//Set any options for the schema
+const options = {
+    timestamps: true
+>>>>>>> 2f58d62308108ab88360f019c12e0353f1ece887
 }
 */
 //make the schema as a new instance of a mongoose schema, using our definition and options

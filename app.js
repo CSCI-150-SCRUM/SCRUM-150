@@ -1,6 +1,9 @@
 const express = require('express');
 const path = require('path');
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2f58d62308108ab88360f019c12e0353f1ece887
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -30,9 +33,16 @@ var usersRouter = require('./src/controllers/login');
 
 // Use native ES6 Promises since mongoose's are deprecated.
 // Connect to the database
+<<<<<<< HEAD
 
 mongoose.Promise = global.Promise
 mongoose.connect(process.env.MONGO_URI, { useMongoClient: true })
+=======
+mongoose.connect(process.env.MONGO_URI, { useMongoClient: true }).catch(function(reason) {
+    console.log('Unable to connect to the mongodb instance. Error: ', reason);
+});
+
+>>>>>>> 2f58d62308108ab88360f019c12e0353f1ece887
 
 
 //engine
@@ -44,7 +54,7 @@ mongoose.connection.on('error', error => { throw error })
 
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.png')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -95,13 +105,14 @@ app.use(function (req, res, next) {
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
 });
 
 // error handler
 app.use(function(err, req, res, next) {
+<<<<<<< HEAD
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -109,6 +120,11 @@ app.use(function(err, req, res, next) {
     // render the error page
     res.status(err.status || 500);
     res.render('error');
+=======
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
+>>>>>>> 2f58d62308108ab88360f019c12e0353f1ece887
 });
 
 

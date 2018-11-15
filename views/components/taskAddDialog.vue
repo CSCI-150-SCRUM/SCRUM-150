@@ -11,17 +11,9 @@
 
           <!-- Begin Input Row  -->
           <v-form ref="form">
-            <v-text-field label="Name" v-model="tasks.task_name"> </v-text-field>
+            <v-text-field label="Name" v-model="tasks.name"> </v-text-field>
             <br>
-            <v-text-field label="Points" v-model="tasks.task_points" thumb-label step="1"></v-text-field>
-            <br>
-            <v-text-field label="Details" v-model="tasks.details"> </v-text-field>
-            <br>
-            <v-text-field label="Assigned to" v-model="tasks.assigned_to"> </v-text-field>
-            <br>
-            <v-text-field label="Status" v-model="tasks.status"> </v-text-field>
-            <br>
-            <v-text-field label="Date Created" v-model="tasks.date_created"> </v-text-field>
+            
           </v-form> 
 
           <v-card-actions>
@@ -31,7 +23,7 @@
           </v-card-actions> 
 
         </v-card-text>
-      </v-container> -->
+      </v-container> 
 
     </v-card> 
 
@@ -45,7 +37,7 @@ export default {
   data: () => ({
     tasks: {
       task_points: 0,
-      task_name: '',
+      name: '',
       date_created: '',
       details: '',
       assigned_to: '', //eventually a drop down
@@ -67,23 +59,18 @@ export default {
         .post("/tasks", this.tasks)
         .then(response => {
           this.submit = true
-          this.alert(true, 'Create', 'tasks')
+          this.alert(true, 'Create', 'Tasks')
           this.close()
         })
         .catch(e => {
           this.submit = true
-          this.alert(false, 'Create', 'tasks')
+          this.alert(false, 'Create', 'Tasks')
         });
     },
 
     load() {
       this.tasks = {
-        points: 0,
-        task_name: '',
-        date_created: '',
-        details: '',
-        assigned_to: '', //eventually a drop down
-        status: ''
+        name: ''
       }
       this.submitDone = true
     },
@@ -94,7 +81,7 @@ export default {
     },
 
     checkForm() {
-      if (this.tasks.task_points <= 0 || this.tasks.task_name == '' || this.tasks.details == '') {
+      if (this.tasks.name == '') {
         return true
       } else {
         return false
@@ -102,7 +89,7 @@ export default {
     },
 
     alert(success, callName, resource) {
-      console.log('Add Alerting')
+      console.log('Loaded Successfully')
       this.$emit('alert', success, callName, resource)
     }
   }

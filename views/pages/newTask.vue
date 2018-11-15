@@ -23,17 +23,17 @@
               </v-toolbar>
 
                <!-- List of task -->
-              <span  v-if="task">
-                <taskItem v-for="task in task" :key="task._id"
-                 :task="task" @setUpEdit="setupEdit(task)"
-                 @setUpDelete="setupDelete(task)">
+              <span  v-if="tasks">
+                <taskItem v-for="tasks in tasks" :key="tasks._id"
+                 :tasks="tasks" @setUpEdit="setupEdit(tasks)"
+                 @setUpDelete="setupDelete(tasks)">
                  </taskItem>
               </span>
               <v-card v-else class="headline text-xs-center">No tasks to show</v-card>
 
               <!-- Begin Delete Dialog -->
               <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
-                <taskDeleteDialog :task="taskToDelete" @closeDelete="deleteDialog = false"
+                <taskDeleteDialog :tasks="taskToDelete" @closeDelete="deleteDialog = false"
                 @alert="alert">
 
                 </taskDeleteDialog>
@@ -42,7 +42,7 @@
 
               <!-- Begin Edit Form -->
               <v-dialog v-model="editDialog" lazy absolute max-width="50%">
-                <taskEditDialog :rules="rules" :task="taskToEdit" :editName="editName"
+                <taskEditDialog :rules="rules" :tasks="taskToEdit" :editName="editName"
                 @closeEdit="editDialog = false; taskToEdit = {}" @alert="alert">
                 </taskEditDialog>
               </v-dialog>
@@ -97,9 +97,9 @@ export default {
     //load all task from DB, we call this often to make sure the data is up to date
     load() {
       http
-        .get("task")
+        .get("tasks")
         .then(response => {
-          this.task = response.data.task;
+          this.tasks = response.data.tasks;
         })
         .catch(e => {
           this.errors.push(e);
@@ -107,17 +107,17 @@ export default {
     },
 
     //opens delete dialog
-    setupDelete(task) {
-      this.taskToDelete = task;
+    setupDelete(tasks) {
+      this.taskToDelete = tasks;
       this.deleteDialog = true;
     },
 
     //opens edit dialog
-    setupEdit(task) {
-      Object.keys(task).forEach(key => {
-        this.taskToEdit[key] = task[key];
+    setupEdit(tasks) {
+      Object.keys(tasks).forEach(key => {
+        this.taskToEdit[key] = tasks[key];
       });
-      this.editName = tasks.task_name;
+      this.editName = tasks.name;
       this.editDialog = true;
     },
 

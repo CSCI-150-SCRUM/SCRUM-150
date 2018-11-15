@@ -8,7 +8,7 @@
 
         <!-- Begin Input Row -->
         <v-form ref="form">
-          <v-text-field label="Name" v-model="changedtask.task_name"> </v-text-field>
+          <v-text-field label="Name" v-model="changedtask.name"> </v-text-field>
           <v-text-field label="points" v-model="changedtask.task_points" thumb-label step="1"></v-text-field>
           <v-text-field label="topic" v-model="changedtask.details"> </v-text-field>
           <v-text-field label="project" v-model="changedtask.assigned_to"> </v-text-field>
@@ -33,7 +33,7 @@ export default {
   data: () => ({
     changedtask: {
       task_points: 0,
-      task_name: '',
+      name: '',
       date_created: '',
       details: '',
       assigned_to: '', //eventually a drop down
@@ -43,7 +43,7 @@ export default {
   }),
 
   props: {
-    task: {
+    tasks: {
       type: Object
     },
     rules: {
@@ -59,13 +59,13 @@ export default {
     edit() {
       this.editDone = false
       http
-        .put("/task/" + this.task._id, this.changedtask)
+        .put("/tasks/" + this.tasks._id, this.changedtask)
         .then(response => {
-          this.alert(true, 'Edit', 'task')
+          this.alert(true, 'Edit', 'tasks')
           this.editDone = true
         })
         .catch(e => {
-          this.alert(false, 'Edit', 'task')
+          this.alert(false, 'Edit', 'tasks')
           this.editDone = true
         });
         
@@ -81,7 +81,7 @@ export default {
     },
 
     checkForm() {
-      if (this.changedtask.task_points <= 0 || this.changedtask.task_name == '' || this.changedtask.details == '') {
+      if (this.changedtask.task_points <= 0 || this.changedtask.name == '' || this.changedtask.details == '') {
         return true
       } else {
         return false
@@ -90,7 +90,7 @@ export default {
   },
 
   mounted() {
-    this.changedtask = this.task
+    this.changedtask = this.tasks
   }
 
 }
