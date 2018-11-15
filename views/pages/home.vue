@@ -19,7 +19,9 @@ Vue.component('b-jumbotron', bJumbotron);
                   <p style="color:DodgerBlue;">A VISUAL MANAGEMENT TOOL!</p>
                 <hr class="my-4">
             <p>
-            Welcome to SCRUMBAG. ScrumBag is a web-based application that allows teams to work together using the Scrum Management Technique in a real-time environment. The objective of this application is to simplify the Scrum Management process by incorporating unique user logins, drag-and-drop task cards, and the ability to view, but not modify, other teams' current progress. This wiki will further detail how the application will be implemented and the features that will be included.
+            Welcome to SCRUMBAG. ScrumBag is a web-based application that allows teams to work together using the Scrum Management Technique in 
+            a real-time environment. The objective of this application is to simplify the Scrum Management process by incorporating unique user 
+            logins, drag-and-drop task cards, and the ability to view, but not modify, other teams' current progress.
            </p>
                  <v-btn variant="primary" href="http://localhost:3000/#/existingProject">Go to existing projects</v-btn>
                  <v-btn variant="success" href="http://localhost:3000/#/boards">Go to project boards</v-btn>
@@ -29,17 +31,3 @@ Vue.component('b-jumbotron', bJumbotron);
               </v-flex>
 </template>
 
-<script>
-export default {
-  data: () => ({
-    value: "",
-    num1: 0,
-    num2: 0
-  })
-
-}
-</script>
-
-<style>
-
-</style>

@@ -32,10 +32,10 @@
 
               <!-- Begin Delete Dialog -->
               <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
-                <projectDeleteDialog :project="projectToDelete" @closeDelete="deleteDialog = false"
-                @alert="alert">
+                <!-- <projectDeleteDialog :project="projectToDelete" @closeDelete="deleteDialog = false"
+                @alert="alert"> 
 
-                </projectDeleteDialog>
+                </projectDeleteDialog>-->
               </v-dialog>
               <!-- End Delete Dialog -->
 
@@ -56,11 +56,11 @@
 </template>
 
 <script>
-import { http } from "../config/http.js"
-import projectItem from "../components/project.vue"
-import projectAddDialog from "../components/projectAddDialog.vue"
-import projectEditDialog from "../components/projectEditDialog.vue"
-import projectDeleteDialog from "../components/projectDeleteDialog.vue"
+import { http } from '../config/http.js';
+import projectItem from '../components/project.vue';
+import projectAddDialog from '../components/projectAddDialog.vue';
+import projectEditDialog from '../components/projectEditDialog.vue';
+import projectDeleteDialog from '../components/projectDeleteDialog.vue';
 
 export default {
   //Variables
@@ -74,7 +74,7 @@ export default {
     addDialog: false,
     deleteDialog: false,
     editDialog: false,
-    editName: "",
+    editName: '',
   }),
 
   //Components this page will need
@@ -82,7 +82,7 @@ export default {
     projectItem: projectItem,
     projectAddDialog: projectAddDialog,
     projectEditDialog: projectEditDialog,
-    projectDeleteDialog: projectDeleteDialog
+    projectDeleteDialog: projectDeleteDialog,
   },
 
   //The methods we will need
@@ -90,7 +90,7 @@ export default {
     //load all project from DB, we call this often to make sure the data is up to date
     load() {
       http
-        .get("project")
+        .get('project')
         .then(response => {
           this.project = response.data.project;
         })
@@ -113,16 +113,16 @@ export default {
       this.editName = project.project_name;
       this.editDialog = true;
     },
-  
+
     //get those project
     mounted() {
       this.load();
-    }
+    },
   },
 
   //get those project
   mounted() {
     this.load();
-  }
+  },
 };
 </script>
