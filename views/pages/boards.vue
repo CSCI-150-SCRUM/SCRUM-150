@@ -7,7 +7,7 @@
         <v-card dark color="primary">
           <v-card-text>Novel/Story</v-card-text>
         </v-card>
-        <draggable>
+        <!-- <draggable> -->
         <!-- List of tasks -->
               <span  v-if="tasks.length">
                 <taskItem v-for="task in tasks" :key="task._id"
@@ -16,7 +16,7 @@
                  </taskItem>
               </span>
               <v-card-text v-else class="grey">No Tasks</v-card-text>
-        </draggable>  
+       <!-- </draggable> --> 
       </v-flex>
       <v-flex xs2>
         <v-card dark color="secondary">
@@ -37,7 +37,7 @@
                     </taskAddDialog>
                   </v-dialog>
                 </v-toolbar>
-              <draggable>
+             <!-- <draggable> -->
                 <!-- List of tasks -->
               <span  v-if="tasks.length">
                 <taskItem v-for="task in tasks" :key="task._id"
@@ -46,7 +46,7 @@
                  </taskItem>
               </span>
               <v-card-text v-else class="grey">No Tasks</v-card-text>
-              </draggable>
+             <!-- </draggable> -->
               <!-- Begin Delete Dialog -->
               <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
                 <tasksDeleteDialog :task="taskToDelete" @closeDelete="deleteDialog = false"
