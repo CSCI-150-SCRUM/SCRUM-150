@@ -70,12 +70,12 @@
             href: "/#/home",
             router: true
           },
-          {
+          /* {
             icon: "account_circle",
             title: "Users",
             href: "/#/users",
             router: true
-          },
+          }, */
           {
             icon: "account_circle",
             title: "Login",
@@ -88,24 +88,24 @@
             href: "/#/boards",
             router: true
           },
-          {
-            icon: "add_comment",
-            title: "New Task",
-            href: "/#/newTask",
-            router: true
-          },
+          // {
+          //   icon: "add_comment",
+          //   title: "New Task",
+          //   href: "/#/newTask",
+          //   router: true
+          // },
           {
             icon: "create_new_folder",
             title: "Project",
             href: "/#/project",
             router: true
           },
-          {
-            icon: "view_module",
-            title: "Existing Projects",
-            href: "/#/existingProject",
-            router: true
-          }
+          // {
+          //   icon: "view_module",
+          //   title: "Existing Projects",
+          //   href: "/#/existingProject",
+          //   router: true
+          // }
   
         ],
         miniVariant: false,

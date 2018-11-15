@@ -15,11 +15,11 @@ const router = new Router ({
   root: '/home',
   routes: 
   [
-    {
+    /* {
       path: '/users',
       name: 'users',
       component: usersPage
-    },
+    }, */
     {
       path: '/login',
       name: 'login',
@@ -39,21 +39,21 @@ const router = new Router ({
       name: 'boards',
      component: boardsPage
     },
-    {
+   /*  {
       path: '/newTask',
       name: 'newTask',
       component: newTaskPage
-    },
+    }, */
     {
       path: '/project',
       name: 'project',
       component: newProjectPage
     },
-    {
+   /*  {
       path: '/existingProject',
       name: 'existingProject',
       component: existingProjectPage
-    }
+    } */
   ]
 })
 
