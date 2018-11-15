@@ -9,8 +9,8 @@
         </v-card>
         <!-- <draggable> -->
         <!-- List of tasks -->
-              <span  v-if="tasks.length">
-                <taskItem v-for="task in tasks" :key="task._id"
+             <span  v-if="novelstory.length">
+                <taskItem v-for="task in novelstory" :key="task._id"
                  :task="task" @setUpEdit="setupEdit(task)"
                  @setUpDelete="setupDelete(task)">
                  </taskItem>
@@ -23,7 +23,7 @@
                                   
               <!-- Begin Toolbar -->
               <v-toolbar class="secondary primaryText--text">
-                <v-card-text> Tasks </v-card-text>
+                <v-card-text> Backlog </v-card-text>
                 <v-spacer></v-spacer>
 
                  <!-- Add Dialog Button -->
@@ -71,8 +71,8 @@
           <v-card-text>To-Do</v-card-text>
         </v-card>
         <!-- List of tasks -->
-              <span  v-if="tasks.length">
-                <taskItem v-for="task in tasks" :key="task._id"
+            <span  v-if="todo.length">
+                <taskItem v-for="task in todo" :key="task._id"
                  :task="task" @setUpEdit="setupEdit(task)"
                  @setUpDelete="setupDelete(task)">
                  </taskItem>
@@ -85,8 +85,8 @@
           <v-card-text>Doing</v-card-text>
         </v-card>
         <!-- List of tasks -->
-              <span  v-if="tasks.length">
-                <taskItem v-for="task in tasks" :key="task._id"
+            <span  v-if="doing.length">
+                <taskItem v-for="task in doing" :key="task._id"
                  :task="task" @setUpEdit="setupEdit(task)"
                  @setUpDelete="setupDelete(task)">
                  </taskItem>
@@ -99,8 +99,8 @@
           <v-card-text>Done</v-card-text>
         </v-card>
         <!-- List of tasks -->
-              <span  v-if="tasks.length">
-                <taskItem v-for="task in tasks" :key="task._id"
+              <span  v-if="done.length">
+               <taskItem v-for="task in done" :key="task._id"
                  :task="task" @setUpEdit="setupEdit(task)"
                  @setUpDelete="setupDelete(task)">
                  </taskItem>
@@ -127,6 +127,10 @@
     data: () => ({
       errors: [],
       tasks: [],
+      done: [],
+      doing: [],
+      novelstory: [],
+      todo:[],
       taskToDelete: {},
       alertSettings: {}, //this is to abstract our our alerts to make them easier and stop repeating code
       taskToEdit: {},
