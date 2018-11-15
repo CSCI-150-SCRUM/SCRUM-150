@@ -8,7 +8,7 @@ const definition = {
         required: true
     },
     date_created: {
-        type: Date,
+        type: String,
         required: true
     },
     details: {

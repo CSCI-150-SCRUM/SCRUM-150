@@ -1,6 +1,9 @@
 //import mongoose, our ODM for mongoDB
-const mongoose = require('mongoose')
-const bcrypt = require('bcrypt-nodejs');
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+
+//mongoose.connect('mongodb://localhost:27017/users', { useNewUrlParser: true });
+//mongoose.set('useCreateIndex', true);
 
 //Define all of its fields, like columns of a SQL table
 const definition = {
@@ -28,45 +31,37 @@ const definition = {
 }
 
 //Set any options for the schema
-const options = {
+/*const options = {
   timestamps: true
 }
-
+*/
 //make the schema as a new instance of a mongoose schema, using our definition and options
-const UserSchema = new mongoose.Schema(definition, options)
+var UserSchema = new mongoose.Schema(definition)
+
+var User = module.exports = mongoose.model('User', UserSchema);
 
 
-//
 
-UserSchema.pre('save', function (next) {
-  var user = this;
-  if (this.isModified('password') || this.isNew) {
-      bcrypt.genSalt(10, function (err, salt) {
-          if (err) {
-              return next(err);
-          }
-          bcrypt.hash(user.password, salt, null, function (err, hash) {
-              if (err) {
-                  return next(err);
-              }
-              user.password = hash;
-              next();
-          });
-      });
-  } else {
-      return next();
-  }
-});
+module.exports.getUserById = function(id, callback){
+	User.findById(id, callback);
+}
 
-UserSchema.methods.comparePassword = function (passw, cb) {
-  bcrypt.compare(passw, this.password, function (err, isMatch) {
-      if (err) {
-          return cb(err);
-      }
-      cb(null, isMatch);
-  });
-};
+module.exports.getUserByUsername = function(username, callback){
+	var query = {username: username};
+	User.findOne(query, callback);
+}
 
-//export that boye
+module.exports.comparePassword = function(candidatePassword, hash, callback){
+	bcrypt.compare(candidatePassword, hash, function(err, isMatch) {
+		callback(null, isMatch);
+	});
+}
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports.createUser = function(newUser, callback){
+	bcrypt.genSalt(10, function(err, salt) {
+    	bcrypt.hash(newUser.password, salt, function(err, hash) {
+        	newUser.password = hash;
+			newUser.save(callback);
+    	});
+	});
+}

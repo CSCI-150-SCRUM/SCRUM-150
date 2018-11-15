@@ -11,6 +11,8 @@ const tasksRoutes = require('./tasks') //use the tasks route
 
 const projectRoutes = require('./project') //use the project route 
 
+const loginRoutes = require('./login')
+
 const router = express.Router() //make a new router
 
 router.use('/users/', userRoutes) //tell it to use the userRoutes
@@ -18,6 +20,8 @@ router.use('/users/', userRoutes) //tell it to use the userRoutes
 router.use('/tasks/', tasksRoutes) //tell it to use the tasksRouter
 
 router.use('/project/', projectRoutes) //tell it to use the projectRouter
+
+router.use('/login/', loginRoutes)
 
 module.exports = router
 

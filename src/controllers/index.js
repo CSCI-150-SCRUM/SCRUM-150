@@ -4,10 +4,11 @@
 const usersController = require('./users')
 const tasksController = require('./tasks')
 const projectController = require ('./project')
+const loginController = require ('./login')
 
 module.exports = {
     usersController,
     tasksController,
     projectController,
-
+    loginController
 }
