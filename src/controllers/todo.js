@@ -31,16 +31,16 @@ exports.store = async (req, res) => {
     let todo = new Todo(req.body)
 
     //save it in the DB
-    await Todo.save()
-        .then(todo => {
-            log.success('Created Todo: {}', todo.name)
+    await todo.save()
+        .then(todos => {
+            log.success('Created Todo: {}', todos.name)
             //send a 201 and the new resource
             res.status(201).json({
-                data: todo
+                data: todos
             })
         })
         .catch(err => {
-            log.error(err, 'Error creating todo: {}', todo.name)
+            log.error(err, 'Error creating todo: {}', todos.name)
             let errStatus = err.name === 'ValidationError' ? 400 : 500
             res.status(errStatus).json({
                 err: err
@@ -54,7 +54,7 @@ exports.show = async (req, res) => {
     //find this sneaky boye
     await Todo.findById(req.params.id).exec()
         .then(todos => {
-            log.success('Found todo: {}', todo.name)
+            log.success('Found todo: {}', todos.name)
             res.json({
                 todo: todos
             })
@@ -94,10 +94,10 @@ exports.update = async (req, res) => {
             new: true
         })
         .exec()
-        .then(todo => {
+        .then(todos => {
             log.success('Updated todo: {}', req.params.id)
             res.status(200).json({
-                todo: todo
+                todo: todos
             })
         })
         .catch(err => {

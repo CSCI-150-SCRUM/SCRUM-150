@@ -31,16 +31,16 @@ exports.store = async (req, res) => {
     let doing = new Doing(req.body)
 
     //save it in the DB
-    await Doing.save()
-        .then(doing => {
-            log.success('Created Doing: {}', doing.name)
+    await doing.save()
+        .then(doings => {
+            log.success('Created Doing: {}', doings.name)
             //send a 201 and the new resource
             res.status(201).json({
-                data: doing
+                data: doings
             })
         })
         .catch(err => {
-            log.error(err, 'Error creating doing: {}', doing.name)
+            log.error(err, 'Error creating doing: {}', doings.name)
             let errStatus = err.name === 'ValidationError' ? 400 : 500
             res.status(errStatus).json({
                 err: err
@@ -53,10 +53,10 @@ exports.show = async (req, res) => {
 
     //find this sneaky boye
     await Doing.findById(req.params.id).exec()
-        .then(doing => {
-            log.success('Found doing: {}', doing.name)
+        .then(doings => {
+            log.success('Found doing: {}', doings.name)
             res.json({
-                doing: doing
+                doings: doings
             })
         })
         .catch(err => {
@@ -94,10 +94,10 @@ exports.update = async (req, res) => {
             new: true
         })
         .exec()
-        .then(doing => {
+        .then(doings => {
             log.success('Updated doing: {}', req.params.id)
             res.status(200).json({
-                doing: doing
+                doings: doings
             })
         })
         .catch(err => {

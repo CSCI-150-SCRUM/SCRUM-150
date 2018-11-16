@@ -11,7 +11,7 @@
         <!-- List of novelstory -->
              <span  v-if="novelstory.length">
                 <novelstoryItem v-for="novelstorys in novelstory" :key="novelstorys._id"
-                 :task="novelstorys" @setUpEdit="setupEdit(novelstorys)"
+                 :novelstorys="novelstorys" @setUpEdit="setupEdit(novelstorys)"
                  @setUpDelete="setupDelete(novelstorys)">
                  </novelstoryItem>
               </span>
@@ -74,9 +74,7 @@
         </v-card>
         <!-- List of todo -->
             <span  v-if="todo.length">
-                <todoItem v-for="todo in todo" :key="todo._id"
-                 :task="todo" @setUpEdit="setupEdit(todo)"
-                 @setUpDelete="setupDelete(todo)">
+                <todoItem v-for="todos in todo" :key="todos._id"  :todos="todos">
                  </todoItem>
               </span>
               <v-card-text v-else class="grey">No Tasks To-Do</v-card-text>
@@ -88,9 +86,9 @@
         </v-card>
         <!-- List of doing -->
             <span  v-if="doing.length">
-                <doingItem v-for="doing in doing" :key="doing._id"
-                 :task="doing" @setUpEdit="setupEdit(doing)"
-                 @setUpDelete="setupDelete(doing)">
+                <doingItem v-for="doings in doing" :key="doings._id"
+                 :doings="doings" @setUpEdit="setupEdit(doings)"
+                 @setUpDelete="setupDelete(doings)">
                  </doingItem>
               </span>
               <v-card-text v-else class="grey">No Doing Tasks</v-card-text>
@@ -103,7 +101,7 @@
         <!-- List of done tasks -->
               <span  v-if="done.length">
                <doneItem v-for="done in done" :key="done._id"
-                 :task="done" @setUpEdit="setupEdit(done)"
+                 :done="done" @setUpEdit="setupEdit(done)"
                  @setUpDelete="setupDelete(done)">
                  </doneItem>
               </span>
@@ -179,7 +177,7 @@ export default {
         });
     },
     //load all todo tasks
-    load() {
+    /*load() {
       http
         .get('todo')
         .then(response => {
@@ -188,9 +186,9 @@ export default {
         .catch(e => {
           this.errors.push(e);
         });
-    },
+    },*/
     //load all the doing tasks
-    load() {
+    /*     load() {
       http
         .get('doing')
         .then(response => {
@@ -199,9 +197,9 @@ export default {
         .catch(e => {
           this.errors.push(e);
         });
-    },
+    }, */
     //load all of the done tasks
-    load() {
+    /* load() {
       http
         .get('done')
         .then(response => {
@@ -221,7 +219,7 @@ export default {
         .catch(e => {
           this.errors.push(e);
         });
-    },
+    }, */
 
     //opens delete dialog
     setupDelete(task) {
