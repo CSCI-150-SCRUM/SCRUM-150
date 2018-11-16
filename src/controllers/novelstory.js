@@ -31,16 +31,16 @@ exports.store = async (req, res) => {
     let novelstory = new NovelStory(req.body)
 
     //save it in the DB
-    await NovelStory.save()
-        .then(novelstory => {
-            log.success('Created Novel/Story: {}', novelstory.email)
+    await novelstory.save()
+        .then(novelstorys => {
+            log.success('Created Novel/Story: {}', novelstorys.name)
             //send a 201 and the new resource
             res.status(201).json({
-                data: novelstory
+                data: novelstorys
             })
         })
         .catch(err => {
-            log.error(err, 'Error creating novelstory: {}', novelstory.email)
+            log.error(err, 'Error creating novelstory: {}', novelstorys.name)
             let errStatus = err.name === 'ValidationError' ? 400 : 500
             res.status(errStatus).json({
                 err: err
@@ -53,10 +53,10 @@ exports.show = async (req, res) => {
 
     //find this sneaky boye
     await NovelStory.findById(req.params.id).exec()
-        .then(novelstory => {
-            log.success('Found novelstory: {}', novelstory.name)
+        .then(novelstorys => {
+            log.success('Found novelstory: {}', novelstorys.name)
             res.json({
-                novelstory: novelstory
+                novelstorys: novelstorys
             })
         })
         .catch(err => {
@@ -94,10 +94,10 @@ exports.update = async (req, res) => {
             new: true
         })
         .exec()
-        .then(novelstory => {
+        .then(novelstorys => {
             log.success('Updated novelstory: {}', req.params.id)
             res.status(200).json({
-                novelstory: novelstory
+                novelstorys: novelstorys
             })
         })
         .catch(err => {

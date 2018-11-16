@@ -10,9 +10,9 @@
         <!-- <draggable> -->
         <!-- List of novelstory -->
              <span  v-if="novelstory.length">
-                <novelstoryItem v-for="novelstory in novelstory" :key="novelstory._id"
-                 :task="novelstory" @setUpEdit="setupEdit(novelstory)"
-                 @setUpDelete="setupDelete(novelstory)">
+                <novelstoryItem v-for="novelstorys in novelstory" :key="novelstorys._id"
+                 :task="novelstorys" @setUpEdit="setupEdit(novelstorys)"
+                 @setUpDelete="setupDelete(novelstorys)">
                  </novelstoryItem>
               </span>
               <v-card-text v-else class="grey">No Novel/Storys</v-card-text>

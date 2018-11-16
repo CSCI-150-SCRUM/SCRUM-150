@@ -17,15 +17,15 @@
                   </v-btn>
 
                   <!-- Add Dialog -->
-                  <!--<projectAddDialog :rules="rules" @closeAdd="addDialog = false" @alert="alert">
-                  </projectAddDialog>-->
+                  <projectAddDialog @closeAdd="addDialog = false" @alert="alert">
+                  </projectAddDialog>
                 </v-dialog> 
               </v-toolbar>
                 <!-- List of project -->
               <span  v-if="project.length">
-                <projectItem v-for="project in projects" :key="project._id"
-                 :project="project" @setUpEdit="setupEdit(project)"
-                 @setUpDelete="setupDelete(project)">
+                <projectItem v-for="projects in project" :key="projects._id"
+                 :project="projects" @setUpEdit="setupEdit(projects)"
+                 @setUpDelete="setupDelete(projects)">
                  </projectItem>
               </span>
               <v-card v-else class="headline text-xs-center">No projects to show</v-card>
@@ -66,7 +66,7 @@ export default {
   //Variables
   data: () => ({
     errors: [],
-    projects: [],
+    project: [],
     projectToDelete: {},
     alertSettings: {}, //this is to abstract our our alerts to make them easier and stop repeating code
     projectToEdit: {},
