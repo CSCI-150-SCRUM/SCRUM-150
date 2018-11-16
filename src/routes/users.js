@@ -2,8 +2,12 @@
 const express = require('express')
 
 //import the controllers and middleware
-const { usersController } = require('../controllers/index')
-const { catchErrors } = require('../middleware/error-handler')
+const {
+    usersController
+} = require('../controllers/index')
+const {
+    catchErrors
+} = require('../middleware/error-handler')
 
 
 //set up the router

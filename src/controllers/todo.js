@@ -1,46 +1,46 @@
-//import the User constant explicitly
+//import the Todo constant explicitly
 const {
-    Task
+    Todo
 } = require('../database/models')
 const trunks = require('trunks-log')
-const log = new trunks('TASKS')
+const log = new trunks('TODO')
 
-//show all tasks
+//show all todos
 exports.index = async (req, res) => {
 
-    //query the DB of all tasks
-    await Task.find().exec()
-        .then(tasks => {
-            log.success('Retrieved all {} tasks', tasks.length)
+    //query the DB of all todos
+    await Todo.find().exec()
+        .then(todo => {
+            log.success('Retrieved all {} todo tasks', todo.length)
             res.json({
-                tasks: tasks
+                todo: todo
             })
         })
         .catch(err => {
-            log.error(err, 'Could not retrieve tasks: {}', err.message)
+            log.error(err, 'Could not retrieve todo tasks: {}', err.message)
             res.json({
                 error: err,
-                message: "Could not retrieve tasks"
+                message: "Could not retrieve todo tasks"
             }).status(500)
         })
 }
 
-//Store a new task
+//Store a new todo
 exports.store = async (req, res) => {
 
-    let task = new Task(req.body)
+    let todo = new Todo(req.body)
 
     //save it in the DB
-    await task.save()
-        .then(task => {
-            log.success('Created User: {}', task.name)
+    await todo.save()
+        .then(todos => {
+            log.success('Created Todo: {}', todos.name)
             //send a 201 and the new resource
             res.status(201).json({
-                data: task
+                data: todos
             })
         })
         .catch(err => {
-            log.error(err, 'Error creating task: {}', task.name)
+            log.error(err, 'Error creating todo: {}', todos.name)
             let errStatus = err.name === 'ValidationError' ? 400 : 500
             res.status(errStatus).json({
                 err: err
@@ -48,38 +48,38 @@ exports.store = async (req, res) => {
         })
 }
 
-//this function is for looking at one user by their mongo id
+//this function is for looking at one todo by their mongo id
 exports.show = async (req, res) => {
 
     //find this sneaky boye
-    await Task.findById(req.params.id).exec()
-        .then(task => {
-            log.success('Found task: {}', task.name)
+    await Todo.findById(req.params.id).exec()
+        .then(todos => {
+            log.success('Found todo: {}', todos.name)
             res.json({
-                task: task
+                todo: todos
             })
         })
         .catch(err => {
-            log.error(err, 'Error finding task: {}', req.params.id)
+            log.error(err, 'Error finding todo: {}', req.params.id)
             res.json({
                 error: err,
-                message: 'Could not retrieve task'
+                message: 'Could not retrieve todo'
             }).status(500)
         })
 }
 
-//ever wanted to make the users disappear 
+//ever wanted to make the todos disappear 
 exports.delete = async (req, res) => {
 
     //find the sneaky boye and make him go away
-    await Task.findByIdAndRemove(req.params.id).exec()
+    await Todo.findByIdAndRemove(req.params.id).exec()
         .then(() => {
-            log.success('Deleted Task: {}', req.params.id)
+            log.success('Deleted Todo: {}', req.params.id)
             //let em know there aint no content no mo
             res.status(204).json()
         })
         .catch(err => {
-            log.error(err, 'Error finding task: {}', req.params.id)
+            log.error(err, 'Error finding todo: {}', req.params.id)
             res.status(500).json({
                 err: err
             })
@@ -87,21 +87,21 @@ exports.delete = async (req, res) => {
 
 }
 
-//edit a user based on ID
+//edit a todo based on ID
 exports.update = async (req, res) => {
-    await Task
+    await Todo
         .findByIdAndUpdate(req.params.id, req.body, {
             new: true
         })
         .exec()
-        .then(task => {
-            log.success('Updated task: {}', req.params.id)
+        .then(todos => {
+            log.success('Updated todo: {}', req.params.id)
             res.status(200).json({
-                task: task
+                todo: todos
             })
         })
         .catch(err => {
-            log.error(err, "Could not update task: {}", req.params.id)
+            log.error(err, "Could not update todo: {}", req.params.id)
             res.status(500).json({
                 err: err
             })

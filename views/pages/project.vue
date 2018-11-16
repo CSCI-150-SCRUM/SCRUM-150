@@ -17,33 +17,33 @@
                   </v-btn>
 
                   <!-- Add Dialog -->
-                  <projectAddDialog :rules="rules" @closeAdd="addDialog = false" @alert="alert">
+                  <projectAddDialog @closeAdd="addDialog = false" @alert="alert">
                   </projectAddDialog>
                 </v-dialog> 
               </v-toolbar>
                 <!-- List of project -->
-              <span  v-if="project">
-                <projectItem v-for="project in project" :key="project._id"
-                 :project="project" @setUpEdit="setupEdit(project)"
-                 @setUpDelete="setupDelete(project)">
+              <span  v-if="project.length">
+                <projectItem v-for="projects in project" :key="projects._id"
+                 :project="projects" @setUpEdit="setupEdit(projects)"
+                 @setUpDelete="setupDelete(projects)">
                  </projectItem>
               </span>
               <v-card v-else class="headline text-xs-center">No projects to show</v-card>
 
               <!-- Begin Delete Dialog -->
               <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
-                <projectDeleteDialog :project="projectToDelete" @closeDelete="deleteDialog = false"
-                @alert="alert">
+                <!-- <projectDeleteDialog :project="projectToDelete" @closeDelete="deleteDialog = false"
+                @alert="alert"> 
 
-                </projectDeleteDialog>
+                </projectDeleteDialog>-->
               </v-dialog>
               <!-- End Delete Dialog -->
 
               <!-- Begin Edit Form -->
               <v-dialog v-model="editDialog" lazy absolute max-width="50%">
-                <projectEditDialog :rules="rules" :project="projectToEdit" :editName="editName"
+                <!--<projectEditDialog :rules="rules" :project="projectToEdit" :editName="editName"
                 @closeEdit="editDialog = false; projectToEdit = {}" @alert="alert">
-                </projectEditDialog>
+                </projectEditDialog>-->
               </v-dialog>
               <!-- End Edit Form -->
               
@@ -56,25 +56,25 @@
 </template>
 
 <script>
-import { http } from "../config/http.js"
-import projectItem from "../components/project.vue"
-import projectAddDialog from "../components/projectAddDialog.vue"
-import projectEditDialog from "../components/projectEditDialog.vue"
-import projectDeleteDialog from "../components/projectDeleteDialog.vue"
+import { http } from '../config/http.js';
+import projectItem from '../components/project.vue';
+import projectAddDialog from '../components/projectAddDialog.vue';
+import projectEditDialog from '../components/projectEditDialog.vue';
+import projectDeleteDialog from '../components/projectDeleteDialog.vue';
 
 export default {
   //Variables
   data: () => ({
     errors: [],
-    projects: [],
+    project: [],
     projectToDelete: {},
     alertSettings: {}, //this is to abstract our our alerts to make them easier and stop repeating code
     projectToEdit: {},
-    Project: {},
+    newProject: {},
     addDialog: false,
     deleteDialog: false,
     editDialog: false,
-    editName: "",
+    editName: '',
   }),
 
   //Components this page will need
@@ -82,7 +82,7 @@ export default {
     projectItem: projectItem,
     projectAddDialog: projectAddDialog,
     projectEditDialog: projectEditDialog,
-    projectDeleteDialog: projectDeleteDialog
+    projectDeleteDialog: projectDeleteDialog,
   },
 
   //The methods we will need
@@ -90,7 +90,7 @@ export default {
     //load all project from DB, we call this often to make sure the data is up to date
     load() {
       http
-        .get("project")
+        .get('project')
         .then(response => {
           this.project = response.data.project;
         })
@@ -113,16 +113,16 @@ export default {
       this.editName = project.project_name;
       this.editDialog = true;
     },
-  
+
     //get those project
     mounted() {
       this.load();
-    }
+    },
   },
 
   //get those project
   mounted() {
     this.load();
-  }
+  },
 };
 </script>

@@ -13,7 +13,7 @@
           <v-form ref="form">
 
             <v-text-field label="Name" v-model="task.name"> </v-text-field>
-            <v-text-field label="Task Points" v-model="task.task_points"> </v-text-field>
+            <v-text-field label="Task Points" v-model="task.points"> </v-text-field>
             <v-text-field label="Date Created" v-model="task.date_created"> </v-text-field>
             <v-text-field label="Details" v-model="task.details"> </v-text-field>
             <v-text-field label="Assigned To" v-model="task.assigned_to"> </v-text-field>
@@ -36,67 +36,67 @@
 
 
 <script>
-import { http } from '../config/http'
+import { http } from '../config/http';
 
 export default {
   data: () => ({
     task: {
-      task_points: 0,
+      points: 0,
       name: '',
       date_created: '',
       details: '',
       assigned_to: '', //eventually a drop down
-      status: ''
+      status: '',
     },
     submitDone: true,
   }),
 
   props: {
     rules: {
-      type: Object
-    }
+      type: Object,
+    },
   },
 
   methods: {
     submit() {
-      this.submitDone = false
+      this.submitDone = false;
       http
-        .post("/tasks", this.task)
+        .post('/tasks', this.task)
         .then(response => {
-          this.submit = true
-          this.alert(true, 'Create', 'Task')
-          this.close()
+          this.submit = true;
+          this.alert(true, 'Create', 'Task');
+          this.close();
         })
         .catch(e => {
-          this.submit = true
-          this.alert(false, 'Create', 'Task')
+          this.submit = true;
+          this.alert(false, 'Create', 'Task');
         });
     },
 
     load() {
       this.task = {
-        name: ''
-      }
-      this.submitDone = true
+        name: '',
+      };
+      this.submitDone = true;
     },
 
     close() {
-      this.load()
-      this.$emit('closeAdd')
+      this.load();
+      this.$emit('closeAdd');
     },
 
     checkForm() {
       if (this.task.name == '') {
-        return true
+        return true;
       } else {
-        return false
+        return false;
       }
     },
 
     alert(success, callName, resource) {
-      console.log('Loaded Successfully')
-      this.$emit('alert', success, callName, resource)
-    }
-  }
-}
+      console.log('Loaded Successfully');
+      this.$emit('alert', success, callName, resource);
+    },
+  },
+};
 </script>

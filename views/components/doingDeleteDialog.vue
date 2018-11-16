@@ -1,11 +1,11 @@
 <template>
   <v-card>
      <v-toolbar class="primary primaryText--text" >
-      <v-toolbar-title> Delete project Record {{project.project_name}} </v-toolbar-title>
+      <v-toolbar-title> Delete Doing Record {{doing.name}} </v-toolbar-title>
     </v-toolbar>
 
     <v-card-text>
-      <p>This action will remove {{project.project_name}} from the application. This is
+      <p>This action will remove {{doing.name}} from the application. This is
       <strong>irreversible.</strong>
       </p>
     </v-card-text>
@@ -26,7 +26,7 @@ export default {
   }),
 
   props: {
-    project: {
+    doing: {
       type: Object,
     },
   },
@@ -35,15 +35,15 @@ export default {
     confirmDelete() {
       this.deleteDone = false;
       http
-        .delete('/project/' + this.project._id)
+        .delete('/doing/' + this.tasks._id)
         .then(response => {
           this.deleteDone = true;
-          this.alert(true, 'Delete', 'project');
+          this.alert(true, 'Delete', 'doing');
           this.close();
         })
         .catch(e => {
           this.deleteDone = true;
-          this.alert(false, 'Delete', 'project');
+          this.alert(false, 'Delete', 'doing');
           this.close();
         });
     },

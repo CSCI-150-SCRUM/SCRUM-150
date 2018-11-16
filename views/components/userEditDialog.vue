@@ -24,74 +24,73 @@
 </template>
 
 <script>
-  import {
-    http
-  } from '../config/http'
-  
-  export default {
-    data: () => ({
-      changedUser: {
-        name: '',
-        email: '',
-        age: 0
-      },
-      editDone: true
-    }),
-  
-    props: {
-      user: {
-        type: Object
-      },
-      rules: {
-        type: Object
-      },
-      editName: {
-        type: String,
-        default: ''
+import { http } from '../config/http';
+
+export default {
+  data: () => ({
+    changedUser: {
+      name: '',
+      email: '',
+      age: 0,
+    },
+    editDone: true,
+  }),
+
+  props: {
+    user: {
+      type: Object,
+    },
+    rules: {
+      type: Object,
+    },
+    editName: {
+      type: String,
+      default: '',
+    },
+  },
+
+  methods: {
+    edit() {
+      this.editDone = false;
+      http
+        .put('/users/' + this.user._id, this.changedUser)
+        .then(response => {
+          this.alert(true, 'Edit', 'User');
+          this.editDone = true;
+        })
+        .catch(e => {
+          this.alert(false, 'Edit', 'User');
+          this.editDone = true;
+        });
+    },
+
+    close() {
+      this.$emit('closeEdit');
+    },
+
+    alert(success, callName, resource) {
+      this.$emit('alert', success, callName, resource);
+      this.close();
+    },
+
+    checkForm() {
+      if (
+        this.changedUser.age <= 0 ||
+        this.changedUser.name == '' ||
+        this.changedUser.email == ''
+      ) {
+        return true;
+      } else {
+        return false;
       }
     },
-  
-    methods: {
-      edit() {
-        this.editDone = false
-        http
-          .put("/users/" + this.user._id, this.changedUser)
-          .then(response => {
-            this.alert(true, 'Edit', 'User')
-            this.editDone = true
-          })
-          .catch(e => {
-            this.alert(false, 'Edit', 'User')
-            this.editDone = true
-          });
-  
-      },
-  
-      close() {
-        this.$emit('closeEdit')
-      },
-  
-      alert(success, callName, resource) {
-        this.$emit('alert', success, callName, resource)
-        this.close()
-      },
-  
-      checkForm() {
-        if (this.changedUser.age <= 0 || this.changedUser.name == '' || this.changedUser.email == '') {
-          return true
-        } else {
-          return false
-        }
-      }
-    },
-  
-    mounted() {
-      this.changedUser = this.user
-    }
-  
-  }
+  },
+
+  mounted() {
+    this.changedUser = this.user;
+  },
+};
 </script>
 
 <style>
-  
 </style>

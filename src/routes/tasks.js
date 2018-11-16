@@ -2,8 +2,12 @@
 const express = require('express')
 
 //import the controllers and middleware
-const { tasksController } = require('../controllers/index')
-const { catchErrors } = require('../middleware/error-handler')
+const {
+    tasksController
+} = require('../controllers/index')
+const {
+    catchErrors
+} = require('../middleware/error-handler')
 
 //set up the router
 const router = express.Router()

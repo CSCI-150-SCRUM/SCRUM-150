@@ -57,123 +57,118 @@
 
 
 <script>
+export default {
+  data: () => {
+    return {
+      clipped: true,
+      drawer: true,
+      fixed: false,
+      items: [
+        {
+          icon: 'home',
+          title: 'Home',
+          href: '/#/home',
+          router: true,
+        },
+        {
+          icon: 'account_circle',
+          title: 'Users',
+          href: '/#/users',
+          router: true,
+        },
+        {
+          icon: 'vpn_key',
+          title: 'Login',
+          href: '/#/login',
+          router: true,
+        },
+        {
+          icon: 'table_chart',
+          title: 'Boards',
+          href: '/#/boards',
+          router: true,
+        },
+        // {
+        //   icon: "add_comment",
+        //   title: "New Task",
+        //   href: "/#/newTask",
+        //   router: true
+        // },
+        {
+          icon: 'create_new_folder',
+          title: 'Project',
+          href: '/#/project',
+          router: true,
+        },
+        // {
+        //   icon: "view_module",
+        //   title: "Existing Projects",
+        //   href: "/#/existingProject",
+        //   router: true
+        // }
+      ],
+      miniVariant: false,
+      right: true,
+      rightDrawer: false,
+      title: 'ScrumBag',
+      alertOpen: false,
+      alertString: '',
+      alertSuccess: false,
+      isDarkMode: true,
+    };
 
-  export default {
-    data: () => {
-      return {
-        clipped: true,
-        drawer: true,
-        fixed: false,
-        items: [{
-            icon: "home",
-            title: "Home",
-            href: "/#/home",
-            router: true
-          },
-          {
-            icon: "account_circle",
-            title: "Users",
-            href: "/#/users",
-            router: true
-          },
-          {
-            icon: "account_circle",
-            title: "Login",
-            href: "/#/login",
-            router: true
-          },
-          {
-            icon: "table_chart",
-            title: "Boards",
-            href: "/#/boards",
-            router: true
-          },
-          {
-            icon: "add_comment",
-            title: "New Task",
-            href: "/#/newTask",
-            router: true
-          },
-          {
-            icon: "create_new_folder",
-            title: "Project",
-            href: "/#/project",
-            router: true
-          },
-          {
-            icon: "view_module",
-            title: "Existing Projects",
-            href: "/#/existingProject",
-            router: true
-          }
-  
-        ],
-        miniVariant: false,
-        right: true,
-        rightDrawer: false,
-        title: "ScrumBag",
-        alertOpen: false,
-        alertString: '',
-        alertSuccess: false,
-        isDarkMode: true,
-      };
-  
-      icons: [
-        'fab fa-facebook',
-        'fab fa-twitter',
-        'fab fa-google-plus',
-        'fab fa-linkedin',
-        'fab fa-instagram'
-      ]
+    icons: [
+      'fab fa-facebook',
+      'fab fa-twitter',
+      'fab fa-google-plus',
+      'fab fa-linkedin',
+      'fab fa-instagram',
+    ];
+  },
+
+  watch: {
+    isDarkMode() {
+      if (!this.isDarkMode) {
+        //NOT dark mode
+        this.$vuetify.theme = {
+          primary: '#0D47A1', //Main color
+          primaryText: '#FFFFFF', //Color for text on primary
+          secondary: '#90CAF9', //Color for active nav
+          lightText: '#000000',
+        };
+      } else {
+        //Dark mode
+        this.$vuetify.theme = {
+          primary: '#0D47A1', //Main color
+          primaryText: '#FFFFFF', //Color for text on primary
+          secondary: '#90CAF9', //Color for active nav
+          lightText: '#FFFFFF',
+        };
+      }
     },
-  
-    watch: {
-      isDarkMode() {
-        if (!this.isDarkMode) { //NOT dark mode
-          this.$vuetify.theme = {
-            primary: '#0D47A1', //Main color
-            primaryText: '#FFFFFF', //Color for text on primary
-            secondary: '#90CAF9', //Color for active nav
-            lightText: '#000000'
-          }
-        } else { //Dark mode
-          this.$vuetify.theme = {
-            primary: '#0D47A1', //Main color
-            primaryText: '#FFFFFF', //Color for text on primary
-            secondary: '#90CAF9', //Color for active nav
-            lightText: '#FFFFFF'
-          }
-        }
-      },
+  },
 
+  methods: {
+    alert(success, callName, resource) {
+      this.alertOpen = false;
+      this.alertString = callName + ' ' + resource;
+      if (success) {
+        this.alertSuccess = true;
+        this.alertString += ' was successful.';
+      } else {
+        this.alertSuccess = false;
+        this.alertString += ' has failed.';
+      }
+      this.alertOpen = true;
     },
 
-  
-    methods: {
-      alert(success, callName, resource) {
-        this.alertOpen = false
-        this.alertString = callName + ' ' + resource
-        if (success) {
-          this.alertSuccess = true
-          this.alertString += ' was successful.'
-        } else {
-          this.alertSuccess = false
-          this.alertString += ' has failed.'
-        }
-        this.alertOpen = true
-      },
-  
-      getNavClass(href) {
-        if (this.$route.fullPath == href.substring(2)) {
-          return 'secondary primaryText--text'
-        } else {
-          return 'primary primaryText--text'
-        }
-      },
-
-
-    }
-  
-  
-  };
+    getNavClass(href) {
+      if (this.$route.fullPath == href.substring(2)) {
+        return 'secondary primaryText--text';
+      } else {
+        return 'primary primaryText--text';
+      }
+    },
+  },
+};
 </script>

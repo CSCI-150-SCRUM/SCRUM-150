@@ -26,70 +26,76 @@
 </template>
 
 <script>
-  import {http} from '../config/http'
-  
-  export default {
-    data: () => ({
-      user: {
+import { http } from '../config/http';
+
+export default {
+  data: () => ({
+    user: {
+      age: 0,
+      username: '',
+      password: '',
+      name: '',
+      email: '',
+    },
+    submitDone: true,
+  }),
+
+  props: {
+    rules: {
+      type: Object,
+    },
+  },
+
+  methods: {
+    submit() {
+      this.submitDone = false;
+      http
+        .post('/users', this.user)
+        .then(response => {
+          this.submit = true;
+          this.alert(true, 'Create', 'User');
+          this.close();
+        })
+        .catch(e => {
+          this.submit = true;
+          this.alert(false, 'Create', 'User');
+        });
+    },
+
+    load() {
+      this.user = {
         age: 0,
+        email: '',
+        name: '',
         username: '',
         password: '',
-        name: '',
-        email: ''
-      },
-      submitDone: true,
-    }),
-  
-    props: {
-      rules: {
-        type: Object
+      };
+      this.submitDone = true;
+    },
+
+    close() {
+      this.load();
+      this.$emit('closeAdd');
+    },
+
+    checkForm() {
+      if (
+        this.user.age <= 0 ||
+        this.user.name == '' ||
+        this.user.username == '' ||
+        this.user.password == '' ||
+        this.user.email == ''
+      ) {
+        return true;
+      } else {
+        return false;
       }
     },
-  
-    methods: {
-      submit() {
-        this.submitDone = false
-        http
-          .post("/users", this.user)
-          .then(response => {
-            this.submit = true
-            this.alert(true, 'Create', 'User')
-            this.close()
-          })
-          .catch(e => {
-            this.submit = true
-            this.alert(false, 'Create', 'User')
-          });
-      },
-  
-      load() {
-        this.user = {
-          age: 0,
-          email: '',
-          name: '',
-          username: '',
-          password: ''
-        }
-        this.submitDone = true
-      },
-  
-      close() {
-        this.load()
-        this.$emit('closeAdd')
-      },
-  
-      checkForm() {
-        if (this.user.age <= 0 || this.user.name == '' || this.user.username == '' || this.user.password == ''|| this.user.email == '') {
-          return true
-        } else {
-          return false
-        }
-      },
-  
-      alert(success, callName, resource) {
-        console.log('Add Alerting')
-        this.$emit('alert', success, callName, resource)
-      }
-    }
-  }
+
+    alert(success, callName, resource) {
+      console.log('Add Alerting');
+      this.$emit('alert', success, callName, resource);
+    },
+  },
+};
 </script>
