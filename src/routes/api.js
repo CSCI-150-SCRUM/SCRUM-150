@@ -13,13 +13,14 @@ const taskRoutes = require('./tasks') //use the tasks route
 
 const projectRoutes = require('./project') //use the project route 
 
+const authRoutes = require('./auth')
 
 
 
 router.use('/project/', projectRoutes) //tell it to use the projectRouter
 router.use('/users/', userRoutes) //tell it to use the userRoutes
 router.use('/tasks/', taskRoutes) //tell it to use the tasksRouter
-
+router.use('/auth/', authRoutes)
 
 
 

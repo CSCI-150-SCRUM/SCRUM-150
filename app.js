@@ -6,14 +6,8 @@ const mongoose = require('mongoose');
 const cors = require('cors')
 const trunks = require('trunks-log')
 
-var createError = require('http-errors');
 var logger = require('morgan');
-var session = require('express-session');
-var passport = require('passport');
-var expressValidator = require('express-validator');
-var LocalStrategy = require('passport-local').strategy;
-var flash = require('connect-flash');
-var bcrypt = require('bcryptjs');
+
 
 const app = express();
 
@@ -23,6 +17,9 @@ const logs = new trunks('', 'yellow', '')
 // const index = require('./src/routes/index');
 const { apiRoutes } = require('./src/routes/index')
 const { webRoutes } = require('./src/routes/index')
+
+var auth = require('./src/routes/auth');
+app.use('/api/auth', auth);
 
 
 // Use native ES6 Promises since mongoose's are deprecated.
@@ -39,6 +36,10 @@ mongoose.connect(process.env.MONGO_URI, { useMongoClient: true })
 // Fail on connection error.
 mongoose.connection.on('error', error => { throw error })
 
+//
+app.use(logger('dev'));
+
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.png')));
@@ -49,42 +50,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api', apiRoutes);
 
-// Passport (authentication system)
-app.use(passport.initialize());
-app.use(passport.session());
 
-
-//Handle Sessions
-app.use(session({ 
-	secret: 'secret', 
-	saveUninitialized: true,
-	resave: true
-}));
-
-// Validator
-app.use(expressValidator({
-	errorFormatter: function(param, msg, value) {
-		var namespace = param.split('.')
-		, root = namespace.shift()
-		, formParam = root;
-
-		while(namespace.length) {
-			formParam += '[' + namespace.shift() + ']';
-		}
-		return {
-			param 	: formParam,
-			msg	: msg,
-			value	: value
-		};
-	}
-}));
-
-//express-messages
-app.use(require('connect-flash')());
-app.use(function (req, res, next) {
-  res.locals.messages = require('express-messages')(req, res);
-  next();
-});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
