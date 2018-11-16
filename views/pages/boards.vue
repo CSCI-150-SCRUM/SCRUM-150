@@ -39,13 +39,15 @@
                 </v-toolbar>
              <!-- <draggable> -->
                 <!-- List of tasks -->
+            <div ondrop="drop(event)" ondragover="allowDrop(event)">
               <span  v-if="tasks.length">
                 <taskItem v-for="task in tasks" :key="task._id"
                  :task="task" @setUpEdit="setupEdit(task)"
-                 @setUpDelete="setupDelete(task)">
+                 @setUpDelete="setupDelete(task)" draggable="true" ondragstart="drag(event)">
                  </taskItem>
               </span>
               <v-card-text v-else class="grey">No Tasks</v-card-text>
+            </div>
              <!-- </draggable> -->
               <!-- Begin Delete Dialog -->
               <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
