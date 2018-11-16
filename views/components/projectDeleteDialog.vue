@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { http } from '../config/http'
+import { http } from '../config/http';
 
 export default {
   data: () => ({
@@ -27,42 +27,39 @@ export default {
 
   props: {
     project: {
-      type: Object
-    }
+      type: Object,
+    },
   },
 
   methods: {
     confirmDelete() {
-      this.deleteDone = false
+      this.deleteDone = false;
       http
-        .delete("/project/" + this.project._id)
+        .delete('/project/' + this.project._id)
         .then(response => {
-          this.deleteDone = true
-          this.alert(true, 'Delete', 'project')
-          this.close()
+          this.deleteDone = true;
+          this.alert(true, 'Delete', 'project');
+          this.close();
         })
         .catch(e => {
-          this.deleteDone = true
-          this.alert(false, 'Delete', 'project')
-          this.close()
+          this.deleteDone = true;
+          this.alert(false, 'Delete', 'project');
+          this.close();
         });
     },
 
     close() {
-      this.$emit('closeDelete')
+      this.$emit('closeDelete');
     },
 
     alert(success, callName, resource) {
-      this.$emit('alert', success, callName, resource)
-    }
+      this.$emit('alert', success, callName, resource);
+    },
   },
 
-  mounted() {
-  }
-
-}
+  mounted() {},
+};
 </script>
 
 <style>
-
 </style>

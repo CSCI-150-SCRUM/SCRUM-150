@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { http } from '../config/http'
+import { http } from '../config/http';
 
 export default {
   data: () => ({
@@ -31,63 +31,63 @@ export default {
       project_name: '',
       details: '',
     },
-    editDone: true
+    editDone: true,
   }),
 
   props: {
     project: {
-      type: Object
+      type: Object,
     },
     rules: {
-      type: Object
+      type: Object,
     },
     editName: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
 
   methods: {
     edit() {
-      this.editDone = false
+      this.editDone = false;
       http
-        .put("/project/" + this.project._id, this.changedproject)
+        .put('/project/' + this.project._id, this.changedproject)
         .then(response => {
-          this.alert(true, 'Edit', 'project')
-          this.editDone = true
+          this.alert(true, 'Edit', 'project');
+          this.editDone = true;
         })
         .catch(e => {
-          this.alert(false, 'Edit', 'project')
-          this.editDone = true
+          this.alert(false, 'Edit', 'project');
+          this.editDone = true;
         });
-        
     },
 
     close() {
-      this.$emit('closeEdit')
+      this.$emit('closeEdit');
     },
 
     alert(success, callName, resource) {
-      this.$emit('alert', success, callName, resource)
-      this.close()
+      this.$emit('alert', success, callName, resource);
+      this.close();
     },
 
     checkForm() {
-      if (this.changedproject.project_name == '' || this.changedproject.details == '') {
-        return true
+      if (
+        this.changedproject.project_name == '' ||
+        this.changedproject.details == ''
+      ) {
+        return true;
       } else {
-        return false
+        return false;
       }
-    }
+    },
   },
 
   mounted() {
-    this.changedproject = this.project
-  }
-
-}
+    this.changedproject = this.project;
+  },
+};
 </script>
 
 <style>
-
 </style>

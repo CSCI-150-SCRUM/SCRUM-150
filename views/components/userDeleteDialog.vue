@@ -18,52 +18,48 @@
 </template>
 
 <script>
-  import {
-    http
-  } from '../config/http'
-  
-  export default {
-    data: () => ({
-      deleteDone: true,
-    }),
-  
-    props: {
-      user: {
-        type: Object
-      }
+import { http } from '../config/http';
+
+export default {
+  data: () => ({
+    deleteDone: true,
+  }),
+
+  props: {
+    user: {
+      type: Object,
     },
-  
-    methods: {
-      confirmDelete() {
-        this.deleteDone = false
-        http
-          .delete("/users/" + this.user._id)
-          .then(response => {
-            this.deleteDone = true
-            this.alert(true, 'Delete', 'User')
-            this.close()
-          })
-          .catch(e => {
-            this.deleteDone = true
-            this.alert(false, 'Delete', 'User')
-            this.close()
-          });
-      },
-  
-      close() {
-        this.$emit('closeDelete')
-      },
-  
-      alert(success, callName, resource) {
-        this.$emit('alert', success, callName, resource)
-      }
+  },
+
+  methods: {
+    confirmDelete() {
+      this.deleteDone = false;
+      http
+        .delete('/users/' + this.user._id)
+        .then(response => {
+          this.deleteDone = true;
+          this.alert(true, 'Delete', 'User');
+          this.close();
+        })
+        .catch(e => {
+          this.deleteDone = true;
+          this.alert(false, 'Delete', 'User');
+          this.close();
+        });
     },
-  
-    mounted() {}
-  
-  }
+
+    close() {
+      this.$emit('closeDelete');
+    },
+
+    alert(success, callName, resource) {
+      this.$emit('alert', success, callName, resource);
+    },
+  },
+
+  mounted() {},
+};
 </script>
 
 <style>
-  
 </style>

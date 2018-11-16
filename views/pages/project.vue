@@ -23,7 +23,7 @@
               </v-toolbar>
                 <!-- List of project -->
               <span  v-if="project.length">
-                <projectItem v-for="project in project" :key="project._id"
+                <projectItem v-for="project in projects" :key="project._id"
                  :project="project" @setUpEdit="setupEdit(project)"
                  @setUpDelete="setupDelete(project)">
                  </projectItem>
@@ -70,7 +70,7 @@ export default {
     projectToDelete: {},
     alertSettings: {}, //this is to abstract our our alerts to make them easier and stop repeating code
     projectToEdit: {},
-    project: {},
+    newProject: {},
     addDialog: false,
     deleteDialog: false,
     editDialog: false,

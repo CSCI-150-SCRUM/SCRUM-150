@@ -35,7 +35,7 @@ const options = {
 }
 
 //make the schema as a new instance of a mongoose schema, using our definition and options
-const todoSchema = new mongoose.Schema(definition, options)
+const TodoSchema = new mongoose.Schema(definition, options)
 
 //export that boye
-module.exports = mongoose.model('Todo', todoSchema)
+module.exports = mongoose.model('Todo', TodoSchema)

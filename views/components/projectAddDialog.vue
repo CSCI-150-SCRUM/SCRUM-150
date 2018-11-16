@@ -27,64 +27,64 @@
 </template>
 
 <script>
-import { http } from '../config/http'
+import { http } from '../config/http';
 
 export default {
   data: () => ({
     project: {
       project_name: '',
-      details: ''
+      details: '',
     },
     submitDone: true,
   }),
 
   props: {
     rules: {
-      type: Object
-    }
+      type: Object,
+    },
   },
 
   methods: {
     submit() {
-      this.submitDone = false
+      this.submitDone = false;
       http
-        .post("/project", this.project)
+        .post('/project', this.project)
         .then(response => {
-          this.submit = true
-          this.alert(true, 'Create', 'Project')
-          this.close()
+          this.submit = true;
+          this.alert(true, 'Create', 'Project');
+          this.close();
         })
         .catch(e => {
-          this.submit = true
-          this.alert(false, 'Create', 'Project')
+          this.submit = true;
+          this.alert(false, 'Create', 'Project');
         });
     },
 
     load() {
       this.project = {
         details: '',
-        project_name: ''
-      }
-      this.submitDone = true
+        project_name: '',
+      };
+      this.submitDone = true;
     },
 
     close() {
-      this.load()
-      this.$emit('closeAdd')
+      this.load();
+      this.$emit('closeAdd');
     },
 
     checkForm() {
       if (this.project.project_name == '' || this.project.details == '') {
-        return true
+        return true;
       } else {
-        return false
+        return false;
       }
     },
 
     alert(success, callName, resource) {
-      console.log('Add Alerting')
-      this.$emit('alert', success, callName, resource)
-    }
-  }
-}
+      console.log('Add Alerting');
+      this.$emit('alert', success, callName, resource);
+    },
+  },
+};
 </script>

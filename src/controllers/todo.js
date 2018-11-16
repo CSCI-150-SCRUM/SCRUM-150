@@ -10,17 +10,17 @@ exports.index = async (req, res) => {
 
     //query the DB of all todos
     await Todo.find().exec()
-        .then(todos => {
-            log.success('Retrieved all {} todos', todos.length)
+        .then(todo => {
+            log.success('Retrieved all {} todo tasks', todo.length)
             res.json({
-                todos: todos
+                todo: todo
             })
         })
         .catch(err => {
-            log.error(err, 'Could not retrieve todos: {}', err.message)
+            log.error(err, 'Could not retrieve todo tasks: {}', err.message)
             res.json({
                 error: err,
-                message: "Could not retrieve todos"
+                message: "Could not retrieve todo tasks"
             }).status(500)
         })
 }
@@ -33,14 +33,14 @@ exports.store = async (req, res) => {
     //save it in the DB
     await Todo.save()
         .then(todo => {
-            log.success('Created Todo: {}', todo.email)
+            log.success('Created Todo: {}', todo.name)
             //send a 201 and the new resource
             res.status(201).json({
                 data: todo
             })
         })
         .catch(err => {
-            log.error(err, 'Error creating todo: {}', todo.email)
+            log.error(err, 'Error creating todo: {}', todo.name)
             let errStatus = err.name === 'ValidationError' ? 400 : 500
             res.status(errStatus).json({
                 err: err
@@ -53,10 +53,10 @@ exports.show = async (req, res) => {
 
     //find this sneaky boye
     await Todo.findById(req.params.id).exec()
-        .then(todo => {
+        .then(todos => {
             log.success('Found todo: {}', todo.name)
             res.json({
-                todo: todo
+                todo: todos
             })
         })
         .catch(err => {

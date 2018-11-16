@@ -10,17 +10,17 @@ exports.index = async (req, res) => {
 
     //query the DB of all doings
     await Doing.find().exec()
-        .then(doings => {
-            log.success('Retrieved all {} doing', doing.length)
+        .then(doing => {
+            log.success('Retrieved all {} doing tasks', doing.length)
             res.json({
-                doings: doings
+                doing: doing
             })
         })
         .catch(err => {
-            log.error(err, 'Could not retrieve doings: {}', err.message)
+            log.error(err, 'Could not retrieve doing tasks: {}', err.message)
             res.json({
                 error: err,
-                message: "Could not retrieve doings"
+                message: "Could not retrieve doing tasks"
             }).status(500)
         })
 }
@@ -33,14 +33,14 @@ exports.store = async (req, res) => {
     //save it in the DB
     await Doing.save()
         .then(doing => {
-            log.success('Created Doing: {}', doing.email)
+            log.success('Created Doing: {}', doing.name)
             //send a 201 and the new resource
             res.status(201).json({
                 data: doing
             })
         })
         .catch(err => {
-            log.error(err, 'Error creating doing: {}', doing.email)
+            log.error(err, 'Error creating doing: {}', doing.name)
             let errStatus = err.name === 'ValidationError' ? 400 : 500
             res.status(errStatus).json({
                 err: err

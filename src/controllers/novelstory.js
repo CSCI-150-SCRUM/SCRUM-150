@@ -10,10 +10,10 @@ exports.index = async (req, res) => {
 
     //query the DB of all novelstorys
     await NovelStory.find().exec()
-        .then(novelstorys => {
+        .then(novelstory => {
             log.success('Retrieved all {} novelstorys', novelstory.length)
             res.json({
-                novelstorys: novelstorys
+                novelstory: novelstory
             })
         })
         .catch(err => {

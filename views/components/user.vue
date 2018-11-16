@@ -32,12 +32,11 @@
 </template>
 
 <script>
-  export default {
-  
-    props: {
-      user: {
-        type: Object
-      }
-    }
-  }
+export default {
+  props: {
+    user: {
+      type: Object,
+    },
+  },
+};
 </script>

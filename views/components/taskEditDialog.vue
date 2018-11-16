@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { http } from '../config/http'
+import { http } from '../config/http';
 
 export default {
   data: () => ({
@@ -37,65 +37,66 @@ export default {
       date_created: '',
       details: '',
       assigned_to: '', //eventually a drop down
-      status: ''
+      status: '',
     },
-    editDone: true
+    editDone: true,
   }),
 
   props: {
     task: {
-      type: Object
+      type: Object,
     },
     rules: {
-      type: Object
+      type: Object,
     },
     editName: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
 
   methods: {
     edit() {
-      this.editDone = false
+      this.editDone = false;
       http
-        .put("/tasks/" + this.task._id, this.changedtask)
+        .put('/tasks/' + this.task._id, this.changedtask)
         .then(response => {
-          this.alert(true, 'Edit', 'Task')
-          this.editDone = true
+          this.alert(true, 'Edit', 'Task');
+          this.editDone = true;
         })
         .catch(e => {
-          this.alert(false, 'Edit', 'Task')
-          this.editDone = true
+          this.alert(false, 'Edit', 'Task');
+          this.editDone = true;
         });
-        
     },
 
     close() {
-      this.$emit('closeEdit')
+      this.$emit('closeEdit');
     },
 
     alert(success, callName, resource) {
-      this.$emit('alert', success, callName, resource)
-      this.close()
+      this.$emit('alert', success, callName, resource);
+      this.close();
     },
 
     checkForm() {
-      if (this.changedtask.task_points <= 0 || this.changedtask.name == '' || this.changedtask.details == '') {
-        return true
+      if (
+        this.changedtask.task_points <= 0 ||
+        this.changedtask.name == '' ||
+        this.changedtask.details == ''
+      ) {
+        return true;
       } else {
-        return false
+        return false;
       }
-    }
+    },
   },
 
   mounted() {
-    this.changedtask = this.task
-  }
-
-}
+    this.changedtask = this.task;
+  },
+};
 </script>
 
 <style>
-
 </style>

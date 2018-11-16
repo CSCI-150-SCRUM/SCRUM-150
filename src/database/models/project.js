@@ -12,7 +12,7 @@ const definition = {
         type: String,
         required: true
     },
-    
+
 }
 
 //Set any options for the schema
@@ -21,7 +21,7 @@ const options = {
 }
 
 //make the schema as a new instance of a mongoose schema, using our definition and options
-const projectSchema = new mongoose.Schema(definition, options)
+const ProjectSchema = new mongoose.Schema(definition, options)
 
 //export that boye
-module.exports = mongoose.model('Project', projectSchema)
+module.exports = mongoose.model('Project', ProjectSchema)

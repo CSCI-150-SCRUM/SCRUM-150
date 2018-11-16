@@ -32,14 +32,11 @@
 </template>
 
 <script>
-
-
 export default {
-
   props: {
     task: {
-      type: Object
-    }
-  }
-}
+      type: Object,
+    },
+  },
+};
 </script>

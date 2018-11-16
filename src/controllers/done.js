@@ -10,17 +10,17 @@ exports.index = async (req, res) => {
 
     //query the DB of all done
     await Done.find().exec()
-        .then(dones => {
-            log.success('Retrieved all {} dones', done.length)
+        .then(done => {
+            log.success('Retrieved all {} done tasks', done.length)
             res.json({
-                dones: dones
+                done: done
             })
         })
         .catch(err => {
-            log.error(err, 'Could not retrieve dones: {}', err.message)
+            log.error(err, 'Could not retrieve done tasks: {}', err.message)
             res.json({
                 error: err,
-                message: "Could not retrieve dones"
+                message: "Could not retrieve done tasks"
             }).status(500)
         })
 }
