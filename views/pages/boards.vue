@@ -177,7 +177,7 @@ export default {
         });
     },
     //load all todo tasks
-    /*load() {
+    /*     load() {
       http
         .get('todo')
         .then(response => {
@@ -186,7 +186,7 @@ export default {
         .catch(e => {
           this.errors.push(e);
         });
-    },*/
+    }, */
     //load all the doing tasks
     /*     load() {
       http
