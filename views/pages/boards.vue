@@ -172,55 +172,33 @@ export default {
         .then(response => {
           this.tasks = response.data.tasks;
         })
-        .catch(e => {
-          this.errors.push(e);
-        });
-    },
-    //load all todo tasks
-    /*     load() {
-      http
-        .get('todo')
-        .then(response => {
-          this.todo = response.data.todo;
-        })
-        .catch(e => {
-          this.errors.push(e);
-        });
-    }, */
-    //load all the doing tasks
-    load() {
       http
         .get("doing")
         .then(response => {
           this.doing = response.data.doing;
         })
-        .catch(e => {
-          this.errors.push(e);
-        });
-    },
-    //load all of the done tasks
-    load() {
       http
         .get("done")
         .then(response => {
           this.done = response.data.done;
         })
-        .catch(e => {
-          this.errors.push(e);
-        });
-    },
-    //load all of the novel/story tasks
-    /*
-    load() {
+      http
+        .get("todo")
+        .then(response => {
+          this.todo = response.data.todo;
+        })
       http
         .get("novelstory")
         .then(response => {
           this.novelstory = response.data.novelstory;
-        })
+        })     
+
         .catch(e => {
           this.errors.push(e);
         });
-    },*/
+    },
+    
+    
 
     //opens delete dialog
     setupDelete(task) {
