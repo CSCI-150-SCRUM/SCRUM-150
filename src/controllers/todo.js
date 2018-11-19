@@ -5,10 +5,10 @@ const {
 const trunks = require('trunks-log')
 const log = new trunks('TODO')
 
-//show all todos
+//show all todo
 exports.index = async (req, res) => {
 
-    //query the DB of all todos
+    //query the DB of all todo
     await Todo.find().exec()
         .then(todo => {
             log.success('Retrieved all {} todo tasks', todo.length)
@@ -32,15 +32,15 @@ exports.store = async (req, res) => {
 
     //save it in the DB
     await todo.save()
-        .then(todos => {
-            log.success('Created Todo: {}', todos.name)
+        .then(todo => {
+            log.success('Created Todo: {}', todo.name)
             //send a 201 and the new resource
             res.status(201).json({
-                data: todos
+                data: todo
             })
         })
         .catch(err => {
-            log.error(err, 'Error creating todo: {}', todos.name)
+            log.error(err, 'Error creating todo: {}', todo.name)
             let errStatus = err.name === 'ValidationError' ? 400 : 500
             res.status(errStatus).json({
                 err: err
@@ -53,10 +53,10 @@ exports.show = async (req, res) => {
 
     //find this sneaky boye
     await Todo.findById(req.params.id).exec()
-        .then(todos => {
-            log.success('Found todo: {}', todos.name)
+        .then(todo => {
+            log.success('Found todo: {}', todo.name)
             res.json({
-                todo: todos
+                todo: todo
             })
         })
         .catch(err => {
@@ -68,7 +68,7 @@ exports.show = async (req, res) => {
         })
 }
 
-//ever wanted to make the todos disappear 
+//ever wanted to make the todo disappear 
 exports.delete = async (req, res) => {
 
     //find the sneaky boye and make him go away
@@ -94,10 +94,10 @@ exports.update = async (req, res) => {
             new: true
         })
         .exec()
-        .then(todos => {
+        .then(todo => {
             log.success('Updated todo: {}', req.params.id)
             res.status(200).json({
-                todo: todos
+                todo: todo
             })
         })
         .catch(err => {

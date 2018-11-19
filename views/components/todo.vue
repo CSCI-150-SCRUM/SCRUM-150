@@ -1,13 +1,13 @@
 <template>
 <v-expansion-panel>
   <v-expansion-panel-content class="elevation-24">
-    <div slot="header">{{ todo.name }}</div>
+    <div slot="header">{{ todos.name }}</div>
     <hr>
     <v-container grid-list-md text-xs-center>
       <v-layout row wrap>
         <v-flex xs-6 class="text-xs-left">
       <v-card class="title">
-          Details: {{ todo.name }}
+          Details: {{ todos.name }}
           <br>
          
       </v-card>
@@ -16,7 +16,7 @@
         <v-card>
        <!-- <v-btn class="red darken-2" @click="$emit('setUpDelete', todo)">
           <v-icon dark>remove_circle_outline</v-icon>
-        </v-btn>-->
+        </v-btn>--> 
 
        <!-- <v-btn class="blue darken-2" @click="$emit('setUpEdit', todo)">
           <v-icon dark>mode_edit</v-icon>
@@ -34,7 +34,7 @@
 <script>
 export default {
   props: {
-    todo: {
+    todos: {
       type: Object,
     },
   },

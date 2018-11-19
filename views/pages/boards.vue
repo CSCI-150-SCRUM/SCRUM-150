@@ -74,7 +74,7 @@
         </v-card>
         <!-- List of todo -->
             <span  v-if="todo.length">
-                <todoItem v-for="todo in todos" :key="todos._id"  :todos="todos">
+                <todoItem v-for="todos in todo" :key="todos._id"  :todos="todos">
                  </todoItem>
               </span>
               <v-card-text v-else class="grey">No Tasks To-Do</v-card-text>
@@ -168,6 +168,11 @@ export default {
     //load all tasks from DB, we call this often to make sure the data is up to date
     load() {
       http
+        .get("novelstory")
+        .then(response => {
+          this.novelstory = response.data.novelstory;
+        })
+      http
         .get("tasks")
         .then(response => {
           this.tasks = response.data.tasks;
@@ -187,11 +192,7 @@ export default {
         .then(response => {
           this.todo = response.data.todo;
         })
-      http
-        .get("novelstory")
-        .then(response => {
-          this.novelstory = response.data.novelstory;
-        })     
+           
 
         .catch(e => {
           this.errors.push(e);

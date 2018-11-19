@@ -1,26 +1,26 @@
-//import the NovelStory constant explicitly
+//import the Novelstory constant explicitly
 const {
-    NovelStory
+    Novelstory
 } = require('../database/models')
 const trunks = require('trunks-log')
-const log = new trunks('NOVEL/STORY')
+const log = new trunks('NOVELSTORY')
 
 //show all novelstory
 exports.index = async (req, res) => {
 
-    //query the DB of all novelstorys
-    await NovelStory.find().exec()
+    //query the DB of all novelstory
+    await Novelstory.find().exec()
         .then(novelstory => {
-            log.success('Retrieved all {} novelstorys', novelstory.length)
+            log.success('Retrieved all {} novelstory', novelstory.length)
             res.json({
                 novelstory: novelstory
             })
         })
         .catch(err => {
-            log.error(err, 'Could not retrieve novelstorys: {}', err.message)
+            log.error(err, 'Could not retrieve novelstory: {}', err.message)
             res.json({
                 error: err,
-                message: "Could not retrieve novelstorys"
+                message: "Could not retrieve novelstory"
             }).status(500)
         })
 }
@@ -28,19 +28,19 @@ exports.index = async (req, res) => {
 //Store a new novelstory
 exports.store = async (req, res) => {
 
-    let novelstory = new NovelStory(req.body)
+    let novelstory = new Novelstory(req.body)
 
     //save it in the DB
     await novelstory.save()
-        .then(novelstorys => {
-            log.success('Created Novel/Story: {}', novelstorys.name)
+        .then(novelstory => {
+            log.success('Created Novel/Story: {}', novelstory.name)
             //send a 201 and the new resource
             res.status(201).json({
-                data: novelstorys
+                data: novelstory
             })
         })
         .catch(err => {
-            log.error(err, 'Error creating novelstory: {}', novelstorys.name)
+            log.error(err, 'Error creating novelstory: {}', novelstory.name)
             let errStatus = err.name === 'ValidationError' ? 400 : 500
             res.status(errStatus).json({
                 err: err
@@ -52,11 +52,11 @@ exports.store = async (req, res) => {
 exports.show = async (req, res) => {
 
     //find this sneaky boye
-    await NovelStory.findById(req.params.id).exec()
-        .then(novelstorys => {
-            log.success('Found novelstory: {}', novelstorys.name)
+    await Novelstory.findById(req.params.id).exec()
+        .then(novelstory => {
+            log.success('Found novelstory: {}', novelstory.name)
             res.json({
-                novelstorys: novelstorys
+                novelstory: novelstory
             })
         })
         .catch(err => {
@@ -68,11 +68,11 @@ exports.show = async (req, res) => {
         })
 }
 
-//ever wanted to make the novelstorys disappear
+//ever wanted to make the novelstory disappear
 exports.delete = async (req, res) => {
 
     //find the sneaky boye and make him go away
-    await NovelStory.findByIdAndRemove(req.params.id).exec()
+    await Novelstory.findByIdAndRemove(req.params.id).exec()
         .then(() => {
             log.success('Deleted Novel/Story: {}', req.params.id)
             //let em know there aint no content no mo
@@ -89,15 +89,15 @@ exports.delete = async (req, res) => {
 
 //edit a novelstory based on ID
 exports.update = async (req, res) => {
-    await NovelStory
+    await Novelstory
         .findByIdAndUpdate(req.params.id, req.body, {
             new: true
         })
         .exec()
-        .then(novelstorys => {
+        .then(novelstory => {
             log.success('Updated novelstory: {}', req.params.id)
             res.status(200).json({
-                novelstorys: novelstorys
+                novelstory: novelstory
             })
         })
         .catch(err => {

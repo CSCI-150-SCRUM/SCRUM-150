@@ -1,13 +1,13 @@
 <template>
 <v-expansion-panel>
   <v-expansion-panel-content class="elevation-24">
-    <div slot="header">{{ novelstory.name }}</div>
+    <div slot="header">{{ novelstorys.name }}</div>
     <hr>
     <v-container grid-list-md text-xs-center>
       <v-layout row wrap>
         <v-flex xs-6 class="text-xs-left">
       <v-card class="title">
-          Details: {{ novelstory.name }}
+          Details: {{ novelstorys.name }}
           <br>
          
       </v-card>
@@ -34,7 +34,7 @@
 <script>
 export default {
   props: {
-    novelstory: {
+    novelstorys: {
       type: Object,
     },
   },
