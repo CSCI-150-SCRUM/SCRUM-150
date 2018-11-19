@@ -35,7 +35,7 @@ const options = {
 }
 
 //make the schema as a new instance of a mongoose schema, using our definition and options
-const NovelStorySchema = new mongoose.Schema(definition, options)
+const NovelstorySchema = new mongoose.Schema(definition, options)
 
 //export that boye
-module.exports = mongoose.model('NovelStory', NovelStorySchema)
+module.exports = mongoose.model('Novelstory', NovelstorySchema)

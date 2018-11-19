@@ -35,8 +35,8 @@
 export default {
   props: {
     novelstorys: {
-      type: Object
-    }
+      type: Object,
+    },
   }
 };
 </script>

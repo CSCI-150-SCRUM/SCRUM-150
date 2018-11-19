@@ -168,58 +168,38 @@ export default {
     //load all tasks from DB, we call this often to make sure the data is up to date
     load() {
       http
+        .get("novelstory")
+        .then(response => {
+          this.novelstory = response.data.novelstory;
+        })
+      http
         .get("tasks")
         .then(response => {
           this.tasks = response.data.tasks;
         })
-        .catch(e => {
-          this.errors.push(e);
-        });
-    },
-    //load all todo tasks
-    load() {
-      http
-        .get("todo")
-        .then(response => {
-          this.todo = response.data.todo;
-        })
-        .catch(e => {
-          this.errors.push(e);
-        });
-    },
-    //load all the doing tasks
-    load() {
       http
         .get("doing")
         .then(response => {
           this.doing = response.data.doing;
         })
-        .catch(e => {
-          this.errors.push(e);
-        });
-    },
-    //load all of the done tasks
-    load() {
       http
         .get("done")
         .then(response => {
           this.done = response.data.done;
         })
-        .catch(e => {
-          this.errors.push(e);
-        });
-    },
-    //load all of the novel/story tasks
-    load() {
       http
-        .get("novelstory")
+        .get("todo")
         .then(response => {
-          this.novelstory = response.data.novelstory;
+          this.todo = response.data.todo;
         })
+           
+
         .catch(e => {
           this.errors.push(e);
         });
     },
+    
+    
 
     //opens delete dialog
     setupDelete(task) {
