@@ -3,7 +3,7 @@ const {
     NovelStory
 } = require('../database/models')
 const trunks = require('trunks-log')
-const log = new trunks('NOVEL/STORY')
+const log = new trunks('NOVELSTORY')
 
 //show all novelstory
 exports.index = async (req, res) => {
@@ -28,10 +28,10 @@ exports.index = async (req, res) => {
 //Store a new novelstory
 exports.store = async (req, res) => {
 
-    let novelstory = new NovelStory(req.body)
+    let NovelStory = new NovelStory(req.body)
 
     //save it in the DB
-    await novelstory.save()
+    await novelstorys.save()
         .then(novelstorys => {
             log.success('Created Novel/Story: {}', novelstorys.name)
             //send a 201 and the new resource

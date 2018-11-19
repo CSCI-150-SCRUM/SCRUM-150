@@ -74,7 +74,7 @@
         </v-card>
         <!-- List of todo -->
             <span  v-if="todo.length">
-                <todoItem v-for="todo in todos" :key="todos._id"  :todos="todos">
+                <todoItem v-for="todos in todo" :key="todos._id"  :todos="todos">
                  </todoItem>
               </span>
               <v-card-text v-else class="grey">No Tasks To-Do</v-card-text>
@@ -177,16 +177,16 @@ export default {
         });
     },
     //load all todo tasks
-    /*     load() {
+    load() {
       http
-        .get('todo')
+        .get("todo")
         .then(response => {
           this.todo = response.data.todo;
         })
         .catch(e => {
           this.errors.push(e);
         });
-    }, */
+    },
     //load all the doing tasks
     load() {
       http
@@ -210,7 +210,6 @@ export default {
         });
     },
     //load all of the novel/story tasks
-    /*
     load() {
       http
         .get("novelstory")
@@ -220,7 +219,7 @@ export default {
         .catch(e => {
           this.errors.push(e);
         });
-    },*/
+    },
 
     //opens delete dialog
     setupDelete(task) {

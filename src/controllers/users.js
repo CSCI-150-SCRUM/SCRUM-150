@@ -21,11 +21,11 @@ exports.index = async(req, res) => {
 //Store a new user
 exports.store = async(req, res) => {
 
-    let user = new User(req.body)
+    let users = new User(req.body)
 
     //save it in the DB
     await User.save()
-        .then(user => {
+        .then(users => {
             log.success('Created User: {}', user.email)
                 //send a 201 and the new resource
             res.status(201).json({ data: user })

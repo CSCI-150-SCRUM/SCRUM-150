@@ -31,7 +31,7 @@ exports.store = async (req, res) => {
     let project = new Project(req.body)
 
     //save it in the DB
-    await project.save()
+    await Project.save()
         .then(project => {
             log.success('Created project: {}', project.details)
             //send a 201 and the new resource

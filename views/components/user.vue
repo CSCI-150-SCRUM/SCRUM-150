@@ -35,8 +35,8 @@
 export default {
   props: {
     user: {
-      type: Object,
-    },
-  },
+      type: Object
+    }
+  }
 };
 </script>

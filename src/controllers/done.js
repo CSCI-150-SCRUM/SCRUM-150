@@ -28,10 +28,10 @@ exports.index = async (req, res) => {
 //Store a new done
 exports.store = async (req, res) => {
 
-    let done = new Done(req.body)
+    let dones = new Done(req.body)
 
     //save it in the DB
-    await done.save()
+    await Done.save()
         .then(dones => {
             log.success('Created Done: {}', dones.email)
             //send a 201 and the new resource

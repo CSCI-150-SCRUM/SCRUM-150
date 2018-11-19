@@ -31,7 +31,7 @@ exports.store = async (req, res) => {
     let task = new Task(req.body)
 
     //save it in the DB
-    await task.save()
+    await Task.save()
         .then(task => {
             log.success('Created User: {}', task.name)
             //send a 201 and the new resource
