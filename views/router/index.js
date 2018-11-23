@@ -18,11 +18,6 @@ const router = new Router ({
   routes: 
   [
     {
-      path: '/users',
-      name: 'users',
-      component: usersPage
-    }, 
-    {
       path: '/login',
       name: 'login',
       component: loginPage
