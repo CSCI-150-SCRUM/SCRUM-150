@@ -1,5 +1,5 @@
 //bring in the seperate models
-const User = require('./user')
+//const User = require('./user')
 const Task = require('./task')
 const Project = require('./project')
 const Doing = require('./doing')
@@ -10,7 +10,7 @@ const Todo = require('./todo')
 
 //export em in a good ol' bundle 
 module.exports = {
-    User,
+//    User,
     Task,
     Project,
     Doing,

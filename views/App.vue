@@ -18,9 +18,15 @@
       <v-btn icon @click.stop="miniVariant = !miniVariant">
         <v-icon class="primaryText--text" v-html="miniVariant ? 'chevron_right' : 'chevron_left'"></v-icon>
       </v-btn>
-  
+
       <v-toolbar-title> {{ title }} </v-toolbar-title>
       <v-spacer></v-spacer>
+
+      <v-toolbar-items class="hidden-sm-and-down">
+      <v-btn flat>Register</v-btn>
+      <v-btn flat>Login</v-btn>
+      </v-toolbar-items>
+
       <v-btn @click="isDarkMode = !isDarkMode" icon>
         <v-icon class="primaryText--text" v-if="!isDarkMode"> brightness_5 </v-icon>
         <v-icon class="primaryText--text" v-else> brightness_3 </v-icon>

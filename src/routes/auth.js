@@ -5,7 +5,7 @@ require('../middleware/passport')(passport);
 var express = require('express');
 var jwt = require('jsonwebtoken');
 var router = express.Router();
-var Users = require("../database/models/login");
+var User = require("../database/models/login");
 
 
 router.post('/register', function (req, res) {
@@ -15,7 +15,7 @@ router.post('/register', function (req, res) {
       msg: 'Please pass username and password.'
     });
   } else {
-    var newUser = new Users({
+    var newUser = new User({
       username: req.body.username,
       password: req.body.password
     });
@@ -36,7 +36,7 @@ router.post('/register', function (req, res) {
 });
 
 router.post('/login', function (req, res) {
-  Users.findOne({
+  User.findOne({
     username: req.body.username
   }, function (err, user) {
     if (err) throw err;

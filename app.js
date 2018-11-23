@@ -6,7 +6,8 @@ const mongoose = require('mongoose');
 const cors = require('cors')
 const trunks = require('trunks-log')
 
-var logger = require('morgan');
+
+const logger = require('morgan');
 
 
 const app = express();
@@ -18,8 +19,8 @@ const logs = new trunks('', 'yellow', '')
 const { apiRoutes } = require('./src/routes/index')
 const { webRoutes } = require('./src/routes/index')
 
-var auth = require('./src/routes/auth');
-app.use('/api/auth', auth);
+//var auth = require('./src/routes/auth');
+//app.use('/auth', auth);
 
 
 // Use native ES6 Promises since mongoose's are deprecated.

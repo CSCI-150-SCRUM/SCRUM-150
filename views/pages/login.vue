@@ -60,7 +60,7 @@
       submit () {
         if (this.$refs.form.validate()) {
           // Native form submission is not yet supported
-          axios.post('/logins', {
+          axios.post('/src/routes/auth/login/', {
             username: this.username,
             password: this.password,
           })

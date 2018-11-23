@@ -28,18 +28,12 @@ exports.index = async (req, res) => {
 //Store a new todo
 exports.store = async (req, res) => {
 
-    let todos = new Todo(req.body)
+    let todo = new Todo(req.body)
 
     //save it in the DB
-<<<<<<< HEAD
-    await Todo.save()
-        .then(todos => {
-            log.success('Created Todo: {}', todos.name)
-=======
     await todo.save()
         .then(todo => {
             log.success('Created Todo: {}', todo.name)
->>>>>>> b96505aa7a60072a8db9e8d217f737185fb133c7
             //send a 201 and the new resource
             res.status(201).json({
                 data: todo
