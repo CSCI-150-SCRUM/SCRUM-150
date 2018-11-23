@@ -7,7 +7,9 @@ import boardsPage from '../pages/boards.vue'
 import newTaskPage from '../pages/newTask.vue'
 import newProjectPage from '../pages/project.vue'
 import existingProjectPage from '../pages/existingProject.vue'
-import loginPage from '../pages/login.vue'
+import loginPage from '../components/login.vue'
+import registerPage from '../components/register.vue'
+
 
 Vue.use(Router)
 
@@ -24,6 +26,11 @@ const router = new Router ({
       path: '/login',
       name: 'login',
       component: loginPage
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: registerPage
     },
     {
       path: '/home',

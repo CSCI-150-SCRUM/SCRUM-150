@@ -23,8 +23,9 @@
       <v-spacer></v-spacer>
 
       <v-toolbar-items class="hidden-sm-and-down">
-      <v-btn flat>Register</v-btn>
-      <v-btn flat>Login</v-btn>
+      <v-btn flat v-for="(menu, index) in menus" :key='index' :to={name:menu.route}>
+        {{menu.name}}
+      </v-btn>
       </v-toolbar-items>
 
       <v-btn @click="isDarkMode = !isDarkMode" icon>
@@ -69,6 +70,10 @@ export default {
       clipped: true,
       drawer: true,
       fixed: false,
+      menus: [
+        {name:"Login", route:"login"},
+        {name:"register", route:"register"}
+      ],
       items: [
         {
           icon: 'home',
