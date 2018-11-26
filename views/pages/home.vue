@@ -28,6 +28,6 @@ Vue.component('b-jumbotron', bJumbotron);
               </v-responsive>
         </template>
     </v-container>
-              </v-flex>
+    </v-flex>
 </template>
 

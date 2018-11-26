@@ -70,6 +70,7 @@ export default {
       clipped: true,
       drawer: true,
       fixed: false,
+      loggedIn: false,
       menus: [
         {name:"Login", route:"login"},
         {name:"register", route:"register"}
@@ -82,15 +83,15 @@ export default {
           router: true,
         },
         {
-          icon: 'account_circle',
-          title: 'Users',
-          href: '/#/users',
-          router: true,
-        },
-        {
           icon: 'vpn_key',
           title: 'Login',
           href: '/#/login',
+          router: true,
+        },
+        {
+          icon: 'account_circle',
+          title: 'Register',
+          href: '/#/register',
           router: true,
         },
         {
