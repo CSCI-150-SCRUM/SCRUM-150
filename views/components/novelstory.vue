@@ -37,6 +37,6 @@ export default {
     novelstorys: {
       type: Object,
     },
-  }
+  },
 };
 </script>

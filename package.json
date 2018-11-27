@@ -5,7 +5,7 @@
     "scripts": {
         "start": "node -r dotenv/config ./bin/www",
         "dev:serve": "nodemon -r dotenv/config ./bin/www",
-        "dev:client": "webpack-dev-server --port 3000 --open --inline --hot --content-base ./views",
+        "dev:client": "webpack-dev-server --port 3001 --open --inline --hot --content-base ./views",
         "build": "webpack --progress --hide-modules",
         "static": "npm run build && npm run dev:serve"
     },

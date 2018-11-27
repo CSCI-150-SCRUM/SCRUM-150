@@ -1,6 +1,6 @@
 <template>
   <v-container fluid grid-list-xl>
-
+   
 
     <v-layout row justify-space-between>
       <v-flex xs2>
@@ -51,10 +51,10 @@
              <!-- </draggable> -->
               <!-- Begin Delete Dialog -->
               <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
-                <tasksDeleteDialog :task="taskToDelete" @closeDelete="deleteDialog = false"
+                <taskDeleteDialog :task="taskToDelete" @closeDelete="deleteDialog = false"
                 @alert="alert">
 
-                </tasksDeleteDialog>
+                </taskDeleteDialog>
               </v-dialog>
               <!-- End Delete Dialog -->
 
@@ -74,10 +74,28 @@
         </v-card>
         <!-- List of todo -->
             <span  v-if="todo.length">
-                <todoItem v-for="todos in todo" :key="todos._id"  :todos="todos">
+                <todoItem v-for="todos in todo" :key="todos._id"  :todos="todos" @setUpEdit="setupEdit(todos)"
+                @setUpDelete="setupDelete(todos)">
                  </todoItem>
+        
               </span>
               <v-card-text v-else class="grey">No Tasks To-Do</v-card-text>
+              <!-- Begin Delete Dialog -->
+              <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
+                <taskDeleteDialog :task="taskToDelete" @closeDelete="deleteDialog = false; taskToDelete = {}"
+                @alert="alert">
+
+                </taskDeleteDialog>
+              </v-dialog>
+              <!-- End Delete Dialog -->
+
+              <!-- Begin Edit Form -->
+              <v-dialog v-model="editDialog" lazy absolute max-width="50%">
+                <taskEditDialog :rules="rules" :task="taskToEdit" :editName="editName"
+                @closeEdit="editDialog = false; taskToEdit = {}" @alert="alert">
+                </taskEditDialog>
+              </v-dialog>
+              <!-- End Edit Form -->
 
       </v-flex>
       <v-flex xs2>
@@ -115,15 +133,15 @@
 
 
 <script>
-import { http } from "../config/http.js";
-import taskItem from "../components/task.vue";
-import todoItem from "../components/todo.vue";
-import doingItem from "../components/doing.vue";
-import doneItem from "../components/done.vue";
-import novelstoryItem from "../components/novelstory.vue";
-import taskAddDialog from "../components/taskAddDialog.vue";
-import taskEditDialog from "../components/taskEditDialog.vue";
-import taskDeleteDialog from "../components/taskDeleteDialog.vue";
+import { http } from '../config/http.js';
+import taskItem from '../components/task.vue';
+import todoItem from '../components/todo.vue';
+import doingItem from '../components/doing.vue';
+import doneItem from '../components/done.vue';
+import novelstoryItem from '../components/novelstory.vue';
+import taskAddDialog from '../components/taskAddDialog.vue';
+import taskEditDialog from '../components/taskEditDialog.vue';
+import taskDeleteDialog from '../components/taskDeleteDialog.vue';
 //import Axios from 'axios';
 
 export default {
@@ -142,13 +160,13 @@ export default {
     addDialog: false,
     deleteDialog: false,
     editDialog: false,
-    editName: "",
+    editName: '',
     rules: {
       email: value => {
         const pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return pattern.test(value) || "Invalid e-mail.";
-      }
-    }
+        return pattern.test(value) || 'Invalid e-mail.';
+      },
+    },
   }),
 
   //Components this page will need
@@ -160,50 +178,39 @@ export default {
     novelstoryItem: novelstoryItem,
     taskAddDialog: taskAddDialog,
     taskEditDialog: taskEditDialog,
-    taskDeleteDialog: taskDeleteDialog
+    taskDeleteDialog: taskDeleteDialog,
   },
 
   //The methods we will need
   methods: {
     //load all tasks from DB, we call this often to make sure the data is up to date
     load() {
+      http.get('novelstory').then(response => {
+        this.novelstory = response.data.novelstory;
+      });
+      http.get('tasks').then(response => {
+        this.tasks = response.data.tasks;
+      });
+      http.get('doing').then(response => {
+        this.doing = response.data.doing;
+      });
+      http.get('done').then(response => {
+        this.done = response.data.done;
+      });
       http
-        .get("novelstory")
-        .then(response => {
-          this.novelstory = response.data.novelstory;
-        })
-      http
-        .get("tasks")
-        .then(response => {
-          this.tasks = response.data.tasks;
-        })
-      http
-        .get("doing")
-        .then(response => {
-          this.doing = response.data.doing;
-        })
-      http
-        .get("done")
-        .then(response => {
-          this.done = response.data.done;
-        })
-      http
-        .get("todo")
+        .get('todo')
         .then(response => {
           this.todo = response.data.todo;
         })
-           
 
         .catch(e => {
           this.errors.push(e);
         });
     },
-    
-    
 
     //opens delete dialog
     setupDelete(task) {
-      this.taskToDelete = task;
+      this.deleteName = task.name;
       this.deleteDialog = true;
     },
 
@@ -220,15 +227,15 @@ export default {
     //Will emit an alert, followed by a boolean for success, the type of call made, and the name of the
     //resource we are working on
     alert(success, callName, resource) {
-      console.log("Page Alerting");
-      this.$emit("alert", success, callName, resource);
+      console.log('Page Alerting');
+      this.$emit('alert', success, callName, resource);
       this.load();
-    }
+    },
   },
 
   //get those tasks
   mounted() {
     this.load();
-  }
+  },
 };
 </script>
