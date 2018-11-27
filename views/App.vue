@@ -28,6 +28,11 @@
       </v-btn>
       </v-toolbar-items>
 
+      <v-btn @click="loggedIn = !loggedIn" icon>
+        <v-icon class="primaryText--text" v-if="!isDarkMode"> brightness_5 </v-icon>
+        <v-icon class="primaryText--text" v-else> brightness_3 </v-icon>
+      </v-btn>
+
       <v-btn @click="isDarkMode = !isDarkMode" icon>
         <v-icon class="primaryText--text" v-if="!isDarkMode"> brightness_5 </v-icon>
         <v-icon class="primaryText--text" v-else> brightness_3 </v-icon>
@@ -36,7 +41,7 @@
   
   
     <main>
-      <v-content>
+      <v-content v-show="loggedIn">
         <v-container fluid>
           <v-layout column align-center>
             <v-fade-transition mode="out-in">
@@ -70,7 +75,6 @@ export default {
       clipped: true,
       drawer: true,
       fixed: false,
-      loggedIn: false,
       menus: [
         {name:"Login", route:"login"},
         {name:"register", route:"register"}
@@ -127,15 +131,9 @@ export default {
       alertString: '',
       alertSuccess: false,
       isDarkMode: true,
+      loggedIn: false,
     };
 
-    icons: [
-      'fab fa-facebook',
-      'fab fa-twitter',
-      'fab fa-google-plus',
-      'fab fa-linkedin',
-      'fab fa-instagram',
-    ];
   },
 
   watch: {

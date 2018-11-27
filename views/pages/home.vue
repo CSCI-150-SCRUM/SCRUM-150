@@ -1,13 +1,3 @@
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
-import Vue from 'vue'
-import BootstrapVue from 'bootstrap-vue'
-
-Vue.use(BootstrapVue);
-import bJumbotron from 'bootstrap-vue/es/components/jumbotron/jumbotron';
-
-Vue.component('b-jumbotron', bJumbotron);
-
 <template>
     <v-flex>
     <v-container>
@@ -25,9 +15,30 @@ Vue.component('b-jumbotron', bJumbotron);
            </p>
                  <v-btn variant="primary" href="http://localhost:3000/#/existingProject">Go to existing projects</v-btn>
                  <v-btn variant="success" href="http://localhost:3000/#/boards">Go to project boards</v-btn>
+                 <v-btn variant="success" @click="$parent.loggedIn = false">test</v-btn>
               </v-responsive>
         </template>
     </v-container>
     </v-flex>
 </template>
 
+<script>
+
+export default {
+    //Variables
+    data: () => ({
+      
+    }),
+  
+    //Components this page will need
+    components: {
+      
+    },
+  
+    //The methods we will need
+    methods: {
+
+    }
+  };
+
+</script>
