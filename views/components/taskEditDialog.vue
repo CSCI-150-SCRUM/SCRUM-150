@@ -9,11 +9,11 @@
         <!-- Begin Input Row -->
         <v-form ref="form">
           <v-text-field label="Name" v-model="changedtask.name"> </v-text-field>
-          <v-text-field label="points" v-model="changedtask.task_points" thumb-label step="1"></v-text-field>
-          <v-text-field label="topic" v-model="changedtask.details"> </v-text-field>
-          <v-text-field label="project" v-model="changedtask.assigned_to"> </v-text-field>
-          <v-text-field label="project" v-model="changedtask.status"> </v-text-field>
-          <v-text-field label="project" v-model="changedtask.date_created"> </v-text-field>
+          <v-text-field label="Points" v-model="changedtask.task_points" thumb-label step="1"></v-text-field>
+          <v-text-field label="Details" v-model="changedtask.details"> </v-text-field>
+          <v-text-field label="Assigned to" v-model="changedtask.assigned_to"> </v-text-field>
+          <v-text-field label="Status" v-model="changedtask.status"> </v-text-field>
+          <v-text-field label="Date Created" v-model="changedtask.date_created"> </v-text-field>
         </v-form>
 
         <v-card-actions>

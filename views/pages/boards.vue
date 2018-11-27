@@ -1,6 +1,6 @@
 <template>
   <v-container fluid grid-list-xl>
-
+   
 
     <v-layout row justify-space-between>
       <v-flex xs2>
@@ -74,10 +74,28 @@
         </v-card>
         <!-- List of todo -->
             <span  v-if="todo.length">
-                <todoItem v-for="todos in todo" :key="todos._id"  :todos="todos">
+                <todoItem v-for="todos in todo" :key="todos._id"  :todos="todos" @setUpEdit="setupEdit(todos)"
+                @setUpDelete="setupDelete(todos)">
                  </todoItem>
+        
               </span>
               <v-card-text v-else class="grey">No Tasks To-Do</v-card-text>
+              <!-- Begin Delete Dialog -->
+              <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
+                <taskDeleteDialog :task="taskToDelete" @closeDelete="deleteDialog = false; taskToDelete = {}"
+                @alert="alert">
+
+                </taskDeleteDialog>
+              </v-dialog>
+              <!-- End Delete Dialog -->
+
+              <!-- Begin Edit Form -->
+              <v-dialog v-model="editDialog" lazy absolute max-width="50%">
+                <taskEditDialog :rules="rules" :task="taskToEdit" :editName="editName"
+                @closeEdit="editDialog = false; taskToEdit = {}" @alert="alert">
+                </taskEditDialog>
+              </v-dialog>
+              <!-- End Edit Form -->
 
       </v-flex>
       <v-flex xs2>
@@ -192,7 +210,7 @@ export default {
 
     //opens delete dialog
     setupDelete(task) {
-      this.taskToDelete = task;
+      this.deleteName = task.name;
       this.deleteDialog = true;
     },
 
