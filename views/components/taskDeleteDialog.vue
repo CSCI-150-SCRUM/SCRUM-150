@@ -38,12 +38,12 @@ export default {
         .delete('/tasks/' + this.tasks._id)
         .then(response => {
           this.deleteDone = true;
-          this.alert(true, 'Delete', 'tasks');
+          this.alert(true, 'Delete', 'Task');
           this.close();
         })
         .catch(e => {
           this.deleteDone = true;
-          this.alert(false, 'Delete', 'tasks');
+          this.alert(false, 'Delete', 'Task');
           this.close();
         });
     },

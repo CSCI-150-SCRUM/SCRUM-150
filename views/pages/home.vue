@@ -23,8 +23,8 @@ Vue.component('b-jumbotron', bJumbotron);
             a real-time environment. The objective of this application is to simplify the Scrum Management process by incorporating unique user 
             logins, drag-and-drop task cards, and the ability to view, but not modify, other teams' current progress.
            </p>
-                 <v-btn variant="primary" href="http://localhost:3000/#/existingProject">Go to existing projects</v-btn>
-                 <v-btn variant="success" href="http://localhost:3000/#/boards">Go to project boards</v-btn>
+                 <v-btn variant="primary" href="http://localhost:3001/#/existingProject">Go to existing projects</v-btn>
+                 <v-btn variant="success" href="http://localhost:3001/#/boards">Go to project boards</v-btn>
               </v-responsive>
         </template>
     </v-container>
