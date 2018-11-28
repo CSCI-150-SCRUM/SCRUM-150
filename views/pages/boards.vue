@@ -159,9 +159,7 @@ import taskAddDialog from '../components/taskAddDialog.vue';
 import taskEditDialog from '../components/taskEditDialog.vue';
 import taskDeleteDialog from '../components/taskDeleteDialog.vue';
 import draggable from 'vuedraggable'
-
 //import Axios from 'axios';
-
 export default {
   //Variables
   data: () => ({
@@ -186,7 +184,6 @@ export default {
       },
     },
   }),
-
   //Components this page will need
   components: {
     draggable,
@@ -199,7 +196,6 @@ export default {
     taskEditDialog: taskEditDialog,
     taskDeleteDialog: taskDeleteDialog,
   },
-
   //The methods we will need
   methods: {
     //load all tasks from DB, we call this often to make sure the data is up to date
@@ -221,18 +217,15 @@ export default {
         .then(response => {
           this.todo = response.data.todo;
         })
-
         .catch(e => {
           this.errors.push(e);
         });
     },
-
     //opens delete dialog
     setupDelete(task) {
       this.deleteName = task.name;
       this.deleteDialog = true;
     },
-
     //opens edit dialog
     setupEdit(task) {
       Object.keys(task).forEach(key => {
@@ -241,7 +234,6 @@ export default {
       this.editName = task.name;
       this.editDialog = true;
     },
-
     //build the alert info for us
     //Will emit an alert, followed by a boolean for success, the type of call made, and the name of the
     //resource we are working on
@@ -251,7 +243,6 @@ export default {
       this.load();
     },
   },
-
   //get those tasks
   mounted() {
     this.load();

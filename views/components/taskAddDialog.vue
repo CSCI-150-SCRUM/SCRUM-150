@@ -63,12 +63,12 @@ export default {
       http
         .post('/tasks', this.task)
         .then(response => {
-          this.submit = true;
+          this.submitDone = true;
           this.alert(true, 'Create', 'Task');
           this.close();
         })
         .catch(e => {
-          this.submit = true;
+          this.submitDone = true;
           this.alert(false, 'Create', 'Task');
         });
     },
