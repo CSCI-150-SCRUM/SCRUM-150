@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import Vuetify from 'vuetify'
 import router from './router'
+import draggable from 'vuedraggable'
 import './stylus/main.styl'
 
 

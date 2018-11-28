@@ -116,12 +116,6 @@ export default {
           href: '/#/project',
           router: true,
         },
-        // {
-        //   icon: "view_module",
-        //   title: "Existing Projects",
-        //   href: "/#/existingProject",
-        //   router: true
-        // }
       ],
       miniVariant: false,
       right: true,

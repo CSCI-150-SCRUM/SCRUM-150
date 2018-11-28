@@ -10,10 +10,14 @@
         <!-- <draggable> -->
         <!-- List of novelstory -->
              <span  v-if="novelstory.length">
+              <draggable v-model="novelstory" :options="{group:'people'}" style="min-height: 10px">
+
                 <novelstoryItem v-for="novelstorys in novelstory" :key="novelstorys._id"
                  :novelstorys="novelstorys" @setUpEdit="setupEdit(novelstorys)"
                  @setUpDelete="setupDelete(novelstorys)">
                  </novelstoryItem>
+
+               </draggable>
               </span>
               <v-card-text v-else class="grey">No Novel/Storys</v-card-text>
        <!-- </draggable> --> 
@@ -41,10 +45,13 @@
                 <!-- List of tasks -->
             <div ondrop="drop(event)" ondragover="allowDrop(event)">
               <span  v-if="tasks.length">
+                <draggable v-model="tasks" :options="{group:'people'}" style="min-height: 10px">
+
                 <taskItem v-for="task in tasks" :key="task._id"
                  :task="task" @setUpEdit="setupEdit(task)"
                  @setUpDelete="setupDelete(task)" draggable="true" ondragstart="drag(event)">
                  </taskItem>
+                </draggable>
               </span>
               <v-card-text v-else class="grey">No Tasks</v-card-text>
             </div>
@@ -74,10 +81,12 @@
         </v-card>
         <!-- List of todo -->
             <span  v-if="todo.length">
+              <draggable v-model="todo" :options="{group:'people'}" style="min-height: 10px">
                 <todoItem v-for="todos in todo" :key="todos._id"  :todos="todos" @setUpEdit="setupEdit(todos)"
                 @setUpDelete="setupDelete(todos)">
                  </todoItem>
-        
+              </draggable>
+
               </span>
               <v-card-text v-else class="grey">No Tasks To-Do</v-card-text>
               <!-- Begin Delete Dialog -->
@@ -96,7 +105,6 @@
                 </taskEditDialog>
               </v-dialog>
               <!-- End Edit Form -->
-
       </v-flex>
       <v-flex xs2>
         <v-card dark color="primary">
@@ -104,10 +112,14 @@
         </v-card>
         <!-- List of doing -->
             <span  v-if="doing.length">
+              <draggable v-model="doing" :options="{group:'people'}" style="min-height: 10px">
+
                 <doingItem v-for="doings in doing" :key="doings._id"
                  :doings="doings" @setUpEdit="setupEdit(doings)"
                  @setUpDelete="setupDelete(doings)">
                  </doingItem>
+
+              </draggable>  
               </span>
               <v-card-text v-else class="grey">No Doing Tasks</v-card-text>
 
@@ -118,10 +130,14 @@
         </v-card>
         <!-- List of done tasks -->
               <span  v-if="done.length">
+              <draggable v-model="doing" :options="{group:'people'}" style="min-height: 10px">
+
                <doneItem v-for="dones in done" :key="dones._id"
                  :dones="dones" @setUpEdit="setupEdit(dones)"
                  @setUpDelete="setupDelete(dones)">
                  </doneItem>
+
+              </draggable>
               </span>
               <v-card-text v-else class="grey">No Done Tasks</v-card-text>
 
@@ -142,6 +158,8 @@ import novelstoryItem from '../components/novelstory.vue';
 import taskAddDialog from '../components/taskAddDialog.vue';
 import taskEditDialog from '../components/taskEditDialog.vue';
 import taskDeleteDialog from '../components/taskDeleteDialog.vue';
+import draggable from 'vuedraggable'
+
 //import Axios from 'axios';
 
 export default {
@@ -171,6 +189,7 @@ export default {
 
   //Components this page will need
   components: {
+    draggable,
     taskItem: taskItem,
     todoItem: todoItem,
     doingItem: doingItem,

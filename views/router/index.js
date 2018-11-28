@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-
-import usersPage from '../pages/users.vue'
 import homePage from '../pages/home.vue'
 import boardsPage from '../pages/boards.vue'
 import newProjectPage from '../pages/project.vue'
 import loginPage from '../components/login.vue'
 import registerPage from '../components/register.vue'
+import testPage from '../pages/test.vue'
+
 
 
 Vue.use(Router)
@@ -44,6 +44,12 @@ const router = new Router ({
       name: 'project',
       component: newProjectPage
     },
+    {
+      path: '/test',
+      name: 'test',
+      component: testPage
+    },
+
   ]
 })
 
