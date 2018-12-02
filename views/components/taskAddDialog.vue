@@ -14,7 +14,7 @@
 
             <v-text-field label="Name" v-model="task.name"> </v-text-field>
             <v-text-field label="Task Points" v-model="task.points"> </v-text-field>
-            <v-text-field label="Date Created" v-model="task.date_created"> </v-text-field>
+            <v-text-field label="Project Name" v-model="task.project_name"> </v-text-field>
             <v-text-field label="Details" v-model="task.details"> </v-text-field>
             <v-text-field label="Assigned To" v-model="task.assigned_to"> </v-text-field>
             <v-text-field label="Status" v-model="task.status"> </v-text-field>
@@ -43,7 +43,7 @@ export default {
     task: {
       points: 0,
       name: '',
-      date_created: '',
+      project_name: '',
       details: '',
       assigned_to: '', //eventually a drop down
       status: '',

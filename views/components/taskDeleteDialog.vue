@@ -39,14 +39,15 @@ export default {
     confirmDelete() {
       this.deleteDone = false;
       http
-        .delete('/tasks/' + this.deleteName)
+        .delete('/tasks', this.deleteName)
         .then(response => {
           this.deleteDone = true;
           this.alert(true, 'Delete', 'Task');
 
           this.close();
-          //another load query
+          
         })
+
 
         .catch(e => {
           this.deleteDone = true;
@@ -54,6 +55,8 @@ export default {
           this.close();
         });
     },
+
+   
 
     close() {
       this.$emit('closeDelete');

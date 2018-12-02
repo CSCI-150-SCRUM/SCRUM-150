@@ -13,7 +13,7 @@
           <v-text-field label="Details" v-model="changedtask.details"> </v-text-field>
           <v-text-field label="Assigned to" v-model="changedtask.assigned_to"> </v-text-field>
           <v-text-field label="Status" v-model="changedtask.status"> </v-text-field>
-          <v-text-field label="Date Created" v-model="changedtask.date_created"> </v-text-field>
+          <v-text-field label="Project Name" v-model="changedtask.project_name"> </v-text-field>
         </v-form>
 
         <v-card-actions>
@@ -34,7 +34,7 @@ export default {
     changedtask: {
       task_points: 0,
       name: '',
-      date_created: '',
+      project_name: '',
       details: '',
       assigned_to: '', //eventually a drop down
       status: '',

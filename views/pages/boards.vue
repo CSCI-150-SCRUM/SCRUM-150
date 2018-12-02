@@ -58,7 +58,7 @@
              <!-- </draggable> -->
               <!-- Begin Delete Dialog -->
               <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
-                <taskDeleteDialog :task="taskToDelete" @closeDelete="deleteDialog = false"
+                <taskDeleteDialog :task="taskToDelete" :deleteName="deleteName" @closeDelete="deleteDialog = false; taskToDelete={}"
                 @alert="alert">
 
                 </taskDeleteDialog>
@@ -177,6 +177,7 @@ export default {
     deleteDialog: false,
     editDialog: false,
     editName: '',
+    deleteName: '',
     rules: {
       email: value => {
         const pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
