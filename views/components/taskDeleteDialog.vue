@@ -39,7 +39,7 @@ export default {
     confirmDelete() {
       this.deleteDone = false;
       http
-        .delete('/tasks', this.deleteName)
+        .delete('/tasks/' + this.task._id)
         .then(response => {
           this.deleteDone = true;
           this.alert(true, 'Delete', 'Task');

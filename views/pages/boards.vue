@@ -224,6 +224,9 @@ export default {
     },
     //opens delete dialog
     setupDelete(task) {
+       Object.keys(task).forEach(key => {
+        this.taskToDelete[key] = task[key];
+      });
       this.deleteName = task.name;
       this.deleteDialog = true;
     },
