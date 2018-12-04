@@ -3,7 +3,7 @@ const express = require('express')
 
 //import the controllers and middleware
 const {
-    doneController
+    donesController
 } = require('../controllers/index')
 const {
     catchErrors
@@ -12,19 +12,19 @@ const {
 //set up the router
 const router = express.Router()
 
-//get all tasks
-router.get('/', catchErrors(doneController.index))
+//get all dones
+router.get('/', catchErrors(donesController.index))
 
 //make a new boy
-router.post('/', catchErrors(doneController.store))
+router.post('/', catchErrors(donesController.store))
 
 //see one boy
-router.get('/:id', catchErrors(doneController.show))
+router.get('/:id', catchErrors(donesController.show))
 
 //get rid of a boy
-router.delete('/:id', catchErrors(doneController.delete))
+router.delete('/:id', catchErrors(donesController.delete))
 
 //update a boy
-router.put('/:id', catchErrors(doneController.update))
+router.put('/:id', catchErrors(donesController.update))
 
 module.exports = router

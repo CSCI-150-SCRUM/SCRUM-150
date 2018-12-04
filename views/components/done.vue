@@ -1,13 +1,13 @@
 <template>
 <v-expansion-panel>
   <v-expansion-panel-content class="elevation-24">
-    <div slot="header">{{ dones.name }}</div>
+    <div slot="header">{{ done.name }}</div>
     <hr>
     <v-container grid-list-md text-xs-center>
       <v-layout row wrap>
         <v-flex xs-6 class="text-xs-left">
       <v-card class="title">
-          Details: {{ dones.name }}
+          Details: {{ done.name }}
           <br>
          
       </v-card>
@@ -34,9 +34,9 @@
 <script>
 export default {
   props: {
-    dones: {
-      type: Object
-    }
-  }
+    done: {
+      type: Object,
+    },
+  },
 };
 </script>

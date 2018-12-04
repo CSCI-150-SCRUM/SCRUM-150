@@ -3,10 +3,10 @@
 //const usersController = require('./users')
 const tasksController = require('./tasks')
 const projectController = require('./project')
-const doingController = require('./doing')
-const doneController = require('./done')
-const novelstoryController = require('./novelstory')
-const todoController = require('./todo')
+const doingController = require('./doings')
+const donesController = require('./dones')
+const novelController = require('./novelstories')
+const todoController = require('./todos')
 
 
 module.exports = {
@@ -14,7 +14,7 @@ module.exports = {
 //    usersController,
     projectController,
     doingController,
-    doneController,
-    novelstoryController,
+    donesController,
+    novelController,
     todoController,
 }

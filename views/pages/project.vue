@@ -20,6 +20,7 @@
                   <projectAddDialog @closeAdd="addDialog = false" @alert="alert"></projectAddDialog>
                 </v-dialog>
               </v-toolbar>
+<<<<<<< HEAD
               <!-- List of project -->
               <span v-if="project.length">
                 <projectItem
@@ -29,24 +30,38 @@
                   @setUpEdit="setupEdit(projects)"
                   @setUpDelete="setupDelete(projects)"
                 ></projectItem>
+=======
+                <!-- List of project -->
+              <span  v-if="project.length">
+                <projectItem v-for="projects in project" :key="projects._id"
+                 :project="projects" @setUpEdit="setupEdit(projects)"
+                 @setUpDelete="setupDelete(projects)">
+                 </projectItem>
+                 <v-btn variant="success" href="http://localhost:3001/#/boards">Go to project tasks</v-btn>
+>>>>>>> edb97d783b7c07c321a2471a97238415dcaad473
               </span>
               <v-card v-else class="headline text-xs-center">No projects to show</v-card>
-
+              
               <!-- Begin Delete Dialog -->
               <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
-                <!-- <projectDeleteDialog :project="projectToDelete" @closeDelete="deleteDialog = false"
-                @alert="alert"> 
+                <projectDeleteDialog :project="projectToDelete" :deleteName="deleteName" @closeDelete="deleteDialog = false;
+                projectToDelete= {}"@alert="alert"> 
 
-                </projectDeleteDialog>-->
+                </projectDeleteDialog>
               </v-dialog>
               <!-- End Delete Dialog -->
               <!-- Begin Edit Form -->
               <v-dialog v-model="editDialog" lazy absolute max-width="50%">
-                <!--<projectEditDialog :rules="rules" :project="projectToEdit" :editName="editName"
+                <projectEditDialog :rules="rules" :project="projectToEdit" :editName="editName"
                 @closeEdit="editDialog = false; projectToEdit = {}" @alert="alert">
-                </projectEditDialog>-->
+                </projectEditDialog>
               </v-dialog>
               <!-- End Edit Form -->
+<<<<<<< HEAD
+=======
+              
+              
+>>>>>>> edb97d783b7c07c321a2471a97238415dcaad473
             </v-card>
           </v-flex>
         </v-layout>
@@ -75,8 +90,13 @@ export default {
     addDialog: false,
     deleteDialog: false,
     editDialog: false,
+<<<<<<< HEAD
     loggedIn,
     editName: ""
+=======
+    editName: '',
+    deleteProject: '',
+>>>>>>> edb97d783b7c07c321a2471a97238415dcaad473
   }),
 
   //Components this page will need
@@ -103,7 +123,10 @@ export default {
 
     //opens delete dialog
     setupDelete(project) {
-      this.projectToDelete = project;
+      Object.keys(project).forEach(key => {
+        this.projectToDelete[key] = project[key];
+      });
+      this.deleteProject = project.name;
       this.deleteDialog = true;
     },
 
@@ -116,10 +139,16 @@ export default {
       this.editDialog = true;
     },
 
-    //get those project
-    mounted() {
+    alert(success, callName, resource) {
+      console.log('Page Alerting');
+      this.$emit('alert', success, callName, resource);
       this.load();
+<<<<<<< HEAD
     }
+=======
+    },
+
+>>>>>>> edb97d783b7c07c321a2471a97238415dcaad473
   },
 
   //get those project

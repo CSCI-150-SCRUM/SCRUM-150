@@ -25,7 +25,7 @@
               </div>
             </v-card-title>
             <v-card-actions>
-              <v-btn flat color="orange">Edit Project</v-btn>
+              <v-btn flat color="orange" variant="success" href="http://localhost:3001/#/boards">Edit Project</v-btn>
               <v-btn flat color="orange">Delete Project</v-btn>
             </v-card-actions>
           </v-card>
@@ -52,7 +52,7 @@
               </div>
             </v-card-title>
             <v-card-actions>
-              <v-btn flat color="orange">Edit Project</v-btn>
+              <v-btn flat color="orange" variant="success" href="http://localhost:3001/#/boards">Edit Project</v-btn>
               <v-btn flat color="orange">Delete Project</v-btn>
             </v-card-actions>
           </v-card>
@@ -80,7 +80,7 @@
               </div>
             </v-card-title>
             <v-card-actions>
-              <v-btn flat color="orange">Edit Project</v-btn>
+              <v-btn flat color="orange" variant="success" href="http://localhost:3001/#/boards">Edit Project</v-btn>
               <v-btn flat color="orange">Delete Project</v-btn>
             </v-card-actions>
           </v-card>

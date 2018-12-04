@@ -1,15 +1,19 @@
 <template>
   <v-card>
     <v-toolbar class="primary primaryText--text">
-      <v-toolbar-title> Edit project: {{editName}} </v-toolbar-title>
+      <v-toolbar-title> Edit done: {{editName}} </v-toolbar-title>
     </v-toolbar>
     <v-container fluid>
       <v-card-text>
 
         <!-- Begin Input Row -->
         <v-form ref="form">
-          <v-text-field label="Name" v-model="changedproject.project_name"> </v-text-field>
-          <v-text-field label="topic" v-model="changedproject.details"> </v-text-field>
+          <v-text-field label="Name" v-model="changeddone.name"> </v-text-field>
+          <v-text-field label="Points" v-model="changeddone.done_points" thumb-label step="1"></v-text-field>
+          <v-text-field label="Details" v-model="changeddone.details"> </v-text-field>
+          <v-text-field label="Assigned to" v-model="changeddone.assigned_to"> </v-text-field>
+          <v-text-field label="Status" v-model="changeddone.status"> </v-text-field>
+          <v-text-field label="Project Name" v-model="changeddone.project_name"> </v-text-field>
         </v-form>
 
         <v-card-actions>
@@ -26,16 +30,20 @@
 import { http } from '../config/http';
 
 export default {
-  data: () => ({ 
-    changedproject: {
+  data: () => ({
+    changeddone: {
+      done_points: 0,
+      name: '',
       project_name: '',
       details: '',
+      assigned_to: '', //eventually a drop down
+      status: '',
     },
     editDone: true,
   }),
 
   props: {
-    project: {
+    done: {
       type: Object,
     },
     rules: {
@@ -51,13 +59,13 @@ export default {
     edit() {
       this.editDone = false;
       http
-        .put('/project/' + this.project._id, this.changedproject)
+        .put('/dones/' + this.done._id, this.changeddone)
         .then(response => {
-          this.alert(true, 'Edit', 'project');
+          this.alert(true, 'Edit', 'Done');
           this.editDone = true;
         })
         .catch(e => {
-          this.alert(false, 'Edit', 'project');
+          this.alert(false, 'Edit', 'Done');
           this.editDone = true;
         });
     },
@@ -73,8 +81,9 @@ export default {
 
     checkForm() {
       if (
-        this.changedproject.project_name == '' ||
-        this.changedproject.details == ''
+        this.changeddone.done_points <= 0 ||
+        this.changeddone.name == '' ||
+        this.changeddone.details == ''
       ) {
         return true;
       } else {
@@ -84,7 +93,7 @@ export default {
   },
 
   mounted() {
-    this.changedproject = this.project;
+    this.changeddone = this.done;
   },
 };
 </script>
