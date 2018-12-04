@@ -8,19 +8,35 @@
           <v-card-text>Novel/Story</v-card-text>
         </v-card>
         <!-- <draggable> -->
-        <!-- List of novelstory -->
-             <span  v-if="novelstory.length">
-              <draggable v-model="novelstory" :options="{group:'people'}" style="min-height: 10px">
+        <div ondrop="drop(event)" ondragover="allowDrop(event)">
+              <span  v-if="novelstories.length">
+                <draggable v-model="novelstories" :options="{group:'people'}" style="min-height: 10px">
 
-                <novelstoryItem v-for="novelstorys in novelstory" :key="novelstorys._id"
-                 :novelstorys="novelstorys" @setUpEdit="setupEdit(novelstorys)"
-                 @setUpDelete="setupDelete(novelstorys)">
-                 </novelstoryItem>
-
-               </draggable>
+                <doneItem v-for="novel in novelstories" :key="novel._id"
+                 :novel="novel" @setUpEdit="setupNovelEdit(novel)"
+                 @setUpDelete="setupNovelDelete(novel)" draggable="true" ondragstart="drag(event)">
+                 </novelItem>
+                </draggable>
               </span>
-              <v-card-text v-else class="grey">No Novel/Storys</v-card-text>
-       <!-- </draggable> --> 
+              <v-card-text v-else class="grey">No Tasks</v-card-text>
+            </div>
+              <!-- </draggable> -->
+              <!-- Begin Delete Dialog -->
+              <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
+                <novelDeleteDialog :novel="novelToDelete" :deleteName="deleteName" @closeDelete="deleteDialog = false; novelToDelete={}"
+                @alert="alert">
+
+                </novelDeleteDialog>
+              </v-dialog>
+              <!-- End Delete Dialog -->
+
+              <!-- Begin Edit Form -->
+              <v-dialog v-model="editDialog" lazy absolute max-width="50%">
+                <novelEditDialog :rules="rules" :novel="novelToEdit" :editName="editName"
+                @closeEdit="editDialog = false; novelToEdit = {}" @alert="alert">
+                </novelEditDialog>
+              </v-dialog>
+              <!-- End Edit Form --> 
       </v-flex>
       <v-flex xs2>
         <v-card dark color="secondary">
@@ -79,30 +95,33 @@
         <v-card dark color="accent">
           <v-card-text>To-Do</v-card-text>
         </v-card>
-        <!-- List of todo -->
-            <span  v-if="todo.length">
-              <draggable v-model="todo" :options="{group:'people'}" style="min-height: 10px">
-                <todoItem v-for="todos in todo" :key="todos._id"  :todos="todos" @setUpEdit="setupEdit(todos)"
-                @setUpDelete="setupDelete(todos)">
-                 </todoItem>
-              </draggable>
+        <div ondrop="drop(event)" ondragover="allowDrop(event)">
+              <span  v-if="todos.length">
+                <draggable v-model="todos" :options="{group:'people'}" style="min-height: 10px">
 
+                <todoItem v-for="todo in todos" :key="todo._id"
+                 :todo="todo" @setUpEdit="setupTodoEdit(todo)"
+                 @setUpDelete="setupTodoDelete(todo)" draggable="true" ondragstart="drag(event)">
+                 </todoItem>
+                </draggable>
               </span>
-              <v-card-text v-else class="grey">No Tasks To-Do</v-card-text>
+              <v-card-text v-else class="grey">No Tasks</v-card-text>
+            </div>
+              <!-- </draggable> -->
               <!-- Begin Delete Dialog -->
               <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
-                <taskDeleteDialog :task="taskToDelete" @closeDelete="deleteDialog = false; taskToDelete = {}"
+                <todoDeleteDialog :todo="todoToDelete" :deleteName="deleteName" @closeDelete="deleteDialog = false; todoToDelete={}"
                 @alert="alert">
 
-                </taskDeleteDialog>
+                </todoDeleteDialog>
               </v-dialog>
               <!-- End Delete Dialog -->
 
               <!-- Begin Edit Form -->
               <v-dialog v-model="editDialog" lazy absolute max-width="50%">
-                <taskEditDialog :rules="rules" :task="taskToEdit" :editName="editName"
-                @closeEdit="editDialog = false; taskToEdit = {}" @alert="alert">
-                </taskEditDialog>
+                <todoEditDialog :rules="rules" :todo="todoToEdit" :editName="editName"
+                @closeEdit="editDialog = false; todoToEdit = {}" @alert="alert">
+                </todoEditDialog>
               </v-dialog>
               <!-- End Edit Form -->
       </v-flex>
@@ -111,17 +130,35 @@
           <v-card-text>Doing</v-card-text>
         </v-card>
         <!-- List of doing -->
-            <span  v-if="doing.length">
-              <draggable v-model="doing" :options="{group:'people'}" style="min-height: 10px">
+            <div ondrop="drop(event)" ondragover="allowDrop(event)">
+              <span  v-if="doings.length">
+                <draggable v-model="doings" :options="{group:'people'}" style="min-height: 10px">
 
-                <doingItem v-for="doings in doing" :key="doings._id"
-                 :doings="doings" @setUpEdit="setupEdit(doings)"
-                 @setUpDelete="setupDelete(doings)">
+                <doingItem v-for="doing in doings" :key="doing._id"
+                 :doing="doing" @setUpEdit="setupDoingEdit(done)"
+                 @setUpDelete="setupDoingDelete(done)" draggable="true" ondragstart="drag(event)">
                  </doingItem>
-
-              </draggable>  
+                </draggable>
               </span>
-              <v-card-text v-else class="grey">No Doing Tasks</v-card-text>
+              <v-card-text v-else class="grey">No Tasks</v-card-text>
+            </div>
+              <!-- </draggable> -->
+              <!-- Begin Delete Dialog -->
+              <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
+                <doingDeleteDialog :doing="doingToDelete" :deleteName="deleteName" @closeDelete="deleteDialog = false; doingToDelete={}"
+                @alert="alert">
+
+                </doingDeleteDialog>
+              </v-dialog>
+              <!-- End Delete Dialog -->
+
+              <!-- Begin Edit Form -->
+              <v-dialog v-model="editDialog" lazy absolute max-width="50%">
+                <doingEditDialog :rules="rules" :doing="doingToEdit" :editName="editName"
+                @closeEdit="editDialog = false; doingToEdit = {}" @alert="alert">
+                </doingEditDialog>
+              </v-dialog>
+              <!-- End Edit Form -->
 
       </v-flex>
       <v-flex xs2>
@@ -129,18 +166,36 @@
           <v-card-text>Done</v-card-text>
         </v-card>
         <!-- List of done tasks -->
-              <span  v-if="done.length">
-              <draggable v-model="doing" :options="{group:'people'}" style="min-height: 10px">
+               <!-- List of tasks -->
+            <div ondrop="drop(event)" ondragover="allowDrop(event)">
+              <span  v-if="dones.length">
+                <draggable v-model="dones" :options="{group:'people'}" style="min-height: 10px">
 
-               <doneItem v-for="dones in done" :key="dones._id"
-                 :dones="dones" @setUpEdit="setupEdit(dones)"
-                 @setUpDelete="setupDelete(dones)">
+                <doneItem v-for="done in dones" :key="done._id"
+                 :done="done" @setUpEdit="setupDoneEdit(done)"
+                 @setUpDelete="setupDoneDelete(done)" draggable="true" ondragstart="drag(event)">
                  </doneItem>
-
-              </draggable>
+                </draggable>
               </span>
-              <v-card-text v-else class="grey">No Done Tasks</v-card-text>
+              <v-card-text v-else class="grey">No Tasks</v-card-text>
+            </div>
+              <!-- </draggable> -->
+              <!-- Begin Delete Dialog -->
+              <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
+                <doneDeleteDialog :done="doneToDelete" :deleteName="deleteName" @closeDelete="deleteDialog = false; doneToDelete={}"
+                @alert="alert">
 
+                </doneDeleteDialog>
+              </v-dialog>
+              <!-- End Delete Dialog -->
+
+              <!-- Begin Edit Form -->
+              <v-dialog v-model="editDialog" lazy absolute max-width="50%">
+                <doneEditDialog :rules="rules" :done="doneToEdit" :editName="editName"
+                @closeEdit="editDialog = false; doneToEdit = {}" @alert="alert">
+                </doneEditDialog>
+              </v-dialog>
+              <!-- End Edit Form -->
       </v-flex>
     </v-layout>
   </v-container>
@@ -154,10 +209,16 @@ import taskItem from '../components/task.vue';
 import todoItem from '../components/todo.vue';
 import doingItem from '../components/doing.vue';
 import doneItem from '../components/done.vue';
-import novelstoryItem from '../components/novelstory.vue';
+import novelItem from '../components/novelstory.vue';
 import taskAddDialog from '../components/taskAddDialog.vue';
 import taskEditDialog from '../components/taskEditDialog.vue';
 import taskDeleteDialog from '../components/taskDeleteDialog.vue';
+import doneEditDialog from '../components/doneEditDialog.vue';
+import doneDeleteDialog from '../components/doneDeleteDialog.vue';
+import doingEditDialog from '../components/doingEditDialog.vue';
+import doingDeleteDialog from '../components/doingDeleteDialog.vue';
+import todoEditDialog from '../components/todoEditDialog.vue';
+import todoDeleteDialog from '../components/todoDeleteDialog.vue';
 import draggable from 'vuedraggable'
 //import Axios from 'axios';
 export default {
@@ -165,13 +226,21 @@ export default {
   data: () => ({
     errors: [],
     tasks: [],
-    done: [],
-    doing: [],
-    novelstory: [],
-    todo: [],
+    dones: [],
+    doings: [],
+    novelstories: [],
+    todos: [],
     taskToDelete: {},
+    doneToDelete: {},
+    doingToDelete: {},
+    todoToDelete: {},
+    novelToDelete: {},
     alertSettings: {}, //this is to abstract our our alerts to make them easier and stop repeating code
     taskToEdit: {},
+    doneToEdit: {},
+    doingToEdit: {},
+    todoToEdit: {},
+    novelToEdit: {},
     newtask: {},
     addDialog: false,
     deleteDialog: false,
@@ -192,31 +261,39 @@ export default {
     todoItem: todoItem,
     doingItem: doingItem,
     doneItem: doneItem,
-    novelstoryItem: novelstoryItem,
+    novelItem: novelItem,
     taskAddDialog: taskAddDialog,
     taskEditDialog: taskEditDialog,
     taskDeleteDialog: taskDeleteDialog,
+    doneEditDialog: doneEditDialog,
+    doneDeleteDialog: doneDeleteDialog,
+    doingEditDialog: doingEditDialog,
+    doingDeleteDialog: doingDeleteDialog,
+    todoEditDialog: todoEditDialog,
+    todoDeleteDialog: todoDeleteDialog,
+    novelEditDialog: novelEditDialog,
+    novelDeleteDialog: novelDeleteDialog,
   },
   //The methods we will need
   methods: {
     //load all tasks from DB, we call this often to make sure the data is up to date
     load() {
-      http.get('novelstory').then(response => {
-        this.novelstory = response.data.novelstory;
+      http.get('novelstories').then(response => {
+        this.novelstories = response.data.novelstories;
       });
       http.get('tasks').then(response => {
         this.tasks = response.data.tasks;
       });
-      http.get('doing').then(response => {
-        this.doing = response.data.doing;
+      http.get('doings').then(response => {
+        this.doings = response.data.doings;
       });
-      http.get('done').then(response => {
-        this.done = response.data.done;
+      http.get('dones').then(response => {
+        this.dones = response.data.dones;
       });
       http
-        .get('todo')
+        .get('todos')
         .then(response => {
-          this.todo = response.data.todo;
+          this.todos = response.data.todos;
         })
         .catch(e => {
           this.errors.push(e);
@@ -236,6 +313,66 @@ export default {
         this.taskToEdit[key] = task[key];
       });
       this.editName = task.name;
+      this.editDialog = true;
+    },
+    setupDoneDelete(done) {
+       Object.keys(done).forEach(key => {
+        this.doneToDelete[key] = done[key];
+      });
+      this.deleteName = done.name;
+      this.deleteDialog = true;
+    },
+    //opens edit dialog
+    setupDoneEdit(done) {
+      Object.keys(done).forEach(key => {
+        this.doneToEdit[key] = done[key];
+      });
+      this.editName = done.name;
+      this.editDialog = true;
+    },
+    setupDoingDelete(doing) {
+       Object.keys(doing).forEach(key => {
+        this.doingToDelete[key] = doing[key];
+      });
+      this.deleteName = doing.name;
+      this.deleteDialog = true;
+    },
+    //opens edit dialog
+    setupDoingEdit(doing) {
+      Object.keys(doing).forEach(key => {
+        this.doingToEdit[key] = doing[key];
+      });
+      this.editName = doing.name;
+      this.editDialog = true;
+    },
+    setupTodoDelete(todo) {
+       Object.keys(todo).forEach(key => {
+        this.todoToDelete[key] = todo[key];
+      });
+      this.deleteName = todo.name;
+      this.deleteDialog = true;
+    },
+    //opens edit dialog
+    setupTodoEdit(todo) {
+      Object.keys(todo).forEach(key => {
+        this.todoToEdit[key] = todo[key];
+      });
+      this.editName = todo.name;
+      this.editDialog = true;
+    },
+    setupNovelDelete(novel) {
+       Object.keys(novel).forEach(key => {
+        this.novelToDelete[key] = novel[key];
+      });
+      this.deleteName = novel.name;
+      this.deleteDialog = true;
+    },
+    //opens edit dialog
+    setupTodoEdit(novel) {
+      Object.keys(novel).forEach(key => {
+        this.novelToEdit[key] = novel[key];
+      });
+      this.editName = novel.name;
       this.editDialog = true;
     },
     //build the alert info for us
