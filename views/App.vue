@@ -35,15 +35,6 @@
       <v-toolbar-title>{{ title }}</v-toolbar-title>
       <v-spacer></v-spacer>
 
-      <!--<v-toolbar-items class="hidden-sm-and-down">
-        <v-btn
-          flat
-          v-for="(menu, index) in menus"
-          :key="index"
-          :to="{name:menu.route}"
-        >{{menu.name}}</v-btn>
-      </v-toolbar-items> -->
-
       <v-btn @click="logged = !logged" icon>
         <v-icon class="primaryText--text" v-if="!isDarkMode">brightness_5</v-icon>
         <v-icon class="primaryText--text" v-else>brightness_3</v-icon>
@@ -93,10 +84,7 @@ export default {
       clipped: true,
       drawer: false,
       fixed: false,
-      menus: [
-        { name: "Login", route: "login" },
-        { name: "register", route: "register" }
-      ],
+      
       items: [
         {
           icon: "home",
@@ -198,7 +186,7 @@ export default {
 
   computed: {
     showMenu() {
-    return this.$route.name !== 'login' && this.$route.name !== 'register' && this.$route.name !== 'test';
+    return this.$route.name !== 'login' && this.$route.name !== 'register' && this.$route.name !== 'title';
     }
   }
 };
