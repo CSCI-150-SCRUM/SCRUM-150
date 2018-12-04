@@ -2,7 +2,7 @@
   <v-container class="pa-0">
     <template>
       <v-layout>
-        <v-flex xs12 sm6 offset-sm3>
+        <v-flex xs12 sm6 lg4 offset-sm3>
           <v-card id="cards">
             <v-img
               class="white--text"

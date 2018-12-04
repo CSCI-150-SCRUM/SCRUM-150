@@ -92,18 +92,6 @@ export default {
           router: true
         },
         {
-          icon: "vpn_key",
-          title: "Login",
-          href: "/#/login",
-          router: true
-        },
-        {
-          icon: "account_circle",
-          title: "Register",
-          href: "/#/register",
-          router: true
-        },
-        {
           icon: "table_chart",
           title: "Boards",
           href: "/#/boards",
