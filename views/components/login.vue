@@ -71,7 +71,7 @@
             password: this.password,
           })
           .then(() => {
-            this.$emit('logged');
+            this.$emit('alert');
             this.$router.push(this.$route.query.redirect || '/home')
           })
         }
