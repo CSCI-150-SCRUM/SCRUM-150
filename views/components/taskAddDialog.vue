@@ -17,7 +17,8 @@
             <v-text-field label="Project Name" v-model="task.project_name"> </v-text-field>
             <v-text-field label="Details" v-model="task.details"> </v-text-field>
             <v-text-field label="Assigned To" v-model="task.assigned_to"> </v-text-field>
-            <v-text-field label="Status" v-model="task.status"> </v-text-field>
+            <v-text-field label="Status" v-model="task.status"> 
+            </v-text-field>
             
           </v-form> 
 

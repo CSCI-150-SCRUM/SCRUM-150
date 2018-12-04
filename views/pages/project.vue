@@ -27,9 +27,10 @@
                  :project="projects" @setUpEdit="setupEdit(projects)"
                  @setUpDelete="setupDelete(projects)">
                  </projectItem>
+                 <v-btn variant="success" href="http://localhost:3001/#/boards">Go to project tasks</v-btn>
               </span>
               <v-card v-else class="headline text-xs-center">No projects to show</v-card>
-
+              
               <!-- Begin Delete Dialog -->
               <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
                 <projectDeleteDialog :project="projectToDelete" :deleteName="deleteName" @closeDelete="deleteDialog = false;
@@ -46,6 +47,7 @@
                 </projectEditDialog>
               </v-dialog>
               <!-- End Edit Form -->
+              
               
             </v-card>
           </v-flex>
