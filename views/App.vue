@@ -35,10 +35,6 @@
       <v-toolbar-title>{{ title }}</v-toolbar-title>
       <v-spacer></v-spacer>
 
-      <v-btn @click="logged = !logged" icon>
-        <v-icon class="primaryText--text" v-if="!isDarkMode">brightness_5</v-icon>
-        <v-icon class="primaryText--text" v-else>brightness_3</v-icon>
-      </v-btn>
       <v-btn @click="isDarkMode = !isDarkMode" icon>
         <v-icon class="primaryText--text" v-if="!isDarkMode">brightness_5</v-icon>
         <v-icon class="primaryText--text" v-else>brightness_3</v-icon>
@@ -84,7 +80,7 @@ export default {
       clipped: true,
       drawer: false,
       fixed: false,
-      
+
       items: [
         {
           icon: "home",
