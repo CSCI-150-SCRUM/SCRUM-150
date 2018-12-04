@@ -42,16 +42,25 @@
 <script>
   import axios from 'axios'
 
+
   export default {
     data: () => ({
       valid: true,
+      loggedIn: Boolean,
       username: '',
+      snackName: 'logged in successfully',
       usernameRules: [
         v => !!v || 'Username is required',
         v => (v && v.length <= 10) || 'Name must be less than 10 characters'
       ],
       password: '',
     }),
+
+    props: {
+    logged: {
+      type: Boolean,
+    },
+  },
 
     methods: {
       submit () {
@@ -61,7 +70,14 @@
             username: this.username,
             password: this.password,
           })
-          .then(() => this.$router.push(this.$route.query.redirect || '/home'))
+          .then(() => {
+            this.$swal(
+              'Success!',
+              'You have logged in',
+              'success'
+            );
+            this.$router.push(this.$route.query.redirect || '/home')
+          })
         }
         
       },

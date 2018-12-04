@@ -61,6 +61,14 @@
             username: this.username,
             password: this.password,
           })
+          .then(() => {
+            this.$swal(
+              'Good Job!!',
+              'You have registered you can now login',
+              'success'
+            );
+            this.$router.push(this.$route.query.redirect || '/login')
+          })
         }
       },
       clear () {
