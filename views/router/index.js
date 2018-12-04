@@ -12,11 +12,9 @@ import existingProjectPage from '../pages/existingProject.vue'
 
 Vue.use(Router)
 
-const router = new Router ({
-  root: '/home',
-  routes: 
-  [
-    {
+const router = new Router({
+  root: '/login',
+  routes: [{
       path: '/login',
       name: 'login',
       component: loginPage
@@ -38,7 +36,7 @@ const router = new Router ({
     {
       path: '/boards',
       name: 'boards',
-     component: boardsPage
+      component: boardsPage
     },
     {
       path: '/project',
