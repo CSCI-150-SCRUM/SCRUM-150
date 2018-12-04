@@ -1,8 +1,22 @@
 <template>
   <v-app :dark="isDarkMode">
-    <v-navigation-drawer persistent :mini-variant="miniVariant" :clipped="clipped" v-model="drawer" enable-resize-watcher app width="200" class="primary">
+    <v-navigation-drawer
+      :mini-variant="miniVariant"
+      :clipped="clipped"
+      v-model="drawer"
+      enable-resize-watcher
+      app
+      width="200"
+      class="primary"
+    >
       <v-list>
-        <v-list-tile v-for="(item, i) in items" :key="i" value="true" :href="item.href" :class="getNavClass(item.href)">
+        <v-list-tile
+          v-for="(item, i) in items"
+          :key="i"
+          value="true"
+          :href="item.href"
+          :class="getNavClass(item.href)"
+        >
           <v-list-tile-action>
             <v-icon class="primaryText--text" v-html="item.icon"></v-icon>
           </v-list-tile-action>
@@ -12,34 +26,34 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-  
+
     <v-toolbar class="primary primaryText--text" fixed app :clipped-left="clipped">
       <v-toolbar-side-icon class="primaryText--text" @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-btn icon @click.stop="miniVariant = !miniVariant">
+      <!-- <v-btn icon @click.stop="miniVariant = !miniVariant">
         <v-icon class="primaryText--text" v-html="miniVariant ? 'chevron_right' : 'chevron_left'"></v-icon>
-      </v-btn>
-
-      <v-toolbar-title> {{ title }} </v-toolbar-title>
+      </v-btn>-->
+      <v-toolbar-title>{{ title }}</v-toolbar-title>
       <v-spacer></v-spacer>
 
       <v-toolbar-items class="hidden-sm-and-down">
-      <v-btn flat v-for="(menu, index) in menus" :key='index' :to={name:menu.route}>
-        {{menu.name}}
-      </v-btn>
+        <v-btn
+          flat
+          v-for="(menu, index) in menus"
+          :key="index"
+          :to="{name:menu.route}"
+        >{{menu.name}}</v-btn>
       </v-toolbar-items>
 
-      <v-btn @click="loggedIn = !loggedIn" icon>
-        <v-icon class="primaryText--text" v-if="!isDarkMode"> brightness_5 </v-icon>
-        <v-icon class="primaryText--text" v-else> brightness_3 </v-icon>
-      </v-btn>
-
+      <!--       <v-btn @click="loggedIn = !loggedIn" icon>
+        <v-icon class="primaryText--text" v-if="!isDarkMode">brightness_5</v-icon>
+        <v-icon class="primaryText--text" v-else>brightness_3</v-icon>
+      </v-btn>-->
       <v-btn @click="isDarkMode = !isDarkMode" icon>
-        <v-icon class="primaryText--text" v-if="!isDarkMode"> brightness_5 </v-icon>
-        <v-icon class="primaryText--text" v-else> brightness_3 </v-icon>
+        <v-icon class="primaryText--text" v-if="!isDarkMode">brightness_5</v-icon>
+        <v-icon class="primaryText--text" v-else>brightness_3</v-icon>
       </v-btn>
     </v-toolbar>
-  
-  
+
     <main>
       <v-content v-show="loggedIn">
         <v-container fluid>
@@ -51,18 +65,18 @@
         </v-container>
       </v-content>
     </main>
-  
+
     <v-footer app :fixed="fixed" dark height="auto">
       <v-card class="flex" flat tile>
-        <v-card-actions class="grey darken-3 justify-center">
-        </v-card-actions>
+        <v-card-actions class="grey darken-3 justify-center"></v-card-actions>
       </v-card>
     </v-footer>
-  
-  
-    <v-snackbar bottom :value="alertOpen" :color="alertSuccess ? 'success' : 'error'">
-      {{ alertString }}
-    </v-snackbar>
+
+    <v-snackbar
+      bottom
+      :value="alertOpen"
+      :color="alertSuccess ? 'success' : 'error'"
+    >{{ alertString }}</v-snackbar>
   </v-app>
 </template>
 
@@ -73,36 +87,36 @@ export default {
   data: () => {
     return {
       clipped: true,
-      drawer: true,
+      drawer: false,
       fixed: false,
       menus: [
-        {name:"Login", route:"login"},
-        {name:"register", route:"register"}
+        { name: "Login", route: "login" },
+        { name: "register", route: "register" }
       ],
       items: [
         {
-          icon: 'home',
-          title: 'Home',
-          href: '/#/home',
-          router: true,
+          icon: "home",
+          title: "Home",
+          href: "/#/home",
+          router: true
         },
         {
-          icon: 'vpn_key',
-          title: 'Login',
-          href: '/#/login',
-          router: true,
+          icon: "vpn_key",
+          title: "Login",
+          href: "/#/login",
+          router: true
         },
         {
-          icon: 'account_circle',
-          title: 'Register',
-          href: '/#/register',
-          router: true,
+          icon: "account_circle",
+          title: "Register",
+          href: "/#/register",
+          router: true
         },
         {
-          icon: 'table_chart',
-          title: 'Boards',
-          href: '/#/boards',
-          router: true,
+          icon: "table_chart",
+          title: "Boards",
+          href: "/#/boards",
+          router: true
         },
         {
           icon: "add_comment",
@@ -111,23 +125,22 @@ export default {
           router: true
         },
         {
-          icon: 'create_new_folder',
-          title: 'Project',
-          href: '/#/project',
-          router: true,
-        },
+          icon: "create_new_folder",
+          title: "Project",
+          href: "/#/project",
+          router: true
+        }
       ],
-      miniVariant: false,
+      //miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'ScrumBag',
+      title: "ScrumBag",
       alertOpen: false,
-      alertString: '',
+      alertString: "",
       alertSuccess: false,
       isDarkMode: true,
-      loggedIn: true,
+      loggedIn: true
     };
-
   },
 
   watch: {
@@ -135,44 +148,44 @@ export default {
       if (!this.isDarkMode) {
         //NOT dark mode
         this.$vuetify.theme = {
-          primary: '#0D47A1', //Main color
-          primaryText: '#FFFFFF', //Color for text on primary
-          secondary: '#90CAF9', //Color for active nav
-          lightText: '#000000',
+          primary: "#0D47A1", //Main color
+          primaryText: "#FFFFFF", //Color for text on primary
+          secondary: "#90CAF9", //Color for active nav
+          lightText: "#000000"
         };
       } else {
         //Dark mode
         this.$vuetify.theme = {
-          primary: '#0D47A1', //Main color
-          primaryText: '#FFFFFF', //Color for text on primary
-          secondary: '#90CAF9', //Color for active nav
-          lightText: '#FFFFFF',
+          primary: "#0D47A1", //Main color
+          primaryText: "#FFFFFF", //Color for text on primary
+          secondary: "#90CAF9", //Color for active nav
+          lightText: "#FFFFFF"
         };
       }
-    },
+    }
   },
 
   methods: {
     alert(success, callName, resource) {
       this.alertOpen = false;
-      this.alertString = callName + ' ' + resource;
+      this.alertString = callName + " " + resource;
       if (success) {
         this.alertSuccess = true;
-        this.alertString += ' was successful.';
+        this.alertString += " was successful.";
       } else {
         this.alertSuccess = false;
-        this.alertString += ' has failed.';
+        this.alertString += " has failed.";
       }
       this.alertOpen = true;
     },
 
     getNavClass(href) {
       if (this.$route.fullPath == href.substring(2)) {
-        return 'secondary primaryText--text';
+        return "secondary primaryText--text";
       } else {
-        return 'primary primaryText--text';
+        return "primary primaryText--text";
       }
-    },
-  },
+    }
+  }
 };
 </script>
