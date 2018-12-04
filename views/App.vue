@@ -98,14 +98,14 @@ export default {
           router: true
         },
         {
-          icon: "add_comment",
+          icon: "computer",
           title: "Existing Projects",
           href: "/#/existingProject",
           router: true
         },
         {
           icon: "create_new_folder",
-          title: "Project",
+          title: "New Project",
           href: "/#/project",
           router: true
         }
