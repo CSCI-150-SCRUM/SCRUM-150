@@ -42,6 +42,8 @@
 <script>
   import axios from 'axios'
 
+  
+
   export default {
     data: () => ({
       valid: true,
@@ -53,6 +55,10 @@
       password: '',
     }),
 
+    props: {
+    loggedIn: Boolean
+    },
+
     methods: {
       submit () {
         if (this.$refs.form.validate()) {
@@ -62,6 +68,7 @@
             password: this.password,
           })
           .then(() => this.$router.push(this.$route.query.redirect || '/home'))
+          loggedIn = false;
         }
         
       },
