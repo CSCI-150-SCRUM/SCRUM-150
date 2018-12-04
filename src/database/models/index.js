@@ -4,7 +4,7 @@ const Task = require('./task')
 const Project = require('./project')
 const Doing = require('./doing')
 const Done = require('./done')
-const Novel = require('./novel')
+const Novelstory = require('./novelstory')
 const Todo = require('./todo')
 //import other models in the same manner
 
@@ -15,6 +15,6 @@ module.exports = {
     Project,
     Doing,
     Done,
-    Novel,
+    Novelstory,
     Todo
 }
