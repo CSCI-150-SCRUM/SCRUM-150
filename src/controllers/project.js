@@ -7,7 +7,7 @@ const log = new trunks('PROJECT')
 
 //show all project
 exports.index = async (req, res) => {
-
+ 
     //query the DB of all project
     await Project.find().exec()
         .then(project => {
@@ -31,7 +31,7 @@ exports.store = async (req, res) => {
     let project = new Project(req.body)
 
     //save it in the DB
-    await Project.save()
+    await project.save()
         .then(project => {
             log.success('Created project: {}', project.details)
             //send a 201 and the new resource
@@ -52,7 +52,7 @@ exports.store = async (req, res) => {
 exports.show = async (req, res) => {
 
     //find this sneaky boye
-    await project.findById(req.params.id).exec()
+    await Project.findById(req.params.id).exec()
         .then(project => {
             log.success('Found project: {}', project.project_name)
             res.json({
@@ -72,7 +72,7 @@ exports.show = async (req, res) => {
 exports.delete = async (req, res) => {
 
     //find the sneaky boye and make him go away
-    await project.findByIdAndRemove(req.params.id).exec()
+    await Project.findByIdAndRemove(req.params.id).exec()
         .then(() => {
             log.success('Deleted project: {}', req.params.id)
             //let em know there aint no content no mo
@@ -89,7 +89,7 @@ exports.delete = async (req, res) => {
 
 //edit a project based on ID
 exports.update = async (req, res) => {
-    await project
+    await Project
         .findByIdAndUpdate(req.params.id, req.body, {
             new: true
         })

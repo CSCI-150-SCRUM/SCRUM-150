@@ -44,7 +44,7 @@ export default {
     },
   },
 
-  methods: {
+  methods: { 
     submit() {
       this.submitDone = false;
       http
@@ -62,7 +62,6 @@ export default {
 
     load() {
       this.project = {
-        details: '',
         project_name: '',
       };
       this.submitDone = true;

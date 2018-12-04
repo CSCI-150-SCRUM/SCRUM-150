@@ -16,7 +16,7 @@ const definition = {
         required: true
     },
     status: {
-        type: String,
+        type: String, 
         required: true
     },
     assigned_to: {
@@ -39,3 +39,6 @@ const TaskSchema = new mongoose.Schema(definition, options)
 
 //export that boye
 module.exports = mongoose.model('Task', TaskSchema)
+
+
+
