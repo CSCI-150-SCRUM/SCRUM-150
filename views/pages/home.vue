@@ -32,8 +32,8 @@ export default {
     data: () => ({
       items: [
         { icons: "home", titles: "Home" },
-        { icons: "settings", titles: "Contacts" },
-        { icons: "group", titles: "Settings" },
+        { icons: "settings", titles: "Settings" },
+        { icons: "group", titles: "Contacts" },
         { icons: "create_new_folder", titles: "New Project" },
         { icons: "work", titles: "Existing Project" },
         { icons: "event", titles: "Calendar" },
