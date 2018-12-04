@@ -4,20 +4,21 @@
       <template>
         <v-responsive>
           <header>
-            <h1 style="font-size:64px">WELCOME TO SCRUMBAG</h1>
+            <h1 style="font-size:44px" class="text-xs-center">WELCOME TO SCRUMBAG</h1>
           </header>
-          <p style="color:DodgerBlue;">A VISUAL MANAGEMENT TOOL!</p>
+          <p class="text-xs-center" style="color:DodgerBlue;">A VISUAL MANAGEMENT TOOL!</p>
           <hr class="my-4">
-          <p>
-            Welcome to SCRUMBAG. ScrumBag is a web-based application that allows teams to work together using the Scrum Management Technique in
-            a real-time environment. The objective of this application is to simplify the Scrum Management process by incorporating unique user
-            logins, drag-and-drop task cards, and the ability to view, but not modify, other teams' current progress.
-          </p>
-          <v-btn
-            variant="primary"
-            href="http://localhost:3001/#/existingProject"
-          >Go to existing projects</v-btn>
-          <v-btn variant="success" href="http://localhost:3001/#/boards">Go to project boards</v-btn>
+
+          <v-container grid-list-md>
+            <v-layout wrap>
+              <v-flex v-for="item in items" :key="item" xs6 sm4 md3 lg2>
+                <v-card height="200px">
+                    <v-icon dark>{{item.icons}}</v-icon>
+                    <v-card-text class="text-xs-center">{{item.titles}}</v-card-text>
+                </v-card> 
+              </v-flex>
+            </v-layout>
+          </v-container>
         </v-responsive>
       </template>
     </v-container>
@@ -29,7 +30,19 @@
 export default {
     //Variables
     data: () => ({
-      
+      items: [
+        { icons: "home", titles: "Home" },
+        { icons: "settings", titles: "Settings" },
+        { icons: "contacts", titles: "Contacts" },
+        { icons: "create_new_folder", titles: "New Project" },
+        { icons: "group", titles: "Groups" },
+        { icons: "work", titles: "Existing Project" },
+        { icons: "event", titles: "Calendar" },
+        { icons: "chat", titles: "Chat" },
+        { icons: "done", titles: "Completed Project" },
+        { icons: "help", titles: "Help" }
+        
+      ]
     }),
   
     //Components this page will need
@@ -44,3 +57,17 @@ export default {
   };
 
 </script>
+
+<style scoped>
+  .v-icon{
+    font-size: 150px;
+  }
+
+  .v-card{
+    text-align: center;
+    margin: auto;
+    display:block;
+    background-color: transparent!important;
+    border-color: transparent!important;
+  }
+</style>
