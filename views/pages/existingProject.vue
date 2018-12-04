@@ -1,5 +1,5 @@
 <template>
-  <v-container class="pa-0">
+  <v-container v-show="loggedIn" class="pa-0">
     <template>
       <v-layout>
         <v-flex xs12 sm6 offset-sm3>
@@ -19,7 +19,8 @@
             </v-img>
             <v-card-title>
               <div>
-                <span class="grey--text">Video Game Project</span><br>
+                <span class="grey--text">Video Game Project</span>
+                <br>
                 <span>Battle Royale game project with a ton of fun dances!</span>
               </div>
             </v-card-title>
@@ -45,7 +46,8 @@
             </v-img>
             <v-card-title>
               <div>
-                <span class="grey--text">Artificial Intelligence </span><br>
+                <span class="grey--text">Artificial Intelligence</span>
+                <br>
                 <span>AI developed by Scrumbag and co.</span>
               </div>
             </v-card-title>
@@ -71,8 +73,10 @@
             </v-img>
             <v-card-title>
               <div>
-                <span class="grey--text">Web Application </span><br>
-                <span>Project Management tool created for easier development</span><br>
+                <span class="grey--text">Web Application</span>
+                <br>
+                <span>Project Management tool created for easier development</span>
+                <br>
               </div>
             </v-card-title>
             <v-card-actions>
@@ -80,7 +84,6 @@
               <v-btn flat color="orange">Delete Project</v-btn>
             </v-card-actions>
           </v-card>
-
         </v-flex>
       </v-layout>
     </template>
@@ -88,34 +91,30 @@
 </template>
 
 <script>
+import loggedIn from "../components/login";
 
 export default {
   //Variables
   data: () => ({
-  
+    loggedIn
   }),
 
   //Components this page will need
-  components: {
- 
-  },
+  components: {},
 
   //The methods we will need
-  methods: {
-  
-  },
+  methods: {}
 
   //get those project
-}; 
+};
 </script>
 
 <style scoped>
-  #cards {
-    margin-bottom: 1rem;
-  }
+#cards {
+  margin-bottom: 1rem;
+}
 
-  .v-card{
-    margin-bottom: 10px;
-  }
-
+.v-card {
+  margin-bottom: 10px;
+}
 </style>

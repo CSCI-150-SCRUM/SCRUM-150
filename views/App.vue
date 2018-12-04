@@ -1,7 +1,6 @@
 <template>
   <v-app :dark="isDarkMode">
     <v-navigation-drawer
-      :mini-variant="miniVariant"
       :clipped="clipped"
       v-model="drawer"
       enable-resize-watcher
@@ -29,9 +28,6 @@
 
     <v-toolbar class="primary primaryText--text" fixed app :clipped-left="clipped">
       <v-toolbar-side-icon class="primaryText--text" @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <!-- <v-btn icon @click.stop="miniVariant = !miniVariant">
-        <v-icon class="primaryText--text" v-html="miniVariant ? 'chevron_right' : 'chevron_left'"></v-icon>
-      </v-btn>-->
       <v-toolbar-title>{{ title }}</v-toolbar-title>
       <v-spacer></v-spacer>
 
@@ -55,7 +51,7 @@
     </v-toolbar>
 
     <main>
-      <v-content v-show="loggedIn">
+      <v-content>
         <v-container fluid>
           <v-layout column align-center>
             <v-fade-transition mode="out-in">
@@ -89,6 +85,13 @@ export default {
       clipped: true,
       drawer: false,
       fixed: false,
+      right: true,
+      rightDrawer: false,
+      title: "ScrumBag",
+      alertOpen: false,
+      alertString: "",
+      alertSuccess: false,
+      isDarkMode: true,
       menus: [
         { name: "Login", route: "login" },
         { name: "register", route: "register" }
@@ -130,16 +133,7 @@ export default {
           href: "/#/project",
           router: true
         }
-      ],
-      //miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: "ScrumBag",
-      alertOpen: false,
-      alertString: "",
-      alertSuccess: false,
-      isDarkMode: true,
-      loggedIn: true
+      ]
     };
   },
 

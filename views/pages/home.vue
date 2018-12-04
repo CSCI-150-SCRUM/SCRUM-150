@@ -1,5 +1,5 @@
 <template>
-  <v-flex>
+  <v-flex v-show="loggedIn">
     <v-container>
       <template>
         <v-responsive>
@@ -25,22 +25,18 @@
 </template>
 
 <script>
+import loggedIn from "../components/login";
 
 export default {
-    //Variables
-    data: () => ({
-      
-    }),
-  
-    //Components this page will need
-    components: {
-      
-    },
-  
-    //The methods we will need
-    methods: {
+  //Variables
+  data: () => ({
+    loggedIn
+  }),
 
-    }
-  };
+  //Components this page will need
+  components: {},
 
+  //The methods we will need
+  methods: {}
+};
 </script>
