@@ -104,12 +104,12 @@ export default {
           href: '/#/boards',
           router: true,
         },
-        // {
-        //   icon: "add_comment",
-        //   title: "New Task",
-        //   href: "/#/newTask",
-        //   router: true
-        // },
+        {
+          icon: "add_comment",
+          title: "Existing Projects",
+          href: "/#/existingProject",
+          router: true
+        },
         {
           icon: 'create_new_folder',
           title: 'Project',
@@ -125,7 +125,7 @@ export default {
       alertString: '',
       alertSuccess: false,
       isDarkMode: true,
-      loggedIn: false,
+      loggedIn: true,
     };
 
   },

@@ -1,128 +1,121 @@
 <template>
   <v-container class="pa-0">
-    <v-container>
-      <template>
-          <v-layout row>
-            <v-flex>
-              <v-card>
+    <template>
+      <v-layout>
+        <v-flex xs12 sm6 offset-sm3>
+          <v-card id="cards">
+            <v-img
+              class="white--text"
+              height="200px"
+              src="https://cdn.vox-cdn.com/thumbor/lGrAB7mbHO_vyqIZ2JFUJB5CesY=/695x110:1920x1080/1200x800/filters:focal(1257x219:1563x525)/cdn.vox-cdn.com/uploads/chorus_image/image/57759253/Fortnite_KeyArt_1080p.0.jpg"
+            >
+              <v-container fill-height fluid>
+                <v-layout fill-height>
+                  <v-flex xs12 align-end flexbox>
+                    <span class="headline">Fortnite</span>
+                  </v-flex>
+                </v-layout>
+              </v-container>
+            </v-img>
+            <v-card-title>
+              <div>
+                <span class="grey--text">Video Game Project</span><br>
+                <span>Battle Royale game project with a ton of fun dances!</span>
+              </div>
+            </v-card-title>
+            <v-card-actions>
+              <v-btn flat color="orange">Edit Project</v-btn>
+              <v-btn flat color="orange">Delete Project</v-btn>
+            </v-card-actions>
+          </v-card>
 
-                <v-toolbar class="primary primaryText--text">
-                <v-toolbar-title> Existing Projects </v-toolbar-title>
-                </v-toolbar>
+          <v-card id="cards">
+            <v-img
+              class="white--text"
+              height="200px"
+              src="https://tr1.cbsistatic.com/hub/i/2016/08/10/bbb28928-66f8-424d-b56b-8a6f4e0458a8/watson-avatar-video.jpg"
+            >
+              <v-container fill-height fluid>
+                <v-layout fill-height>
+                  <v-flex xs12 align-end flexbox>
+                    <span class="headline">Watson</span>
+                  </v-flex>
+                </v-layout>
+              </v-container>
+            </v-img>
+            <v-card-title>
+              <div>
+                <span class="grey--text">Artificial Intelligence </span><br>
+                <span>AI developed by Scrumbag and co.</span>
+              </div>
+            </v-card-title>
+            <v-card-actions>
+              <v-btn flat color="orange">Edit Project</v-btn>
+              <v-btn flat color="orange">Delete Project</v-btn>
+            </v-card-actions>
+          </v-card>
 
-                <!-- List of Projects -->
-		          <span v-if="project">
-                <projectItem v-for="project in project" :key="project._id"
-                 :project="project" @setUpEdit="setupEdit(project)"
-                 @setUpDelete="setupDelete(project)">
-                 </projectItem>
-              </span>
-              <v-card v-else class="headline text-xs-center">No Projects to show</v-card> 
+          <v-card id="cards">
+            <v-img
+              class="white--text"
+              height="200px"
+              src="https://boygeniusreport.files.wordpress.com/2015/09/iphone-6-ios-9-1.jpg?quality=98&strip=all&w=782"
+            >
+              <v-container fill-height fluid>
+                <v-layout fill-height>
+                  <v-flex xs12 align-end flexbox>
+                    <span class="headline">ScrumBag</span>
+                  </v-flex>
+                </v-layout>
+              </v-container>
+            </v-img>
+            <v-card-title>
+              <div>
+                <span class="grey--text">Web Application </span><br>
+                <span>Project Management tool created for easier development</span><br>
+              </div>
+            </v-card-title>
+            <v-card-actions>
+              <v-btn flat color="orange">Edit Project</v-btn>
+              <v-btn flat color="orange">Delete Project</v-btn>
+            </v-card-actions>
+          </v-card>
 
-              <!-- Begin Delete Dialog -->
-              <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
-                <projectDeleteDialog :user="projectToDelete" @closeDelete="deleteDialog = false"
-                @alert="alert">
-
-                </projectDeleteDialog>
-              </v-dialog>
-              <!-- End Delete Dialog -->
-
-              <!-- Begin Edit Form -->
-              <v-dialog v-model="editDialog" lazy absolute max-width="50%">
-                <projectEditDialog :rules="rules" :project="projectToEdit" :editName="editName"
-                @closeEdit="editDialog = false; projectToEdit = {}" @alert="alert">
-                </projectEditDialog>
-              </v-dialog>
-              <!-- End Edit Form -->
-
-                
-              </v-card>
-            </v-flex>
-          </v-layout>
-      </template>
-    </v-container>
+        </v-flex>
+      </v-layout>
+    </template>
   </v-container>
 </template>
 
 <script>
- import { http } from "../config/http.js"
-import projectItem from "../components/project.vue"
-import projectAddDialog from "../components/projectAddDialog.vue"
-import projectEditDialog from "../components/projectEditDialog.vue"
-import projectDeleteDialog from "../components/projectDeleteDialog.vue"
 
 export default {
   //Variables
   data: () => ({
-    errors: [],
-    pojects: [],
-    projectToDelete: {},
-    alertSettings: {}, //this is to abstract our our alerts to make them easier and stop repeating code
-    projectToEdit: {},
-    Project: {},
-    addDialog: false,
-    deleteDialog: false,
-    editDialog: false,
-    editName: "",
-    rules: {
-      email: value => {
-        const pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return pattern.test(value) || "Invalid e-mail.";
-      }
-    }
+  
   }),
 
   //Components this page will need
   components: {
-    projectItem: projectItem,
-    projectAddDialog: projectAddDialog,
-    projectEditDialog: projectEditDialog,
-    projectDeleteDialog: projectDeleteDialog
+ 
   },
 
   //The methods we will need
   methods: {
-    //load all project from DB, we call this often to make sure the data is up to date
-    load() {
-      http
-        .get("project")
-        .then(response => {
-          this.project = response.data.project;
-        })
-        .catch(e => {
-          this.errors.push(e);
-        });
-    },
-
-    //opens delete dialog
-    setupDelete(project) {
-      this.projectToDelete = project;
-      this.deleteDialog = true;
-    },
-
-    //opens edit dialog
-    setupEdit(project) {
-      Object.keys(project).forEach(key => {
-        this.projectToEdit[key] = project[key];
-      });
-      this.editName = project.name;
-      this.editDialog = true;
-    },
   
-    //get those project
-    mounted() {
-      this.load();
-    }
   },
 
   //get those project
-  mounted() {
-    this.load();
-  }
 }; 
 </script>
 
-<style>
-  
+<style scoped>
+  #cards {
+    margin-bottom: 1rem;
+  }
+
+  .v-card{
+    margin-bottom: 10px;
+  }
+
 </style>

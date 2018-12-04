@@ -6,6 +6,7 @@ import newProjectPage from '../pages/project.vue'
 import loginPage from '../components/login.vue'
 import registerPage from '../components/register.vue'
 import testPage from '../pages/test.vue'
+import existingProjectPage from '../pages/existingProject.vue'
 
 
 
@@ -45,9 +46,9 @@ const router = new Router ({
       component: newProjectPage
     },
     {
-      path: '/test',
-      name: 'test',
-      component: testPage
+      path: '/existingProject',
+      name: 'existingProject',
+      component: existingProjectPage
     },
 
   ]
