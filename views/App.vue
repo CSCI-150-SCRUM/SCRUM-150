@@ -62,9 +62,11 @@
 
     <v-snackbar
       bottom
-      :value="alertOpen"
-      :color="alertSuccess ? 'success' : 'error'"
-    >{{ alertString }}</v-snackbar>
+      v-model="alertOpen"
+      :color="alertSuccess ? 'success' : 'error'">
+        {{ alertString }}
+        <v-btn flat color="accent" @click.native="alertOpen = false">Close</v-btn>
+    </v-snackbar>
   </v-app>
 </template>
 

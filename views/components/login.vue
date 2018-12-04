@@ -48,6 +48,7 @@
       valid: true,
       loggedIn: Boolean,
       username: '',
+      snackName: 'logged in successfully',
       usernameRules: [
         v => !!v || 'Username is required',
         v => (v && v.length <= 10) || 'Name must be less than 10 characters'
@@ -63,7 +64,6 @@
 
     methods: {
       submit () {
-        this.logged = false;
         if (this.$refs.form.validate()) {
           // Native form submission is not yet supported
           axios.post('/api/auth/login/', {
@@ -71,7 +71,11 @@
             password: this.password,
           })
           .then(() => {
-            this.$emit('alert');
+            this.$swal(
+              'Success!',
+              'You have logged in',
+              'success'
+            );
             this.$router.push(this.$route.query.redirect || '/home')
           })
         }
