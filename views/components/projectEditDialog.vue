@@ -26,7 +26,7 @@
 import { http } from '../config/http';
 
 export default {
-  data: () => ({
+  data: () => ({ 
     changedproject: {
       project_name: '',
       details: '',

@@ -32,18 +32,18 @@
 
               <!-- Begin Delete Dialog -->
               <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
-                <!-- <projectDeleteDialog :project="projectToDelete" @closeDelete="deleteDialog = false"
-                @alert="alert"> 
+                <projectDeleteDialog :project="projectToDelete" :deleteName="deleteName" @closeDelete="deleteDialog = false;
+                projectToDelete= {}"@alert="alert"> 
 
-                </projectDeleteDialog>-->
+                </projectDeleteDialog>
               </v-dialog>
               <!-- End Delete Dialog -->
 
               <!-- Begin Edit Form -->
               <v-dialog v-model="editDialog" lazy absolute max-width="50%">
-                <!--<projectEditDialog :rules="rules" :project="projectToEdit" :editName="editName"
+                <projectEditDialog :rules="rules" :project="projectToEdit" :editName="editName"
                 @closeEdit="editDialog = false; projectToEdit = {}" @alert="alert">
-                </projectEditDialog>-->
+                </projectEditDialog>
               </v-dialog>
               <!-- End Edit Form -->
               
@@ -75,6 +75,7 @@ export default {
     deleteDialog: false,
     editDialog: false,
     editName: '',
+    deleteProject: '',
   }),
 
   //Components this page will need
@@ -101,7 +102,10 @@ export default {
 
     //opens delete dialog
     setupDelete(project) {
-      this.projectToDelete = project;
+      Object.keys(project).forEach(key => {
+        this.projectToDelete[key] = project[key];
+      });
+      this.deleteProject = project.name;
       this.deleteDialog = true;
     },
 
@@ -114,10 +118,12 @@ export default {
       this.editDialog = true;
     },
 
-    //get those project
-    mounted() {
+    alert(success, callName, resource) {
+      console.log('Page Alerting');
+      this.$emit('alert', success, callName, resource);
       this.load();
     },
+
   },
 
   //get those project
