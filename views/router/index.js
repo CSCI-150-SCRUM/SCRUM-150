@@ -13,7 +13,7 @@ import existingProjectPage from '../pages/existingProject.vue'
 Vue.use(Router)
 
 const router = new Router({
-  root: '/title',
+  root: '/',
   routes: [{
       path: '/login',
       name: 'login',

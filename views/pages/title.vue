@@ -3,34 +3,38 @@
     <v-container>
       <template>
         <v-responsive>
-          <v-card id="cards">
+          <v-card id="cards" width="500px">
             <v-img
               class="white--text"
-              height="200px"
-              src="https://cdn.vox-cdn.com/thumbor/lGrAB7mbHO_vyqIZ2JFUJB5CesY=/695x110:1920x1080/1200x800/filters:focal(1257x219:1563x525)/cdn.vox-cdn.com/uploads/chorus_image/image/57759253/Fortnite_KeyArt_1080p.0.jpg"
+              width="500px"
+              src="https://www.newmiamiblog.com/files/2014/09/Technology.jpg"
             >
-              <v-container fill-height fluid>
-                <v-layout fill-height>
+              <v-container fill-width fluid>
+                <v-layout fill-width>
                   <v-flex xs12 align-end flexbox>
-                    <span class="headline">Fortnite</span>
+                   <!-- <span style="font-size: 60px" class="headline">SCRUMBAG</span>-->
                   </v-flex>
                 </v-layout>
               </v-container>
             </v-img>
-            <v-card-title>
-              <div>
-                <span class="grey--text">Video Game Project</span><br>
-                <span>Battle Royale game project with a ton of fun dances!</span>
+              <div class="d-inline-block align-middle">
+                  <v-card-title>
+                    <div>
+                      <span fill-width class="grey--text">Welcome to ScrumBag </span><br>
+                      <span>Please login or register to continue</span>
+                    </div>
+                  </v-card-title>
+                  <v-card-actions>
+                    <v-btn
+                      color = "orange"
+                      fill-width
+                      flat
+                      v-for="(menu, index) in menus"
+                      :key="index"
+                      :to="{name:menu.route}"
+                    >{{menu.name}}</v-btn>
+                  </v-card-actions>
               </div>
-            </v-card-title>
-            <v-card-actions>
-              <v-btn
-                flat
-                v-for="(menu, index) in menus"
-                :key="index"
-                :to="{name:menu.route}"
-              >{{menu.name}}</v-btn>
-            </v-card-actions>
           </v-card>
         </v-responsive>
       </template>
@@ -61,3 +65,12 @@ export default {
   };
 
 </script>
+
+<style scoped>
+ .v-card{
+   text-align: center;
+   margin: auto;
+   display:inline-block;
+ }
+
+</style>

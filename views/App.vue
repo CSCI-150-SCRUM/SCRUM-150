@@ -1,6 +1,7 @@
 <template>
   <v-app :dark="isDarkMode">
     <v-navigation-drawer
+      v-if="showMenu"
       :mini-variant="miniVariant"
       :clipped="clipped"
       v-model="drawer"
@@ -151,10 +152,6 @@ export default {
         };
       }
     }
-  },
-
-  components: {
-      login: login
   },
 
   methods: {
