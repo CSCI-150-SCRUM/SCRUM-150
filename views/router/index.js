@@ -5,7 +5,7 @@ import boardsPage from '../pages/boards.vue'
 import newProjectPage from '../pages/project.vue'
 import loginPage from '../components/login.vue'
 import registerPage from '../components/register.vue'
-import testPage from '../pages/test.vue'
+import titlePage from '../pages/title.vue'
 import existingProjectPage from '../pages/existingProject.vue'
 
 
@@ -13,11 +13,12 @@ import existingProjectPage from '../pages/existingProject.vue'
 Vue.use(Router)
 
 const router = new Router({
-  root: '/home',
+  root: '/title',
   routes: [{
       path: '/login',
       name: 'login',
-      component: loginPage
+      component: loginPage,
+      props: true
     },
     {
       path: '/register',
@@ -27,11 +28,12 @@ const router = new Router({
     {
       path: '/home',
       name: 'home',
-      component: homePage
+      component: homePage,
+      props: true
     },
     {
       path: '/',
-      redirect: '/login'
+      redirect: '/title'
     },
     {
       path: '/boards',
@@ -47,6 +49,11 @@ const router = new Router({
       path: '/existingProject',
       name: 'existingProject',
       component: existingProjectPage
+    },
+    {
+      path: '/title',
+      name: 'title',
+      component: titlePage
     },
 
   ]

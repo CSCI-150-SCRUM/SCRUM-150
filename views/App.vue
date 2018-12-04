@@ -27,7 +27,7 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-toolbar class="primary primaryText--text" fixed app :clipped-left="clipped">
+    <v-toolbar class="primary primaryText--text" fixed app :clipped-left="clipped" v-if="showMenu">
       <v-toolbar-side-icon class="primaryText--text" @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <!-- <v-btn icon @click.stop="miniVariant = !miniVariant">
         <v-icon class="primaryText--text" v-html="miniVariant ? 'chevron_right' : 'chevron_left'"></v-icon>
@@ -35,19 +35,19 @@
       <v-toolbar-title>{{ title }}</v-toolbar-title>
       <v-spacer></v-spacer>
 
-      <v-toolbar-items class="hidden-sm-and-down">
+      <!--<v-toolbar-items class="hidden-sm-and-down">
         <v-btn
           flat
           v-for="(menu, index) in menus"
           :key="index"
           :to="{name:menu.route}"
         >{{menu.name}}</v-btn>
-      </v-toolbar-items>
+      </v-toolbar-items> -->
 
-      <!--       <v-btn @click="loggedIn = !loggedIn" icon>
+      <v-btn @click="logged = !logged" icon>
         <v-icon class="primaryText--text" v-if="!isDarkMode">brightness_5</v-icon>
         <v-icon class="primaryText--text" v-else>brightness_3</v-icon>
-      </v-btn>-->
+      </v-btn>
       <v-btn @click="isDarkMode = !isDarkMode" icon>
         <v-icon class="primaryText--text" v-if="!isDarkMode">brightness_5</v-icon>
         <v-icon class="primaryText--text" v-else>brightness_3</v-icon>
@@ -55,7 +55,7 @@
     </v-toolbar>
 
     <main>
-      <v-content v-show="loggedIn">
+      <v-content>
         <v-container fluid>
           <v-layout column align-center>
             <v-fade-transition mode="out-in">
@@ -83,6 +83,10 @@
 
 
 <script>
+
+import login from "./components/login.vue"
+
+
 export default {
   data: () => {
     return {
@@ -139,7 +143,7 @@ export default {
       alertString: "",
       alertSuccess: false,
       isDarkMode: true,
-      loggedIn: true
+      loggedIn: false
     };
   },
 
@@ -165,6 +169,10 @@ export default {
     }
   },
 
+  components: {
+      login: login
+  },
+
   methods: {
     alert(success, callName, resource) {
       this.alertOpen = false;
@@ -185,6 +193,12 @@ export default {
       } else {
         return "primary primaryText--text";
       }
+    },
+  },
+
+  computed: {
+    showMenu() {
+    return this.$route.name !== 'login' && this.$route.name !== 'register' && this.$route.name !== 'test';
     }
   }
 };

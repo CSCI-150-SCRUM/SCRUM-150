@@ -42,11 +42,11 @@
 <script>
   import axios from 'axios'
 
-  
 
   export default {
     data: () => ({
       valid: true,
+      loggedIn: Boolean,
       username: '',
       usernameRules: [
         v => !!v || 'Username is required',
@@ -56,19 +56,24 @@
     }),
 
     props: {
-    loggedIn: Boolean
+    logged: {
+      type: Boolean,
     },
+  },
 
     methods: {
       submit () {
+        this.logged = false;
         if (this.$refs.form.validate()) {
           // Native form submission is not yet supported
           axios.post('/api/auth/login/', {
             username: this.username,
             password: this.password,
           })
-          .then(() => this.$router.push(this.$route.query.redirect || '/home'))
-          loggedIn = false;
+          .then(() => {
+            this.$emit('logged');
+            this.$router.push(this.$route.query.redirect || '/home')
+          })
         }
         
       },
