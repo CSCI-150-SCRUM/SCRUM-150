@@ -7,6 +7,8 @@ import loginPage from '../components/login.vue'
 import registerPage from '../components/register.vue'
 import titlePage from '../pages/title.vue'
 import existingProjectPage from '../pages/existingProject.vue'
+import usersPage from '../pages/users.vue'
+import emptyPage from '../pages/empty.vue'
 
 
 
@@ -55,7 +57,16 @@ const router = new Router({
       name: 'title',
       component: titlePage
     },
-
+    {
+      path: '/users',
+      name: 'users',
+      component: usersPage
+    },
+    {
+      path: '/empty',
+      name: 'empty',
+      component: emptyPage
+    }
   ]
 })
 
