@@ -1,83 +1,82 @@
 <template>
-  <v-container fluid grid-list-xl>
-    <v-layout row justify-space-between>
-      <v-flex>
-        <v-flex xs2>
-          <v-card dark color="primary">
-            <v-card-text>Novel/Story</v-card-text>
-          </v-card>
-          <!-- <draggable> -->
-          <!-- List of novelstory -->
-              <span  v-if="novelstory.length">
-                <draggable v-model="novelstory" :options="{group:'people'}" style="min-height: 10px">
+  <v-container fluid grid-list-md>
+    <v-layout row wrap justify-center>
+          <v-flex d-flex xs12 sm6 md4 lg2>
+            <v-card dark>
+              <v-toolbar class="secondary primaryText--text">
+                <v-card-text>Novel/Story</v-card-text>
+                </v-toolbar>
+            <!-- <draggable> -->
+            <!-- List of novelstory -->
+                <span  v-if="novelstory.length">
+                  <draggable v-model="novelstory" :options="{group:'people'}" style="min-height: 10px">
 
-                  <novelstoryItem v-for="novelstorys in novelstory" :key="novelstorys._id"
-                  :novelstorys="novelstorys" @setUpEdit="setupEdit(novelstorys)"
-                  @setUpDelete="setupDelete(novelstorys)">
-                  </novelstoryItem>
+                    <novelstoryItem v-for="novelstorys in novelstory" :key="novelstorys._id"
+                    :novelstorys="novelstorys" @setUpEdit="setupEdit(novelstorys)"
+                    @setUpDelete="setupDelete(novelstorys)">
+                    </novelstoryItem>
 
-                </draggable>
-                </span>
-                <v-card-text v-else class="grey">No Novel/Storys</v-card-text>
-        <!-- </draggable> --> 
-        </v-flex>
-        <v-flex xs2>
-          <v-card dark color="secondary">
-                                    
-                <!-- Begin Toolbar -->
-                <v-toolbar class="secondary primaryText--text">
-                  <v-card-text> Backlog </v-card-text>
-                  <v-spacer></v-spacer>
-
-                  <!-- Add Dialog Button -->
-                  <v-dialog v-model="addDialog" lazy absolute max-width="50%">
-                    <v-btn class="primaryText--text" icon slot="activator">
-                      <v-icon> control_point </v-icon>
-                    </v-btn>
-
-                    <!-- Add Dialog -->
-                      <taskAddDialog :rules="rules" @closeAdd="addDialog = false" @alert="alert">
-                      </taskAddDialog>
-                    </v-dialog>
-                  </v-toolbar>
-              <!-- <draggable> -->
-                  <!-- List of tasks -->
-              <div ondrop="drop(event)" ondragover="allowDrop(event)">
-                <span  v-if="tasks.length">
-                  <draggable v-model="tasks" :options="{group:'people'}" style="min-height: 10px">
-
-                  <taskItem v-for="task in tasks" :key="task._id"
-                  :task="task" @setUpEdit="setupEdit(task)"
-                  @setUpDelete="setupDelete(task)" draggable="true" ondragstart="drag(event)">
-                  </taskItem>
                   </draggable>
-                </span>
-                <v-card-text v-else class="grey">No Tasks</v-card-text>
-              </div>
-              <!-- </draggable> -->
-                <!-- Begin Delete Dialog -->
-                <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
-                  <taskDeleteDialog :task="taskToDelete" @closeDelete="deleteDialog = false"
-                  @alert="alert">
+                  </span>
+                  <v-card-text v-else class="grey">No Novel/Storys</v-card-text>
+            </v-card>
+          </v-flex>
+          <v-flex d-flex xs12 sm6 md4 lg2>
+            <v-card>            
+                  <!-- Begin Toolbar -->
+                  <v-toolbar class="secondary primaryText--text">
+                    <v-card-text> Backlog </v-card-text>
+                    <v-spacer></v-spacer>
 
-                  </taskDeleteDialog>
-                </v-dialog>
-                <!-- End Delete Dialog -->
+                    <!-- Add Dialog Button -->
+                    <v-dialog v-model="addDialog" lazy absolute max-width="50%">
+                      <v-btn class="primaryText--text" icon slot="activator">
+                        <v-icon> control_point </v-icon>
+                      </v-btn>
 
-                <!-- Begin Edit Form -->
-                <v-dialog v-model="editDialog" lazy absolute max-width="50%">
-                  <taskEditDialog :rules="rules" :task="taskToEdit" :editName="editName"
-                  @closeEdit="editDialog = false; taskToEdit = {}" @alert="alert">
-                  </taskEditDialog>
-                </v-dialog>
-                <!-- End Edit Form -->
-            
-          </v-card>
-        </v-flex>
-        <v-flex xs2>
-          <v-card dark color="accent">
-            <v-card-text>To-Do</v-card-text>
-          </v-card>
+                      <!-- Add Dialog -->
+                        <taskAddDialog :rules="rules" @closeAdd="addDialog = false" @alert="alert">
+                        </taskAddDialog>
+                      </v-dialog>
+                    </v-toolbar>
+                <!-- <draggable> -->
+                    <!-- List of tasks -->
+                <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                  <span  v-if="tasks.length">
+                    <draggable v-model="tasks" :options="{group:'people'}" style="min-height: 10px">
+
+                    <taskItem v-for="task in tasks" :key="task._id"
+                    :task="task" @setUpEdit="setupEdit(task)"
+                    @setUpDelete="setupDelete(task)" draggable="true" ondragstart="drag(event)">
+                    </taskItem>
+                    </draggable>
+                  </span>
+                  <v-card-text v-else class="grey">No Tasks</v-card-text>
+                </div>
+                <!-- </draggable> -->
+                  <!-- Begin Delete Dialog -->
+                  <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
+                    <taskDeleteDialog :task="taskToDelete" @closeDelete="deleteDialog = false"
+                    @alert="alert">
+
+                    </taskDeleteDialog>
+                  </v-dialog>
+                  <!-- End Delete Dialog -->
+
+                  <!-- Begin Edit Form -->
+                  <v-dialog v-model="editDialog" lazy absolute max-width="50%">
+                    <taskEditDialog :rules="rules" :task="taskToEdit" :editName="editName"
+                    @closeEdit="editDialog = false; taskToEdit = {}" @alert="alert">
+                    </taskEditDialog>
+                  </v-dialog>
+                  <!-- End Edit Form -->
+            </v-card>
+          </v-flex>
+        <v-flex d-flex xs12 sm6 md4 lg2>
+          <v-card dark>
+            <v-toolbar class="secondary primaryText--text">
+              <v-card-text>To-Do</v-card-text>
+              </v-toolbar>
           <!-- List of todo -->
               <span  v-if="todo.length">
                 <draggable v-model="todo" :options="{group:'people'}" style="min-height: 10px">
@@ -104,11 +103,13 @@
                   </taskEditDialog>
                 </v-dialog>
                 <!-- End Edit Form -->
-        </v-flex>
-        <v-flex xs2>
-          <v-card dark color="primary">
-            <v-card-text>Doing</v-card-text>
-          </v-card>
+              </v-card>
+          </v-flex>
+        <v-flex d-flex xs12 sm6 md4 lg2>
+          <v-card dark>
+            <v-toolbar class="secondary primaryText--text">
+              <v-card-text>Doing</v-card-text>
+              </v-toolbar>
           <!-- List of doing -->
               <span  v-if="doing.length">
                 <draggable v-model="doing" :options="{group:'people'}" style="min-height: 10px">
@@ -121,12 +122,14 @@
                 </draggable>  
                 </span>
                 <v-card-text v-else class="grey">No Doing Tasks</v-card-text>
-
+           </v-card>
         </v-flex>
-        <v-flex xs2>
-          <v-card dark color="secondary">
-            <v-card-text>Done</v-card-text>
-          </v-card>
+
+        <v-flex d-flex xs12 sm6 md4 lg2>
+          <v-card dark>
+            <v-toolbar class="secondary primaryText--text">
+              <v-card-text>Done</v-card-text>
+              </v-toolbar>
           <!-- List of done tasks -->
                 <span  v-if="done.length">
                 <draggable v-model="doing" :options="{group:'people'}" style="min-height: 10px">
@@ -139,9 +142,8 @@
                 </draggable>
                 </span>
                 <v-card-text v-else class="grey">No Done Tasks</v-card-text>
-
+          </v-card>
         </v-flex>
-      </v-flex>
     </v-layout>
   </v-container>
 </template>
