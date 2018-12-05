@@ -69,6 +69,13 @@
             );
             this.$router.push(this.$route.query.redirect || '/login')
           })
+          .catch(() =>{
+            this.$swal(
+              'Error!',
+              'Wrong username or password',
+              'error'
+            );
+          })
         }
       },
       clear () {
