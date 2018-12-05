@@ -11,10 +11,14 @@
 
           <v-container grid-list-md>
             <v-layout wrap>
-              <v-flex v-for="item in items" :key="item" :href="item.href" xs6 sm4 md3 lg2>
+              <v-flex v-for="(item,index) in items" :key="index" xs6 sm4 md3 lg2>
                 <v-card height="200px">
                   <v-icon dark>{{item.icons}}</v-icon>
-                  <v-card-text class="text-xs-center">{{item.titles}}</v-card-text>
+                    <v-btn 
+                    dark
+                    class="text-xs-center"
+                    :to="{name:item.route}"
+                    >{{item.titles}}</v-btn>
                 </v-card>
               </v-flex>
             </v-layout>
@@ -37,26 +41,17 @@ export default {
   //Variables
   data: () => ({
     items: [
-      {
-        icons: "home",
-        titles: "Home",
-        href: "/#/home",
-        router: true
-      },
-      { icons: "settings", titles: "Settings" },
-      { icons: "contacts", titles: "Contacts" },
-      {
-        icons: "create_new_folder",
-        titles: "New Project",
-        href: "/#/project",
-        router: true
-      },
-      { icons: "group", titles: "Groups" },
-      { icons: "work", titles: "Existing Project" },
-      { icons: "event", titles: "Calendar" },
-      { icons: "chat", titles: "Chat" },
-      { icons: "done", titles: "Completed Projects" },
-      { icons: "help", titles: "Help" }
+      { icons: "home", titles: "Home", route: "home"},
+      { icons: "dashboard", titles: "Boards", route: "boards"},
+      { icons: "settings", titles: "Settings", route: "empty"},
+      { icons: "contacts", titles: "Contacts", route: "users" },
+      { icons: "create_new_folder", titles: "New Project", route: "project"},
+      { icons: "group", titles: "Groups", route: "empty" },
+      { icons: "work", titles: "Existing Project", route: "existingProject" },
+      { icons: "event", titles: "Calendar", route: "empty" },
+      { icons: "chat", titles: "Chat", route: "empty" },
+      { icons: "done", titles: "Completed Projects", route: "empty" },
+      { icons: "help", titles: "Help", route: "empty" }
     ]
   }),
 
