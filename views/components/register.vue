@@ -2,6 +2,9 @@
   <v-card class="corner" width="500px">
     <v-toolbar class="primary primaryText--text">
       <v-toolbar-title>Register</v-toolbar-title>
+      <a href="/#/login">
+        <img src="https://img.icons8.com/carbon-copy/50/000000/password.png">
+      </a>
     </v-toolbar>
     <v-container fluid>
       <v-card-text>
@@ -28,11 +31,6 @@
           <v-btn @click="clear">clear</v-btn>
         </v-card-actions>
       </v-card-text>
-      <!-- <div @click="clickeMethod"> -->
-      <a href="/#/login">
-        <p>Login</p>
-      </a>
-      <!-- </div> -->
     </v-container>
   </v-card>
 </template>
