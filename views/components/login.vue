@@ -3,7 +3,10 @@
     <v-toolbar class="toolbar primary primaryText--text">
       <v-toolbar-title>Login</v-toolbar-title>
       <a href="/#/register">
-        <img src="https://img.icons8.com/ios/30/000000/add-user-male.png">
+        Register_space_space_space_space_space_space_space
+        <img
+          src="https://img.icons8.com/ios/30/000000/add-user-male.png"
+        >
       </a>
     </v-toolbar>
     <v-container fluid>
@@ -91,5 +94,8 @@ export default {
 <style scoped>
 .corner {
   border-radius: 50px;
+}
+a {
+  color: "orange";
 }
 </style>
