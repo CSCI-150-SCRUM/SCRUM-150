@@ -2,7 +2,6 @@
   <v-app :dark="isDarkMode">
     <v-navigation-drawer
       v-if="showMenu"
-      :mini-variant="miniVariant"
       :clipped="clipped"
       v-model="drawer"
       enable-resize-watcher
@@ -60,12 +59,9 @@
       </v-card>
     </v-footer>
 
-    <v-snackbar
-      bottom
-      v-model="alertOpen"
-      :color="alertSuccess ? 'success' : 'error'">
-        {{ alertString }}
-        <v-btn flat color="accent" @click.native="alertOpen = false">Close</v-btn>
+    <v-snackbar bottom v-model="alertOpen" :color="alertSuccess ? 'success' : 'error'">
+      {{ alertString }}
+      <v-btn flat color="accent" @click.native="alertOpen = false">Close</v-btn>
     </v-snackbar>
   </v-app>
 </template>
@@ -73,9 +69,7 @@
 
 
 <script>
-
-import login from "./components/login.vue"
-
+import login from "./components/login.vue";
 
 export default {
   data: () => {
@@ -98,14 +92,14 @@ export default {
           router: true
         },
         {
-          icon: "add_comment",
+          icon: "computer",
           title: "Existing Projects",
           href: "/#/existingProject",
           router: true
         },
         {
           icon: "create_new_folder",
-          title: "Project",
+          title: "New Project",
           href: "/#/project",
           router: true
         }
@@ -164,12 +158,16 @@ export default {
       } else {
         return "primary primaryText--text";
       }
-    },
+    }
   },
 
   computed: {
     showMenu() {
-    return this.$route.name !== 'login' && this.$route.name !== 'register' && this.$route.name !== 'title';
+      return (
+        this.$route.name !== "login" &&
+        this.$route.name !== "register" &&
+        this.$route.name !== "title"
+      );
     }
   }
 };

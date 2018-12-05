@@ -28,7 +28,7 @@ exports.index = async (req, res) => {
 //Store a new doing
 exports.store = async (req, res) => {
 
-    let doings = new Doing(req.body)
+    let doing = new Doing(req.body)
 
     //save it in the DB
     await doing.save()

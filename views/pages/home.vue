@@ -39,7 +39,7 @@ export default {
         { icons: "work", titles: "Existing Project" },
         { icons: "event", titles: "Calendar" },
         { icons: "chat", titles: "Chat" },
-        { icons: "done", titles: "Completed Project" },
+        { icons: "done", titles: "Completed Projects" },
         { icons: "help", titles: "Help" }
         
       ]
