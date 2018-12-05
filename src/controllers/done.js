@@ -33,7 +33,7 @@ exports.store = async (req, res) => {
     //save it in the DB
     await dones.save()
         .then(dones => {
-            log.success('Created Done: {}', dones.length)
+            log.success('Created Done: {}', dones.name)
             //send a 201 and the new resource
             res.status(201).json({
                 data: dones
