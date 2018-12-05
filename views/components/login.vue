@@ -1,6 +1,6 @@
 <template>
-  <v-card>
-    <v-toolbar class="primary primaryText--text">
+  <v-card class="corner" width="500px">
+    <v-toolbar class="toolbar primary primaryText--text">
       <v-toolbar-title> Login </v-toolbar-title>
     </v-toolbar>
     <v-container fluid>
@@ -78,6 +78,14 @@
             );
             this.$router.push(this.$route.query.redirect || '/home')
           })
+
+          .catch(() =>{
+            this.$swal(
+              'Error!',
+              'Wrong username or password',
+              'error'
+            );
+          })
         }
         
       },
@@ -87,3 +95,9 @@
     }
   }
 </script>
+
+<style scoped>
+.corner{
+  border-radius: 50px;
+}
+</style>

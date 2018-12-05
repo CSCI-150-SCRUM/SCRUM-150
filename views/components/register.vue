@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card class="corner" width="500px">
     <v-toolbar class="primary primaryText--text">
       <v-toolbar-title> Register </v-toolbar-title>
     </v-toolbar>
@@ -77,3 +77,10 @@
     }
   }
 </script>
+
+
+<style scoped>
+.corner{
+  border-radius: 50px;
+}
+</style>
