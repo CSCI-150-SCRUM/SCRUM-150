@@ -31,16 +31,16 @@ exports.store = async (req, res) => {
     let dones = new Done(req.body)
 
     //save it in the DB
-    await Done.save()
+    await dones.save()
         .then(dones => {
-            log.success('Created Done: {}', dones.email)
+            log.success('Created Done: {}', dones.length)
             //send a 201 and the new resource
             res.status(201).json({
                 data: dones
             })
         })
         .catch(err => {
-            log.error(err, 'Error creating done: {}', dones.email)
+            log.error(err, 'Error creating done: {}', dones.length)
             let errStatus = err.name === 'ValidationError' ? 400 : 500
             res.status(errStatus).json({
                 err: err

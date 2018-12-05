@@ -7,7 +7,7 @@ const definition = {
         type: String,
         required: true
     },
-    date_created: {
+    project_name: {
         type: String,
         required: true
     },
