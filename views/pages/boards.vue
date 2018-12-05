@@ -25,7 +25,7 @@
       <v-flex d-flex xs12 sm6 md4 lg2>
         <v-card>
           <!-- Begin Toolbar -->
-          <v-toolbar class="secondary primaryText--text">
+          <v-toolbar class="primary primaryText--text">
             <v-card-text>Backlog</v-card-text>
             <v-spacer></v-spacer>
 
@@ -122,7 +122,7 @@
       </v-flex>
       <v-flex d-flex xs12 sm6 md4 lg2>
         <v-card dark>
-          <v-toolbar class="secondary primaryText--text">
+          <v-toolbar class="primary primaryText--text">
             <v-card-text>Doing</v-card-text>
           </v-toolbar>
           <!-- List of doing -->
