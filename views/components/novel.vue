@@ -1,13 +1,13 @@
 <template>
 <v-expansion-panel>
   <v-expansion-panel-content class="elevation-24">
-    <div slot="header">{{ novelstorys.name }}</div>
+    <div slot="header">{{ novelstory.name }}</div>
     <hr>
     <v-container grid-list-md text-xs-center>
       <v-layout row wrap>
         <v-flex xs-6 class="text-xs-left">
       <v-card class="title">
-          Details: {{ novelstorys.name }}
+          Details: {{ novelstory.name }}
           <br>
          
       </v-card>
