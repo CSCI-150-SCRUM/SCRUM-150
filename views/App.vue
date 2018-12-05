@@ -29,16 +29,13 @@
 
     <v-toolbar class="primary primaryText--text" fixed app :clipped-left="clipped" v-if="showMenu">
       <v-toolbar-side-icon class="primaryText--text" @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <!-- <v-btn icon @click.stop="miniVariant = !miniVariant">
-        <v-icon class="primaryText--text" v-html="miniVariant ? 'chevron_right' : 'chevron_left'"></v-icon>
-      </v-btn>-->
       <v-toolbar-title>{{ title }}</v-toolbar-title>
       <v-spacer></v-spacer>
 
-      <v-btn @click="isDarkMode = !isDarkMode" icon>
+      <!--      <v-btn @click="isDarkMode = !isDarkMode" icon>
         <v-icon class="primaryText--text" v-if="!isDarkMode">brightness_5</v-icon>
         <v-icon class="primaryText--text" v-else>brightness_3</v-icon>
-      </v-btn>
+      </v-btn>-->
     </v-toolbar>
 
     <main>
@@ -104,7 +101,6 @@ export default {
           router: true
         }
       ],
-      //miniVariant: false,
       right: true,
       rightDrawer: false,
       title: "ScrumBag",
@@ -126,7 +122,7 @@ export default {
           secondary: "#90CAF9", //Color for active nav
           lightText: "#000000"
         };
-      } else {
+      } /* else {
         //Dark mode
         this.$vuetify.theme = {
           primary: "#0D47A1", //Main color
@@ -134,7 +130,7 @@ export default {
           secondary: "#90CAF9", //Color for active nav
           lightText: "#FFFFFF"
         };
-      }
+      } */
     }
   },
 
