@@ -74,7 +74,7 @@ export default {
 
   methods: {
     submit() {
-      if (this.task.status == "Novel/Story") {
+      if (this.task.status == "Back-Log") {
         this.submitDone = false;
         http
           .post("/tasks", this.task)
@@ -129,6 +129,20 @@ export default {
             this.alert(false, "Create", "Doing");
           });
       } // if statement
+/*         if (this.task.status == "Novel/Story) {
+        http
+          .post("/novelstory", this.task)
+          .then(response => {
+            this.submitDone = true;
+            this.alert(true, "Create", "Novelstory");
+            this.close();
+          })
+          .catch(e => {
+            this.submitDone = true;
+            this.alert(false, "Create", "Novelstory");
+          });
+      } // if statement 
+*/
     },
 
     load() {

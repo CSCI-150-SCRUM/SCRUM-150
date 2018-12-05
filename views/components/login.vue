@@ -1,7 +1,13 @@
 <template>
   <v-card class="corner" width="500px">
     <v-toolbar class="toolbar primary primaryText--text">
-      <v-toolbar-title> Login </v-toolbar-title>
+      <v-toolbar-title>Login</v-toolbar-title>
+      <a href="/#/register">
+        Register_space_space_space_space_space_space_space
+        <img
+          src="https://img.icons8.com/ios/30/000000/add-user-male.png"
+        >
+      </a>
     </v-toolbar>
     <v-container fluid>
       <v-card-text>
@@ -24,15 +30,9 @@
         </v-form>
 
         <v-card-actions>
-          <v-btn
-            :disabled="!valid"
-            @click="submit"
-          >
-            submit
-          </v-btn>
+          <v-btn :disabled="!valid" @click="submit">submit</v-btn>
           <v-btn @click="clear">clear</v-btn>
         </v-card-actions>
-
       </v-card-text>
     </v-container>
   </v-card>
@@ -40,64 +40,62 @@
 
 
 <script>
-  import axios from 'axios'
+import axios from "axios";
 
-
-  export default {
-    data: () => ({
-      valid: true,
-      loggedIn: Boolean,
-      username: '',
-      snackName: 'logged in successfully',
-      usernameRules: [
-        v => !!v || 'Username is required',
-        v => (v && v.length <= 10) || 'Name must be less than 10 characters'
-      ],
-      password: '',
-    }),
-
-    props: {
-    logged: {
-      type: Boolean,
+export default {
+  data: () => ({
+    baseStyles: {
+      fontWeight: "800",
+      color: "orange"
     },
+    valid: true,
+    loggedIn: Boolean,
+    username: "",
+    snackName: "logged in successfully",
+    usernameRules: [
+      v => !!v || "Username is required",
+      v => (v && v.length <= 10) || "Name must be less than 10 characters"
+    ],
+    password: ""
+  }),
+
+  props: {
+    logged: {
+      type: Boolean
+    }
   },
 
-    methods: {
-      submit () {
-        if (this.$refs.form.validate()) {
-          // Native form submission is not yet supported
-          axios.post('/api/auth/login/', {
+  methods: {
+    submit() {
+      if (this.$refs.form.validate()) {
+        // Native form submission is not yet supported
+        axios
+          .post("/api/auth/login/", {
             username: this.username,
-            password: this.password,
+            password: this.password
           })
           .then(() => {
-            this.$swal(
-              'Success!',
-              'You have logged in',
-              'success'
-            );
-            this.$router.push(this.$route.query.redirect || '/home')
+            this.$swal("Success!", "You have logged in", "success");
+            this.$router.push(this.$route.query.redirect || "/home");
           })
 
-          .catch(() =>{
-            this.$swal(
-              'Error!',
-              'Wrong username or password',
-              'error'
-            );
-          })
-        }
-        
-      },
-      clear () {
-        this.$refs.form.reset()
+          .catch(() => {
+            this.$swal("Error!", "Wrong username or password", "error");
+          });
       }
+    },
+    clear() {
+      this.$refs.form.reset();
     }
   }
+};
 </script>
 
 <style scoped>
-.corner{
+.corner {
   border-radius: 50px;
+}
+a {
+  color: "orange";
 }
 </style>
