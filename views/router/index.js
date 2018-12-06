@@ -9,6 +9,7 @@ import titlePage from '../pages/title.vue'
 import existingProjectPage from '../pages/existingProject.vue'
 import usersPage from '../pages/users.vue'
 import emptyPage from '../pages/empty.vue'
+import calendarPage from '../pages/calendar.vue'
 
 
 
@@ -66,7 +67,13 @@ const router = new Router({
       path: '/empty',
       name: 'empty',
       component: emptyPage
-    }
+    },
+    {
+      path: '/calender',
+      name: 'calendar',
+      component: calendarPage
+    },
+
   ]
 })
 

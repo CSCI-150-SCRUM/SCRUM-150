@@ -47,7 +47,7 @@ export default {
       { icons: "create_new_folder", titles: "New Project", route: "project"},
       { icons: "group", titles: "Groups", route: "empty" },
       { icons: "work", titles: "Existing Project", route: "existingProject" },
-      { icons: "event", titles: "Calendar", route: "empty" },
+      { icons: "event", titles: "Calendar", route: "calendar" },
       { icons: "chat", titles: "Chat", route: "empty" },
       { icons: "done", titles: "Completed Projects", route: "empty" },
       { icons: "help", titles: "Help", route: "empty" }

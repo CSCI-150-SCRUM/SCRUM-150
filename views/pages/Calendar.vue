@@ -41,11 +41,6 @@ export default {
 </script>
 
 <style scoped>
-.v-card {
-  text-align: center;
-  margin: auto;
-  display: inline-block;
-}
 .v-container {
   text-align: center;
   display: block;
@@ -55,4 +50,9 @@ export default {
   position: relative;
   overflow: hidden;
 }
+
+.full-calendar{
+  background-color: #3A1C71;
+}
+
 </style>
