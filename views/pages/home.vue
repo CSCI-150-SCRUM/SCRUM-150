@@ -41,7 +41,7 @@ export default {
   //Variables
   data: () => ({
     items: [
-      { icons: "home", titles: "Home", route: "home"},
+      { icons: "home", titles: "Home", route: "empty"},
       { icons: "dashboard", titles: "Boards", route: "boards"},
       { icons: "settings", titles: "Settings", route: "empty"},
       { icons: "contacts", titles: "Contacts", route: "users" },
