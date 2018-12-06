@@ -21,6 +21,8 @@ const todoRoutes = require('./todo') //use the todo route
 
 const novelstoryRoutes = require('./novelstory') //use the novelstory route
 
+const groupRoutes = require('./groups') //use the group route
+
 const authRoutes = require('./auth')
 
 router.use('/project/', projectRoutes) //tell it to use the projectRouter
@@ -33,5 +35,6 @@ router.use('/done/', doneRoutes) //tell it to use the doneRoutes
 router.use('/todo/', todoRoutes) //tell it to use the todoRoutes
 router.use('/novelstory/', novelstoryRoutes) //tell it to use the novelstoryRoutes
 router.use('/auth', authRoutes)
+router.use('/group/', groupRoutes)
 
 module.exports = router

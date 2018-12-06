@@ -12,12 +12,9 @@
           <v-container grid-list-md>
             <v-layout wrap>
               <v-flex v-for="(item,index) in items" :key="index" xs6 sm4 md3 lg2>
-                <v-card :to="{name:item.route}" hover tile=true height="200px">
+                <v-card :to="{name:item.route}" hover tile="true" height="200px">
                   <v-icon dark>{{item.icons}}</v-icon>
-                    <v-card-text 
-                    dark
-                    class="text-xs-center"
-                    >{{item.titles}}</v-card-text>
+                  <v-card-text dark class="text-xs-center">{{item.titles}}</v-card-text>
                 </v-card>
               </v-flex>
             </v-layout>
@@ -40,12 +37,12 @@ export default {
   //Variables
   data: () => ({
     items: [
-      { icons: "home", titles: "Home", route: "empty"},
-      { icons: "dashboard", titles: "Boards", route: "boards"},
-      { icons: "settings", titles: "Settings", route: "empty"},
+      { icons: "home", titles: "Home", route: "empty" },
+      { icons: "dashboard", titles: "Boards", route: "boards" },
+      { icons: "settings", titles: "Settings", route: "empty" },
       { icons: "contacts", titles: "Contacts", route: "users" },
-      { icons: "create_new_folder", titles: "New Project", route: "project"},
-      { icons: "group", titles: "Groups", route: "empty" },
+      { icons: "create_new_folder", titles: "New Project", route: "project" },
+      { icons: "group", titles: "Groups", route: "group" },
       { icons: "work", titles: "Existing Project", route: "existingProject" },
       { icons: "event", titles: "Calendar", route: "calendar" },
       { icons: "chat", titles: "Chat", route: "empty" },
