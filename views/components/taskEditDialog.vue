@@ -8,14 +8,14 @@
 
         <!-- Begin Input Row -->
         <v-form ref="form">
-          <v-text-field label="Task Name" v-model="task.name"></v-text-field>
-          <v-text-field label="Project Name" v-model="task.project_name"></v-text-field>
-          <v-text-field label="Details" v-model="task.details"></v-text-field>
-          <!--     <v-text-field label="Status" v-model="task.status"></v-text-field> -->
-          <v-text-field label="Assigned To" v-model="task.assigned_to"></v-text-field>
-          <v-text-field label="Task Points" v-model="task.points"></v-text-field>
+          <v-text-field label="Task Name" v-model="changedtask.name"></v-text-field>
+          <v-text-field label="Project Name" v-model="changedtask.project_name"></v-text-field>
+          <v-text-field label="Details" v-model="changedtask.details"></v-text-field>
+          <!--v-text-field label="Status" v-model="changedtask.status"></v-text-field>-->
+          <v-text-field label="Assigned To" v-model="changedtask.assigned_to"></v-text-field>
+          <v-text-field label="Task Points" v-model="changedtask.points"></v-text-field>
           <v-select
-            v-model="task.status"
+            v-model="changedtask.status"
             :items="items"
             :rules="[v => !!v || 'Item is required']"
             label="Status"
@@ -52,9 +52,6 @@ export default {
   }),
 
   props: {
-    task: {
-      type: Object,
-    },
     rules: {
       type: Object,
     },
@@ -62,6 +59,9 @@ export default {
       type: String,
       default: '',
     },
+    task: {
+      type: Object,
+    }
   },
 
   methods: {
