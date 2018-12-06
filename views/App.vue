@@ -112,6 +112,12 @@ export default {
           title: "Calendar",
           href: "/#/calendar",
           router: true
+        },
+        {
+          icon: "group",
+          title: "Groups",
+          href: "/#/group",
+          router: true
         }
       ],
       right: true,
