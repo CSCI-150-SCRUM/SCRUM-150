@@ -1,8 +1,8 @@
 <template>
-  <v-container class="pa-0">
+  <v-container fluid grid-list-md>
     <template>
-      <v-layout>
-        <v-flex xs12 sm6 lg4 offset-sm3>
+      <v-layout row wrap justify-space-between>
+        <v-flex d-flex xs12 sm6 md4>
           <v-card id="cards">
             <v-img
               class="white--text"
@@ -28,7 +28,8 @@
               <v-btn flat color="orange">Delete Project</v-btn>
             </v-card-actions>
           </v-card>
-
+        </v-flex>
+        <v-flex d-flex xs12 sm6 md4>
           <v-card id="cards">
             <v-img
               class="white--text"
@@ -54,7 +55,8 @@
               <v-btn flat color="orange">Delete Project</v-btn>
             </v-card-actions>
           </v-card>
-
+        </v-flex>
+        <v-flex d-flex xs12 sm6 md4>
           <v-card id="cards">
             <v-img
               class="white--text"
@@ -80,7 +82,6 @@
               <v-btn flat color="orange">Delete Project</v-btn>
             </v-card-actions>
           </v-card>
-
         </v-flex>
       </v-layout>
     </template>

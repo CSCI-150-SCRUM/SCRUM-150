@@ -4,7 +4,7 @@
       v-if="showMenu"
       :clipped="clipped"
       v-model="drawer"
-      enable-resize-watcher
+      disable-resize-watcher
       app
       width="200"
       class="primary"

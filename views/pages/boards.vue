@@ -1,7 +1,7 @@
 <template>
   <v-container fluid grid-list-md>
-    <v-layout row wrap justify-center>
-      <v-flex d-flex xs12 sm6 md4 lg2.5>
+    <v-layout row wrap justify-space-around>
+      <v-flex d-flex xs12 sm6 md4 lg2>
         <v-card dark>
           <v-toolbar class="secondary primaryText--text">
             <v-card-text>Novel/Story</v-card-text>
