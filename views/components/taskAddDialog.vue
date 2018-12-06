@@ -51,7 +51,7 @@ import { http } from "../config/http";
 import axios from "axios";
 export default {
   data: () => ({
-    items: ["Novel/Story", "Back-Log", "To-do", "Doing", "Done"],
+    items: ["Novelstory", "Back-Log", "To-do", "Doing", "Done"],
     user: ["hello"],
     task: {
       name: "",
@@ -129,7 +129,7 @@ export default {
             this.alert(false, "Create", "Doing");
           });
       } // if statement
-/*         if (this.task.status == "Novel/Story) {
+      if (this.task.status == "Novelstory") {
         http
           .post("/novelstory", this.task)
           .then(response => {
@@ -141,8 +141,7 @@ export default {
             this.submitDone = true;
             this.alert(false, "Create", "Novelstory");
           });
-      } // if statement 
-*/
+      }
     },
 
     load() {
