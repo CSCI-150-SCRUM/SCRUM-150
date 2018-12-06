@@ -1,6 +1,7 @@
 <template>
   <v-container fluid grid-list-md>
     <v-layout row wrap justify-space-around>
+      <!-- --------------- Novel/Story ------------- -->
       <v-flex d-flex xs12 sm6 md4 lg2>
         <v-card dark>
           <v-toolbar class="secondary primaryText--text">
@@ -22,6 +23,7 @@
           <v-card-text v-else class="grey">No Novel/Storys</v-card-text>
         </v-card>
       </v-flex>
+      <!-- ------------- Back-Log ------------- -->
       <v-flex d-flex xs12 sm6 md4 lg2>
         <v-card>
           <!-- Begin Toolbar -->
@@ -81,6 +83,7 @@
           <!-- End Edit Form -->
         </v-card>
       </v-flex>
+      <!-- ------------- Todo ------------- -->
       <v-flex d-flex xs12 sm6 md4 lg2>
         <v-card dark>
           <v-toolbar class="secondary primaryText--text">
@@ -99,7 +102,7 @@
             </draggable>
           </span>
           <v-card-text v-else class="grey">No Tasks To-Do</v-card-text>
-          <!-- Begin Delete Dialog -->
+          <!-- Begin todoDelete Dialog -->
           <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
             <todoDeleteDialog
               :todos="taskToDelete"
@@ -121,6 +124,7 @@
           <!-- End Edit Form -->
         </v-card>
       </v-flex>
+      <!-- --------------- Doing ------------- -->
       <v-flex d-flex xs12 sm6 md4 lg2>
         <v-card dark>
           <v-toolbar class="primary primaryText--text">
@@ -141,7 +145,7 @@
           <v-card-text v-else class="grey">No Doing Tasks</v-card-text>
         </v-card>
       </v-flex>
-
+      <!-- --------------------- Done  ---------------------- -->
       <v-flex d-flex xs12 sm6 md4 lg2>
         <v-card dark>
           <v-toolbar class="secondary primaryText--text">
@@ -181,7 +185,6 @@
             ></taskEditDialog>
           </v-dialog>
           <!-- End Edit Form -->
-          
         </v-card>
       </v-flex>
     </v-layout>
@@ -204,9 +207,7 @@ import todoAddDialog from "../components/todoAddDialog.vue";
 import todoEditDialog from "../components/todoEditDialog.vue";
 import todoDeleteDialog from "../components/todoDeleteDialog.vue";
 import draggable from "vuedraggable";
-
 //import Axios from 'axios';
-
 export default {
   //Variables
   data: () => ({
@@ -231,7 +232,6 @@ export default {
       }
     }
   }),
-
   //Components this page will need
   components: {
     draggable,
@@ -245,7 +245,6 @@ export default {
     taskDeleteDialog: taskDeleteDialog,
     todoDeleteDialog: todoDeleteDialog
   },
-
   //The methods we will need
   methods: {
     //load all tasks from DB, we call this often to make sure the data is up to date
@@ -267,12 +266,10 @@ export default {
         .then(response => {
           this.todo = response.data.todo;
         })
-
         .catch(e => {
           this.errors.push(e);
         });
     },
-
     //opens delete dialog
     setupDelete(test) {
       Object.keys(test).forEach(key => {
@@ -281,7 +278,6 @@ export default {
       this.deleteName = test.name;
       this.deleteDialog = true;
     },
-
     //opens edit dialog
     setupEdit(task) {
       Object.keys(task).forEach(key => {
@@ -290,7 +286,6 @@ export default {
       this.editName = task.name;
       this.editDialog = true;
     },
-
     //build the alert info for us
     //Will emit an alert, followed by a boolean for success, the type of call made, and the name of the
     //resource we are working on
@@ -300,7 +295,6 @@ export default {
       this.load();
     }
   },
-
   //get those tasks
   mounted() {
     this.load();
@@ -309,6 +303,4 @@ export default {
 </script>
 
 <style scoped>
-
-
 </style>
