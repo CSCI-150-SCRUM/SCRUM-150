@@ -38,7 +38,7 @@ export default {
     items: [
       { icons: "home", titles: "Home", route: "empty" },
       { icons: "dashboard", titles: "Boards", route: "boards" },
-      { icons: "settings", titles: "Settings", route: "empty" },
+      { icons: "settings", titles: "Settings", route: "settings" },
       { icons: "contacts", titles: "Contacts", route: "users" },
       { icons: "create_new_folder", titles: "New Project", route: "project" },
       { icons: "group", titles: "Groups", route: "group" },
