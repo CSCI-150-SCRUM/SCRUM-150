@@ -94,18 +94,18 @@
                 :key="todos._id"
                 :todos="todos"
                 @setUpEdit="setupEdit(todos)"
-                @setUpDelete="setupDelete(todos)"
+                @setUpDeleteTodo="setupDelete(todos)"
               ></todoItem>
             </draggable>
           </span>
           <v-card-text v-else class="grey">No Tasks To-Do</v-card-text>
           <!-- Begin Delete Dialog -->
           <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
-            <taskDeleteDialog
-              :task="taskToDelete"
+            <todoDeleteDialog
+              :todos="taskToDelete"
               @closeDelete="deleteDialog = false; taskToDelete = {}"
               @alert="alert"
-            ></taskDeleteDialog>
+            ></todoDeleteDialog>
           </v-dialog>
           <!-- End Delete Dialog -->
           <!-- Begin Edit Form -->
@@ -200,6 +200,9 @@ import novelstoryItem from "../components/novelstory.vue";
 import taskAddDialog from "../components/taskAddDialog.vue";
 import taskEditDialog from "../components/taskEditDialog.vue";
 import taskDeleteDialog from "../components/taskDeleteDialog.vue";
+import todoAddDialog from "../components/todoAddDialog.vue";
+import todoEditDialog from "../components/todoEditDialog.vue";
+import todoDeleteDialog from "../components/todoDeleteDialog.vue";
 import draggable from "vuedraggable";
 
 //import Axios from 'axios';
@@ -239,7 +242,8 @@ export default {
     novelstoryItem: novelstoryItem,
     taskAddDialog: taskAddDialog,
     taskEditDialog: taskEditDialog,
-    taskDeleteDialog: taskDeleteDialog
+    taskDeleteDialog: taskDeleteDialog,
+    todoDeleteDialog: todoDeleteDialog
   },
 
   //The methods we will need
@@ -270,11 +274,11 @@ export default {
     },
 
     //opens delete dialog
-    setupDelete(task) {
-      Object.keys(task).forEach(key => {
-        this.taskToDelete[key] = task[key];
+    setupDelete(test) {
+      Object.keys(test).forEach(key => {
+        this.taskToDelete[key] = test[key];
       });
-      this.deleteName = task.name;
+      this.deleteName = test.name;
       this.deleteDialog = true;
     },
 

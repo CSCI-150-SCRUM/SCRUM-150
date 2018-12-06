@@ -14,11 +14,11 @@
       </v-flex>
       <v-flex xs-4 class="text-xs-right">
         <v-card>
-        <v-btn class="red darken-2" @click="$emit('setUpDelete', todo)">
+        <v-btn class="red darken-2" @click="$emit('setUpDeleteTodo', todos)">
           <v-icon dark>remove_circle_outline</v-icon>
         </v-btn>
 
-        <v-btn class="blue darken-2" @click="$emit('setUpEdit', todo)">
+        <v-btn class="blue darken-2" @click="$emit('setUpEdit', todos)">
           <v-icon dark>mode_edit</v-icon>
         </v-btn>
         </v-card>

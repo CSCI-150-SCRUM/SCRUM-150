@@ -10,7 +10,7 @@
       </p>
     </v-card-text>
     <v-card-actions>
-      <v-btn @click="confirmDelete()" :loading="!deleteDone" class="red darken-2 white--text">Confirm</v-btn>
+      <v-btn @click="confirmDeleteTodo()" :loading="!deleteDone" class="red darken-2 white--text">Confirm</v-btn>
       <v-spacer></v-spacer>
       <v-btn @click="close()" class="green lighten-1 white--text">Cancel</v-btn>
     </v-card-actions>
@@ -26,24 +26,26 @@ export default {
   }),
 
   props: {
-    task: {
-      type: Object,
+      task: {
+        type: Object,
+      },
+      todos: {
+        type: Object,
+      },
+      deleteName: {
+        type: String,
+        default: '',
+      }
     },
-    deleteName: {
-      type: String,
-      default: '',
-    }
-  },
 
   methods: {
-    confirmDelete() {
-      if(this.task.status=="To Do"){
+    confirmDeleteTodo() {
       this.deleteDone = false;
       http
-        .delete('/tasks/' + this.task._id)
+        .delete('/todo/' + this.todos._id)
         .then(response => {
           this.deleteDone = true;
-          this.alert(true, 'Delete', 'To-do');
+          this.alert(true, 'Delete', 'Todo');
 
           this.close();
           
@@ -53,7 +55,7 @@ export default {
           this.alert(false, 'Delete', 'To-do');
           this.close();
         });
-      }
+      
       
     },
 

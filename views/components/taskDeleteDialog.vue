@@ -29,6 +29,9 @@ export default {
     task: {
       type: Object,
     },
+    todos: {
+      type: Object,
+    },
     deleteName: {
       type: String,
       default: '',
@@ -37,8 +40,25 @@ export default {
 
   methods: {
     confirmDelete() {
-     
       this.deleteDone = false;
+      if(this.task.status=="To-do"){
+      http
+        .delete('/todo/' + this.task._id)
+        .then(response => {
+          this.deleteDone = true;
+          this.alert(true, 'Delete', 'Task');
+
+          this.close();
+          
+        })
+      
+        .catch(e => {
+          this.deleteDone = true;
+          this.alert(false, 'Delete', 'Task');
+          this.close();
+        });
+    }
+    else if(this.task.status=='Back-Log'){
       http
         .delete('/tasks/' + this.task._id)
         .then(response => {
@@ -48,17 +68,47 @@ export default {
           this.close();
           
         })
+      
         .catch(e => {
           this.deleteDone = true;
           this.alert(false, 'Delete', 'Task');
-          this.close();
+          this
         });
-      
-      
+        }
+    else if(this.task.status=='Novelstory'){
+      http
+        .delete('/novelstory/' + this.task._id)
+        .then(response => {
+          this.deleteDone = true;
+          this.alert(true, 'Delete', 'Task');
 
-
-
+          this.close();
+          
+        })
       
+        .catch(e => {
+          this.deleteDone = true;
+          this.alert(false, 'Delete', 'Task');
+          this
+        });
+        }
+    else if(this.task.status=='Done'){
+      http
+        .delete('/done/' + this.task._id)
+        .then(response => {
+          this.deleteDone = true;
+          this.alert(true, 'Delete', 'Task');
+
+          this.close();
+          
+        })
+      
+        .catch(e => {
+          this.deleteDone = true;
+          this.alert(false, 'Delete', 'Task');
+          this
+        });
+        }
     },
 
    

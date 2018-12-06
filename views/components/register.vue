@@ -93,7 +93,7 @@ export default {
 
 <style scoped>
 .corner {
-  border-radius: 50px;
+  border-radius: 15px;
 }
 a {
   color: "orange";
