@@ -151,6 +151,27 @@
             </draggable>
           </span>
           <v-card-text v-else class="grey">No Doing Tasks</v-card-text>
+          <!-- Begin Delete Dialog -->
+          <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
+            <doingDeleteDialog
+              :task="taskToDelete"
+              :deleteName="deleteName"
+              @closeDelete="deleteDialog = false"
+              @alert="alert"
+            ></doingDeleteDialog>
+          </v-dialog>
+          <!-- End Delete Dialog -->
+          <!-- Begin Edit Form -->
+          <v-dialog v-model="editDialog" lazy absolute max-width="50%">
+            <doingEditDialog
+              :rules="rules"
+              :task="taskToEdit"
+              :editName="editName"
+              @closeEdit="editDialog = false; taskToEdit = {}"
+              @alert="alert"
+            ></doingEditDialog>
+          </v-dialog>
+          <!-- End Edit Form -->
         </v-card>
       </v-flex>
 
