@@ -1,7 +1,7 @@
 <template>
   <v-container fluid grid-list-md>
     <v-layout row wrap justify-space-around>
-      <!-- --------------- Novel/Story ------------- -->
+      <!--  Novel/Story  -->
       <v-flex d-flex xs12 sm6 md4 lg2>
         <v-card dark>
           <v-toolbar class="secondary primaryText--text">
@@ -23,7 +23,7 @@
           <v-card-text v-else class="grey">No Novel/Storys</v-card-text>
         </v-card>
       </v-flex>
-      <!-- ------------- Back-Log ------------- -->
+      <!--  Back-Log   -->
       <v-flex d-flex xs12 sm6 md4 lg2>
         <v-card>
           <!-- Begin Toolbar -->
@@ -83,7 +83,7 @@
           <!-- End Edit Form -->
         </v-card>
       </v-flex>
-      <!-- ------------- Todo ------------- -->
+      <!--- Todo  -->
       <v-flex d-flex xs12 sm6 md4 lg2>
         <v-card dark>
           <v-toolbar class="secondary primaryText--text">
@@ -124,7 +124,7 @@
           <!-- End Edit Form -->
         </v-card>
       </v-flex>
-      <!-- --------------- Doing ------------- -->
+      <!--- Doing - -->
       <v-flex d-flex xs12 sm6 md4 lg2>
         <v-card dark>
           <v-toolbar class="primary primaryText--text">
@@ -145,7 +145,7 @@
           <v-card-text v-else class="grey">No Doing Tasks</v-card-text>
         </v-card>
       </v-flex>
-      <!-- --------------------- Done  ---------------------- -->
+      <!--  Done  -->
       <v-flex d-flex xs12 sm6 md4 lg2>
         <v-card dark>
           <v-toolbar class="secondary primaryText--text">
