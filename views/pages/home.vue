@@ -12,13 +12,12 @@
           <v-container grid-list-md>
             <v-layout wrap>
               <v-flex v-for="(item,index) in items" :key="index" xs6 sm4 md3 lg2>
-                <v-card height="200px">
+                <v-card :to="{name:item.route}" hover tile=true height="200px">
                   <v-icon dark>{{item.icons}}</v-icon>
-                    <v-btn 
+                    <v-card-text 
                     dark
                     class="text-xs-center"
-                    :to="{name:item.route}"
-                    >{{item.titles}}</v-btn>
+                    >{{item.titles}}</v-card-text>
                 </v-card>
               </v-flex>
             </v-layout>
