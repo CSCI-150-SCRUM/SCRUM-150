@@ -3,7 +3,7 @@
     <template>
       <v-layout row wrap justify->
         <v-flex d-flex xs12 sm6 md4>
-          <v-card id="cards">
+          <v-card class="primary" id="cards">
             <v-img
               class="white--text"
               height="200px"
@@ -21,7 +21,7 @@
               <v-flex>
                 <v-card-title>
                   <div>
-                    <span class="grey--text">Video Game Project</span><br>
+                    <span class="orange--text">Video Game Project</span><br>
                     <span>Battle Royale game project with a ton of fun dances!</span>
                   </div>
                 </v-card-title>
@@ -34,7 +34,7 @@
           </v-card>
         </v-flex>
         <v-flex d-flex xs12 sm6 md4>
-          <v-card id="cards">
+          <v-card class="primary" id="cards">
             <v-img
               class="white--text"
               height="200px"
@@ -52,7 +52,7 @@
               <v-flex>
                 <v-card-title>
                   <div>
-                    <span class="grey--text">Artificial Intelligence </span><br>
+                    <span class="orange--text">Artificial Intelligence </span><br>
                     <span>Machine Learning AI developed by Scrumbag and co.</span>
                   </div>
                 </v-card-title>
@@ -65,7 +65,7 @@
           </v-card>
         </v-flex>
         <v-flex d-flex xs12 sm6 md4>
-          <v-card id="cards">
+          <v-card class="primary" id="cards">
             <v-img
               class="white--text"
               height="200px"
@@ -83,7 +83,7 @@
               <v-flex>
                 <v-card-title>
                   <div>
-                    <span class="grey--text">Web Application </span><br>
+                    <span class="orange--text">Web Application </span><br>
                     <span>Project Management tool created for easier development</span><br>
                   </div>
                 </v-card-title>

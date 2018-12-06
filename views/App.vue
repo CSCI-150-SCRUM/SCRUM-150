@@ -35,7 +35,9 @@
 
     <v-toolbar class="primary primaryText--text" fixed app :clipped-left="clipped" v-if="showMenu">
       <v-toolbar-side-icon class="primaryText--text" @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title>{{ title }}</v-toolbar-title>
+      <v-toolbar-title>
+        <v-btn class="titleButton" flat :to="{name:title.route}">{{ title.name }}</v-btn>
+        </v-toolbar-title>
       <v-spacer></v-spacer>
 
       <!--      <v-btn @click="isDarkMode = !isDarkMode" icon>
@@ -115,7 +117,7 @@ export default {
       ],
       right: true,
       rightDrawer: false,
-      title: "ScrumBag",
+      title: {name: "ScrumBag", route:"home" },
       alertOpen: false,
       alertString: "",
       alertSuccess: false,
@@ -180,3 +182,11 @@ export default {
   }
 };
 </script>
+
+<style>
+.titleButton{
+  font-size: 20px !important;
+  text-transform: none !important;
+}
+
+</style>

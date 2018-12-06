@@ -69,7 +69,7 @@ const router = new Router({
       component: emptyPage
     },
     {
-      path: '/calender',
+      path: '/calendar',
       name: 'calendar',
       component: calendarPage
     },

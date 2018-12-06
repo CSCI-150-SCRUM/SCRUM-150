@@ -6,13 +6,12 @@
           <header>
             <h1 style="font-size:44px" class="text-xs-center">WELCOME TO SCRUMBAG</h1>
           </header>
-          <p class="text-xs-center" style="color: orange;">A VISUAL MANAGEMENT TOOL</p>
           <hr class="my-4">
 
           <v-container grid-list-md>
             <v-layout wrap>
               <v-flex v-for="(item,index) in items" :key="index" xs6 sm4 md3 lg2>
-                <v-card :to="{name:item.route}" hover tile=true height="200px">
+                <v-card to="/home" hover tile=true height="200px">
                   <v-icon dark>{{item.icons}}</v-icon>
                     <v-card-text 
                     dark

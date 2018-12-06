@@ -3,7 +3,7 @@
     <v-container fluid id="box">
       <v-layout>
         <v-flex xs12>
-          <v-card id="cards">
+          <v-card class="primary" id="cards">
               <v-img 
               src="http://www.ashlandcog.com/hp_wordpress/wp-content/uploads/2014/03/coming-soon.png"
               width="350px"
