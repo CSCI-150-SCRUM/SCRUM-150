@@ -6,7 +6,7 @@ import Vuex from 'vuex'
 import draggable from 'vuedraggable'
 import './stylus/main.styl'
 import VueSweetalert2 from 'vue-sweetalert2';
-
+import FullCalendar from 'vue-full-calendar'
 
 
 
@@ -21,6 +21,7 @@ Vue.use(Vuetify, {
 
 Vue.use(VueSweetalert2)
 
+Vue.use(FullCalendar)
 
 //Create the App with the router
 new Vue({
