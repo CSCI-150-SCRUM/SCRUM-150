@@ -1,7 +1,7 @@
 <template>
   <v-responsive>
     <v-container fluid id="box">
-      <full-calendar class="primary" :events="events"></full-calendar>
+      <full-calendar :events="events"></full-calendar>
     </v-container>
   </v-responsive>
 </template>

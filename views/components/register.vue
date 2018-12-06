@@ -2,12 +2,10 @@
   <v-card class="corner" width="500px">
     <v-toolbar class="primary primaryText--text">
       <v-toolbar-title>Register</v-toolbar-title>
-      <a href="/#/login">
-        Login_space_space_space_space_space_space_s
-        <img
-          src="https://img.icons8.com/carbon-copy/50/000000/password.png"
-        >
-      </a>
+      <v-spacer></v-spacer>
+        <a href="/#/login">
+          <v-icon>vpn_key</v-icon>
+        </a>
     </v-toolbar>
     <v-container fluid>
       <v-card-text>
