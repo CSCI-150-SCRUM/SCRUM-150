@@ -25,7 +25,7 @@
       <v-flex d-flex xs12 sm6 md4 lg2>
         <v-card>
           <!-- Begin Toolbar -->
-          <v-toolbar class="secondary primaryText--text">
+          <v-toolbar class="primary primaryText--text">
             <v-card-text>Backlog</v-card-text>
             <v-spacer></v-spacer>
 
@@ -62,6 +62,7 @@
           <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
             <taskDeleteDialog
               :task="taskToDelete"
+              :deleteName="deleteName"
               @closeDelete="deleteDialog = false"
               @alert="alert"
             ></taskDeleteDialog>
@@ -122,7 +123,7 @@
       </v-flex>
       <v-flex d-flex xs12 sm6 md4 lg2>
         <v-card dark>
-          <v-toolbar class="secondary primaryText--text">
+          <v-toolbar class="primary primaryText--text">
             <v-card-text>Doing</v-card-text>
           </v-toolbar>
           <!-- List of doing -->
@@ -159,6 +160,28 @@
             </draggable>
           </span>
           <v-card-text v-else class="grey">No Done Tasks</v-card-text>
+          <!-- Begin Delete Dialog -->
+          <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
+            <taskDeleteDialog
+              :task="taskToDelete"
+              :deleteName="deleteName"
+              @closeDelete="deleteDialog = false"
+              @alert="alert"
+            ></taskDeleteDialog>
+          </v-dialog>
+          <!-- End Delete Dialog -->
+          <!-- Begin Edit Form -->
+          <v-dialog v-model="editDialog" lazy absolute max-width="50%">
+            <taskEditDialog
+              :rules="rules"
+              :task="taskToEdit"
+              :editName="editName"
+              @closeEdit="editDialog = false; taskToEdit = {}"
+              @alert="alert"
+            ></taskEditDialog>
+          </v-dialog>
+          <!-- End Edit Form -->
+          
         </v-card>
       </v-flex>
     </v-layout>
@@ -248,6 +271,9 @@ export default {
 
     //opens delete dialog
     setupDelete(task) {
+      Object.keys(task).forEach(key => {
+        this.taskToDelete[key] = task[key];
+      });
       this.deleteName = task.name;
       this.deleteDialog = true;
     },

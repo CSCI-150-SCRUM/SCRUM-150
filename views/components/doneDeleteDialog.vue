@@ -1,7 +1,7 @@
 <template>
   <v-card>
      <v-toolbar class="primary primaryText--text" >
-      <v-toolbar-title> Delete done Record {{deleteName}} </v-toolbar-title>
+      <v-toolbar-title> Delete task Record {{deleteName}} </v-toolbar-title>
     </v-toolbar>
 
     <v-card-text>
@@ -26,7 +26,7 @@ export default {
   }),
 
   props: {
-    done: {
+    task: {
       type: Object,
     },
     deleteName: {
@@ -37,23 +37,24 @@ export default {
 
   methods: {
     confirmDelete() {
+      if(this.task.status=="Done"){
       this.deleteDone = false;
       http
-        .delete('/dones/' + this.done._id)
+        .delete('/tasks/' + this.task._id)
         .then(response => {
           this.deleteDone = true;
-          this.alert(true, 'Delete', 'Task');
+          this.alert(true, 'Delete', 'To-do');
 
           this.close();
           
         })
-
-
         .catch(e => {
           this.deleteDone = true;
-          this.alert(false, 'Delete', 'Task');
+          this.alert(false, 'Delete', 'To-do');
           this.close();
         });
+      }
+      
     },
 
    

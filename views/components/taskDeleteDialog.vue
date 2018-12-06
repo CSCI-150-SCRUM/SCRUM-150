@@ -37,6 +37,7 @@ export default {
 
   methods: {
     confirmDelete() {
+      if(this.task.status=="Back-Log"){
       this.deleteDone = false;
       http
         .delete('/tasks/' + this.task._id)
@@ -47,13 +48,33 @@ export default {
           this.close();
           
         })
-
-
         .catch(e => {
           this.deleteDone = true;
           this.alert(false, 'Delete', 'Task');
           this.close();
         });
+      }
+      if(this.task.status=="Done"){
+      this.deleteDone = false;
+      http
+        .delete('/dones/' + this.task._id)
+        .then(response => {
+          this.deleteDone = true;
+          this.alert(true, 'Delete', 'Task');
+
+          this.close();
+          
+        })
+        .catch(e => {
+          this.deleteDone = true;
+          this.alert(false, 'Delete', 'Task');
+          this.close();
+        });
+      }
+
+
+
+      
     },
 
    
