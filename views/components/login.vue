@@ -9,7 +9,7 @@
     </v-toolbar>
     <v-container fluid>
       <v-card-text>
-        <v-form ref="form" v-model="valid" lazy-validation>
+        <v-form @keyup.enter.native="submit" ref="form" v-model="valid" lazy-validation>
           <v-text-field
             v-model="username"
             :rules="usernameRules"
