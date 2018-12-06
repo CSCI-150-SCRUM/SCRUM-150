@@ -144,8 +144,6 @@
             </draggable>
           </span>
           <v-card-text v-else class="grey">No Done Tasks</v-card-text>
-          
-          
         </v-card>
       </v-flex>
     </v-layout>
@@ -265,4 +263,7 @@ export default {
 </script>
 
 <style scoped>
+.v-card {
+  border-radius: 15px;
+}
 </style>
