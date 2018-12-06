@@ -1,6 +1,8 @@
 <template>
   <v-container fluid grid-list-md>
     <v-layout row wrap justify-space-around>
+
+      <!-- --------------- Novel/Story ------------- -->
       <v-flex d-flex xs12 sm6 md4 lg2>
         <v-card dark>
           <v-toolbar class="secondary primaryText--text">
@@ -22,6 +24,10 @@
           <v-card-text v-else class="grey">No Novel/Storys</v-card-text>
         </v-card>
       </v-flex>
+
+
+
+      <!-- ------------- Back-Log ------------- -->
       <v-flex d-flex xs12 sm6 md4 lg2>
         <v-card>
           <!-- Begin Toolbar -->
@@ -60,27 +66,30 @@
           <!-- </draggable> -->
           <!-- Begin Delete Dialog -->
           <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
-            <taskDeleteDialog
+            <novelDeleteDialog
               :task="taskToDelete"
               :deleteName="deleteName"
               @closeDelete="deleteDialog = false"
               @alert="alert"
-            ></taskDeleteDialog>
+            ></novelDeleteDialog>
           </v-dialog>
           <!-- End Delete Dialog -->
           <!-- Begin Edit Form -->
           <v-dialog v-model="editDialog" lazy absolute max-width="50%">
-            <taskEditDialog
+            <novelEditDialog
               :rules="rules"
               :task="taskToEdit"
               :editName="editName"
               @closeEdit="editDialog = false; taskToEdit = {}"
               @alert="alert"
-            ></taskEditDialog>
+            ></novelEditDialog>
           </v-dialog>
           <!-- End Edit Form -->
         </v-card>
       </v-flex>
+
+
+      <!-- ------------- Todo ------------- -->
       <v-flex d-flex xs12 sm6 md4 lg2>
         <v-card dark>
           <v-toolbar class="secondary primaryText--text">
@@ -99,28 +108,31 @@
             </draggable>
           </span>
           <v-card-text v-else class="grey">No Tasks To-Do</v-card-text>
-          <!-- Begin Delete Dialog -->
+          <!-- Begin todoDelete Dialog -->
           <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
-            <taskDeleteDialog
+            <todoDeleteDialog
               :task="taskToDelete"
               @closeDelete="deleteDialog = false; taskToDelete = {}"
               @alert="alert"
-            ></taskDeleteDialog>
+            ></todoDeleteDialog>
           </v-dialog>
           <!-- End Delete Dialog -->
           <!-- Begin Edit Form -->
           <v-dialog v-model="editDialog" lazy absolute max-width="50%">
-            <taskEditDialog
+            <todoEditDialog
               :rules="rules"
               :task="taskToEdit"
               :editName="editName"
               @closeEdit="editDialog = false; taskToEdit = {}"
               @alert="alert"
-            ></taskEditDialog>
+            ></todoEditDialog>
           </v-dialog>
           <!-- End Edit Form -->
         </v-card>
       </v-flex>
+
+
+      <!-- --------------- Doing ------------- -->
       <v-flex d-flex xs12 sm6 md4 lg2>
         <v-card dark>
           <v-toolbar class="primary primaryText--text">
@@ -142,6 +154,9 @@
         </v-card>
       </v-flex>
 
+
+
+      <!-- --------------------- Done  ---------------------- -->
       <v-flex d-flex xs12 sm6 md4 lg2>
         <v-card dark>
           <v-toolbar class="secondary primaryText--text">
@@ -162,23 +177,23 @@
           <v-card-text v-else class="grey">No Done Tasks</v-card-text>
           <!-- Begin Delete Dialog -->
           <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
-            <taskDeleteDialog
+            <doneDeleteDialog
               :task="taskToDelete"
               :deleteName="deleteName"
               @closeDelete="deleteDialog = false"
               @alert="alert"
-            ></taskDeleteDialog>
+            ></doneDeleteDialog>
           </v-dialog>
           <!-- End Delete Dialog -->
           <!-- Begin Edit Form -->
           <v-dialog v-model="editDialog" lazy absolute max-width="50%">
-            <taskEditDialog
+            <doneEditDialog
               :rules="rules"
               :task="taskToEdit"
               :editName="editName"
               @closeEdit="editDialog = false; taskToEdit = {}"
               @alert="alert"
-            ></taskEditDialog>
+            ></doneEditDialog>
           </v-dialog>
           <!-- End Edit Form -->
           
