@@ -24,23 +24,23 @@
           <v-card-text v-else class="grey">No Novel/Storys</v-card-text>
           <!-- Begin Delete Dialog -->
           <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
-            <doneDeleteDialog
+            <novelDeleteDialog
               :task="taskToDelete"
               :deleteName="deleteName"
               @closeDelete="deleteDialog = false"
               @alert="alert"
-            ></doneDeleteDialog>
+            ></novelDeleteDialog>
           </v-dialog>
           <!-- End Delete Dialog -->
           <!-- Begin Edit Form -->
           <v-dialog v-model="editDialog" lazy absolute max-width="50%">
-            <doneEditDialog
+            <novelEditDialog
               :rules="rules"
               :task="taskToEdit"
               :editName="editName"
               @closeEdit="editDialog = false; taskToEdit = {}"
               @alert="alert"
-            ></doneEditDialog>
+            ></novelEditDialog>
           </v-dialog>
           <!-- End Edit Form -->
         </v-card>
@@ -87,23 +87,23 @@
           <!-- </draggable> -->
           <!-- Begin Delete Dialog -->
           <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
-            <novelDeleteDialog
+            <taskDeleteDialog
               :task="taskToDelete"
               :deleteName="deleteName"
               @closeDelete="deleteDialog = false"
               @alert="alert"
-            ></novelDeleteDialog>
+            ></taskDeleteDialog>
           </v-dialog>
           <!-- End Delete Dialog -->
           <!-- Begin Edit Form -->
           <v-dialog v-model="editDialog" lazy absolute max-width="50%">
-            <novelEditDialog
+            <taskEditDialog
               :rules="rules"
               :task="taskToEdit"
               :editName="editName"
               @closeEdit="editDialog = false; taskToEdit = {}"
               @alert="alert"
-            ></novelEditDialog>
+            ></taskEditDialog>
           </v-dialog>
           <!-- End Edit Form -->
         </v-card>
