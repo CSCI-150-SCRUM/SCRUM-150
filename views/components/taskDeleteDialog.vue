@@ -109,6 +109,23 @@ export default {
           this
         });
         }
+    else if(this.task.status=='Doing'){
+      http
+        .delete('/doing/' + this.task._id)
+        .then(response => {
+          this.deleteDone = true;
+          this.alert(true, 'Delete', 'Task');
+
+          this.close();
+          
+        })
+      
+        .catch(e => {
+          this.deleteDone = true;
+          this.alert(false, 'Delete', 'Task');
+          this
+        });
+        }
     },
 
     close() {
