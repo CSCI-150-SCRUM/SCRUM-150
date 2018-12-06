@@ -6,7 +6,7 @@
           <header>
             <h1 style="font-size:44px" class="text-xs-center">WELCOME TO SCRUMBAG</h1>
           </header>
-          <p class="text-xs-center" style="color:DodgerBlue;">A VISUAL MANAGEMENT TOOL!</p>
+          <p class="text-xs-center" style="color: orange;">A VISUAL MANAGEMENT TOOL</p>
           <hr class="my-4">
 
           <v-container grid-list-md>

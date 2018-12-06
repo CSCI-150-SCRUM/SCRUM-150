@@ -1,5 +1,11 @@
 <template>
-  <v-app :dark="isDarkMode">
+  <v-app 
+  :dark="isDarkMode"
+  style="
+    background: #3A1C71;
+    background: -webkit-linear-gradient(to right, #FFAF7B, #D76D77, #3A1C71);
+    background: linear-gradient(to right, #FFAF7B, #D76D77, #3A1C71);
+  ">
     <v-navigation-drawer
       v-if="showMenu"
       :clipped="clipped"
@@ -117,9 +123,9 @@ export default {
       if (!this.isDarkMode) {
         //NOT dark mode
         this.$vuetify.theme = {
-          primary: "#0D47A1", //Main color
+          primary: "#6A1B9A", //Main color
           primaryText: "#FFFFFF", //Color for text on primary
-          secondary: "#90CAF9", //Color for active nav
+          secondary: "#EF6C00", //Color for active nav
           lightText: "#000000"
         };
       } /* else {

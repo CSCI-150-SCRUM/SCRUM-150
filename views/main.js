@@ -12,9 +12,9 @@ import VueSweetalert2 from 'vue-sweetalert2';
 
 Vue.use(Vuetify, {
   theme: {
-    primary: '#0D47A1', //Main color
+    primary: '#3A1C71', //Main color
     primaryText: '#FFFFFF', //Color for text on primary
-    secondary: '#90CAF9', //Color for active nav
+    secondary: '#7C4DFF', //Color for active nav
     lightText: '#000000' //Dark Text for light Backgrounds
   }
 })

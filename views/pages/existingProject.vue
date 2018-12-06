@@ -1,7 +1,7 @@
 <template>
   <v-container fluid grid-list-md>
     <template>
-      <v-layout row wrap justify-space-between>
+      <v-layout row wrap justify->
         <v-flex d-flex xs12 sm6 md4>
           <v-card id="cards">
             <v-img
@@ -17,16 +17,20 @@
                 </v-layout>
               </v-container>
             </v-img>
-            <v-card-title>
-              <div>
-                <span class="grey--text">Video Game Project</span><br>
-                <span>Battle Royale game project with a ton of fun dances!</span>
-              </div>
-            </v-card-title>
-            <v-card-actions>
-              <v-btn flat color="orange" variant="success" href="http://localhost:3001/#/boards">Edit Project</v-btn>
-              <v-btn flat color="orange">Delete Project</v-btn>
-            </v-card-actions>
+            <v-layout justify-center>
+              <v-flex>
+                <v-card-title>
+                  <div>
+                    <span class="grey--text">Video Game Project</span><br>
+                    <span>Battle Royale game project with a ton of fun dances!</span>
+                  </div>
+                </v-card-title>
+                <v-card-actions>
+                  <v-btn flat color="orange" variant="success" href="http://localhost:3001/#/boards">Edit Project</v-btn>
+                  <v-btn flat color="orange">Delete Project</v-btn>
+                </v-card-actions>
+              </v-flex>
+            </v-layout>
           </v-card>
         </v-flex>
         <v-flex d-flex xs12 sm6 md4>
@@ -44,16 +48,20 @@
                 </v-layout>
               </v-container>
             </v-img>
-            <v-card-title>
-              <div>
-                <span class="grey--text">Artificial Intelligence </span><br>
-                <span>AI developed by Scrumbag and co.</span>
-              </div>
-            </v-card-title>
-            <v-card-actions>
-              <v-btn flat color="orange" variant="success" href="http://localhost:3001/#/boards">Edit Project</v-btn>
-              <v-btn flat color="orange">Delete Project</v-btn>
-            </v-card-actions>
+            <v-layout justify-center>
+              <v-flex>
+                <v-card-title>
+                  <div>
+                    <span class="grey--text">Artificial Intelligence </span><br>
+                    <span>Machine Learning AI developed by Scrumbag and co.</span>
+                  </div>
+                </v-card-title>
+                <v-card-actions>
+                  <v-btn flat color="orange" variant="success" href="http://localhost:3001/#/boards">Edit Project</v-btn>
+                  <v-btn flat color="orange">Delete Project</v-btn>
+                </v-card-actions>
+              </v-flex>
+            </v-layout>
           </v-card>
         </v-flex>
         <v-flex d-flex xs12 sm6 md4>
@@ -71,16 +79,20 @@
                 </v-layout>
               </v-container>
             </v-img>
-            <v-card-title>
-              <div>
-                <span class="grey--text">Web Application </span><br>
-                <span>Project Management tool created for easier development</span><br>
-              </div>
-            </v-card-title>
-            <v-card-actions>
-              <v-btn flat color="orange" variant="success" href="http://localhost:3001/#/boards">Edit Project</v-btn>
-              <v-btn flat color="orange">Delete Project</v-btn>
-            </v-card-actions>
+            <v-layout justify-center>
+              <v-flex>
+                <v-card-title>
+                  <div>
+                    <span class="grey--text">Web Application </span><br>
+                    <span>Project Management tool created for easier development</span><br>
+                  </div>
+                </v-card-title>
+                <v-card-actions>
+                  <v-btn flat color="orange" variant="success" href="http://localhost:3001/#/boards">Edit Project</v-btn>
+                  <v-btn flat color="orange">Delete Project</v-btn>
+                </v-card-actions>
+              </v-flex>
+            </v-layout>
           </v-card>
         </v-flex>
       </v-layout>
