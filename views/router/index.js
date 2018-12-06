@@ -10,7 +10,7 @@ import existingProjectPage from '../pages/existingProject.vue'
 import usersPage from '../pages/users.vue'
 import emptyPage from '../pages/empty.vue'
 import calendarPage from '../pages/calendar.vue'
-
+import groupPage from '../pages/group.vue'
 
 
 Vue.use(Router)
@@ -72,6 +72,11 @@ const router = new Router({
       path: '/calendar',
       name: 'calendar',
       component: calendarPage
+    },
+    {
+      path: '/group',
+      name: 'group',
+      component: groupPage
     },
 
   ]

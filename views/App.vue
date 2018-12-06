@@ -1,11 +1,12 @@
 <template>
-  <v-app 
-  :dark="isDarkMode"
-  style="
+  <v-app
+    :dark="isDarkMode"
+    style="
     background: #3A1C71;
     background: -webkit-linear-gradient(to right, #FFAF7B, #D76D77, #3A1C71);
     background: linear-gradient(to right, #FFAF7B, #D76D77, #3A1C71);
-  ">
+  "
+  >
     <v-navigation-drawer
       v-if="showMenu"
       :clipped="clipped"
@@ -112,6 +113,12 @@ export default {
           icon: "event",
           title: "Calendar",
           href: "/#/calendar",
+          router: true
+        },
+        {
+          icon: "group",
+          title: "Groups",
+          href: "/#/group",
           router: true
         }
       ],

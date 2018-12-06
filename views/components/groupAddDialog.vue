@@ -1,34 +1,26 @@
 <template>
   <v-card>
     <v-toolbar class="primary primaryText--text">
-      <v-toolbar-title>Add A task</v-toolbar-title>
+      <v-toolbar-title>Add A group</v-toolbar-title>
     </v-toolbar>
 
     <v-container fluid>
       <v-card-text>
         <!-- Begin Input Row  -->
         <v-form ref="form">
-          <v-text-field label="Task Name" v-model="task.name"></v-text-field>
-          <v-text-field label="Project Name" v-model="task.project_name"></v-text-field>
-          <v-text-field label="Details" v-model="task.details"></v-text-field>
-          <!--     <v-text-field label="Status" v-model="task.status"></v-text-field> -->
-          <v-text-field label="Assigned To" v-model="task.assigned_to"></v-text-field>
-          <v-text-field label="Task Points" v-model="task.points"></v-text-field>
+          <v-text-field label="group Name" v-model="group.name"></v-text-field>
+          <v-text-field label="Project Name" v-model="group.project_name"></v-text-field>
+          <v-text-field label="Details" v-model="group.details"></v-text-field>
+          <!--     <v-text-field label="Status" v-model="group.status"></v-text-field> -->
+          <v-text-field label="Assigned To" v-model="group.assigned_to"></v-text-field>
+          <v-text-field label="group Points" v-model="group.points"></v-text-field>
           <v-select
-            v-model="task.status"
+            v-model="group.status"
             :items="items"
             :rules="[v => !!v || 'Item is required']"
             label="Status"
             required
           ></v-select>
-          <!--      <v-select 
-            v-model="select"
-            :user="user"
-            :rules="[v => !!v || 'Item is required']"
-            label="Assign To"
-            required
-          ></v-select>
-          -->
         </v-form>
 
         <v-card-actions>
@@ -51,9 +43,9 @@ import { http } from "../config/http";
 import axios from "axios";
 export default {
   data: () => ({
-    items: ["Novelstory", "Back-Log", "To-do", "Doing", "Done"],
+    items: ["Novel/Story", "Back-Log", "To-do", "Doing", "Done"],
     user: ["hello"],
-    task: {
+    group: {
       name: "",
       project_name: "",
       details: "",
@@ -74,24 +66,24 @@ export default {
 
   methods: {
     submit() {
-      if (this.task.status == "Back-Log") {
+      if (this.group.status == "Back-Log") {
         this.submitDone = false;
         http
-          .post("/tasks", this.task)
+          .post("/groups", this.group)
           .then(response => {
             this.submitDone = true;
-            this.alert(true, "Create", "Task");
+            this.alert(true, "Create", "group");
             this.close();
           })
           .catch(e => {
             this.submitDone = true;
-            this.alert(false, "Create", "Task");
+            this.alert(false, "Create", "group");
           });
       } //For if statement
-      if (this.task.status == "To-do") {
+      if (this.group.status == "To-do") {
         this.submitDone = false;
         http
-          .post("/todo", this.task)
+          .post("/todo", this.group)
           .then(response => {
             this.submitDone = true;
             this.alert(true, "Create", "Todo");
@@ -103,9 +95,9 @@ export default {
           });
       } // if statement
 
-      if (this.task.status == "Done") {
+      if (this.group.status == "Done") {
         http
-          .post("/done", this.task)
+          .post("/done", this.group)
           .then(response => {
             this.submitDone = true;
             this.alert(true, "Create", "Done");
@@ -116,9 +108,9 @@ export default {
             this.alert(false, "Create", "Done");
           });
       } // if statement
-      if (this.task.status == "Doing") {
+      if (this.group.status == "Doing") {
         http
-          .post("/doing", this.task)
+          .post("/doing", this.group)
           .then(response => {
             this.submitDone = true;
             this.alert(true, "Create", "Doing");
@@ -128,37 +120,15 @@ export default {
             this.submitDone = true;
             this.alert(false, "Create", "Doing");
           });
-      } // if statement
-      if (this.task.status == "Novelstory") {
-        http
-          .post("/novelstory", this.task)
-          .then(response => {
-            this.submitDone = true;
-            this.alert(true, "Create", "Novelstory");
-            this.close();
-          })
-          .catch(e => {
-            this.submitDone = true;
-            this.alert(false, "Create", "Novelstory");
-          });
       }
     },
 
     load() {
-      this.task = {
+      this.group = {
         name: ""
       };
       this.submitDone = true;
     },
-    /*           http
-          .get("users")
-          .then(response => {
-            this.users = response.data.users;
-          })
-          .catch(e => {
-            this.errors.push(e);
-          });
-*/
 
     close() {
       this.load();
@@ -166,7 +136,7 @@ export default {
     },
 
     checkForm() {
-      if (this.task.name == "") {
+      if (this.group.name == "") {
         return true;
       } else {
         return false;
