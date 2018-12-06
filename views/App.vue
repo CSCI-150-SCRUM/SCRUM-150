@@ -105,6 +105,12 @@ export default {
           title: "New Project",
           href: "/#/project",
           router: true
+        },
+        {
+          icon: "event",
+          title: "Calendar",
+          href: "/#/calendar",
+          router: true
         }
       ],
       right: true,
