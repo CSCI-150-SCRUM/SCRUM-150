@@ -22,6 +22,27 @@
             </draggable>
           </span>
           <v-card-text v-else class="grey">No Novel/Storys</v-card-text>
+          <!-- Begin Delete Dialog -->
+          <v-dialog v-model="deleteDialog" lazy absolute max-width="40%">
+            <doneDeleteDialog
+              :task="taskToDelete"
+              :deleteName="deleteName"
+              @closeDelete="deleteDialog = false"
+              @alert="alert"
+            ></doneDeleteDialog>
+          </v-dialog>
+          <!-- End Delete Dialog -->
+          <!-- Begin Edit Form -->
+          <v-dialog v-model="editDialog" lazy absolute max-width="50%">
+            <doneEditDialog
+              :rules="rules"
+              :task="taskToEdit"
+              :editName="editName"
+              @closeEdit="editDialog = false; taskToEdit = {}"
+              @alert="alert"
+            ></doneEditDialog>
+          </v-dialog>
+          <!-- End Edit Form -->
         </v-card>
       </v-flex>
 
