@@ -280,6 +280,7 @@ export default {
     },
     //opens edit dialog
     setupEdit(task) {
+      this.load();
       Object.keys(task).forEach(key => {
         this.taskToEdit[key] = task[key];
       });
