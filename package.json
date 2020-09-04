@@ -32,7 +32,7 @@
         "jsonwebtoken": "^8.4.0",
         "jstransformer": "*",
         "mime": "^2.3.1",
-        "mongodb": "^3.1.9",
+        "mongodb": "^3.1.13",
         "mongoose": "^4.13.17",
         "morgan": "^1.9.1",
         "nodemon": "^1.18.6",
