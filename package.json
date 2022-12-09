@@ -24,7 +24,7 @@
         "debug": "~2.6.9",
         "dotenv": "^4.0.0",
         "es6-promise": "^4.2.5",
-        "express": "^4.16.4",
+        "express": "^4.17.3",
         "express-messages": "*",
         "express-session": "*",
         "express-validator": "*",
