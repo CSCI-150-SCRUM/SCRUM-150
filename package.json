@@ -29,7 +29,7 @@
         "express-session": "*",
         "express-validator": "*",
         "install": "^0.12.2",
-        "jsonwebtoken": "^8.4.0",
+        "jsonwebtoken": "^9.0.0",
         "jstransformer": "*",
         "mime": "^2.3.1",
         "mongodb": "^3.1.9",
